@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</helmet>
+<div style="display:flex;flex-direction:column;font-family:Inter,system-ui,sans-serif;color:#F4F4F8">
+  <div style="height:64px;flex:0 0 64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 28px;border-bottom:1px solid rgba(255,255,255,.06);background:#0B0B10">
+    <div style="font-size:13px;font-weight:500;color:rgba(244,244,248,.44)">{{ crumb }}</div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="position:relative;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(244,244,248,.68);cursor:pointer" style-hover="background:rgba(255,255,255,.06)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.6 6.6a4.6 4.6 0 1 0-9.2 0c0 5-2 6.4-2 6.4h13.2s-2-1.4-2-6.4"></path><path d="M10.3 15.4a1.5 1.5 0 0 1-2.6 0"></path></svg>
+        <span style="position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:50%;background:#7C5CFF;border:2px solid #0B0B10"></span>
+      </div>
+      <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(244,244,248,.68);cursor:pointer" style-hover="background:rgba(255,255,255,.06)">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="2.6"></circle><path d="M14.6 11.1a1.2 1.2 0 0 0 .24 1.32l.05.04a1.44 1.44 0 1 1-2.04 2.04l-.04-.05a1.2 1.2 0 0 0-1.32-.24 1.2 1.2 0 0 0-.72 1.1v.13a1.44 1.44 0 1 1-2.88 0v-.07a1.2 1.2 0 0 0-.78-1.1 1.2 1.2 0 0 0-1.32.24l-.04.05a1.44 1.44 0 1 1-2.04-2.04l.05-.04a1.2 1.2 0 0 0 .24-1.32 1.2 1.2 0 0 0-1.1-.72H2.6a1.44 1.44 0 1 1 0-2.88h.07a1.2 1.2 0 0 0 1.1-.78 1.2 1.2 0 0 0-.24-1.32l-.05-.04A1.44 1.44 0 1 1 5.52 2.4l.04.05a1.2 1.2 0 0 0 1.32.24h.06a1.2 1.2 0 0 0 .72-1.1V1.5a1.44 1.44 0 1 1 2.88 0v.07a1.2 1.2 0 0 0 .72 1.1 1.2 1.2 0 0 0 1.32-.24l.04-.05a1.44 1.44 0 1 1 2.04 2.04l-.05.04a1.2 1.2 0 0 0-.24 1.32v.06a1.2 1.2 0 0 0 1.1.72h.13a1.44 1.44 0 1 1 0 2.88h-.07a1.2 1.2 0 0 0-1.1.72"></path></svg>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;height:38px;padding:0 12px 0 6px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:#131320;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+        <span style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#5B3FD6,#B06AF0);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#0B0B10">DM</span>
+        <span style="font-size:13px;font-weight:500">Diego Montes</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showStepper }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;padding:22px 28px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:#0B0B10">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <div style="display:flex;align-items:flex-start;flex:{{ st.flex }};min-width:0">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;width:96px;flex:0 0 96px">
+            <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;border:1.5px solid {{ st.ring }};background:{{ st.fill }};color:{{ st.num }};box-shadow:{{ st.glow }}">{{ st.mark }}</div>
+            <div style="font-size:12px;line-height:16px;font-weight:{{ st.lw }};color:{{ st.lc }};white-space:nowrap">{{ st.label }}</div>
+          </div>
+          <div style="flex:1;height:1.5px;margin-top:15.5px;background:{{ st.line }};min-width:24px"></div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1100,&quot;height&quot;:150},&quot;step&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;},&quot;crumb&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const cur = Number(this.props.step || 0);
+    const labels = ['1 Idea', '2 Propuestas', '3 Guion', '4 Voz', '5 Avatar y marca', '6 Escenas'];
+    const steps = labels.map((label, i) => {
+      const n = i + 1;
+      const done = n < cur, active = n === cur;
+      return {
+        label,
+        mark: done ? '✓' : String(n),
+        flex: i === labels.length - 1 ? '0 0 96px' : '1 1 0',
+        ring: done ? '#7C5CFF' : active ? '#7C5CFF' : 'rgba(255,255,255,.16)',
+        fill: done ? '#7C5CFF' : active ? 'rgba(124,92,255,.14)' : 'transparent',
+        num: done ? '#0B0B10' : active ? '#F4F4F8' : 'rgba(244,244,248,.44)',
+        glow: active ? '0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18)' : 'none',
+        lw: active ? 600 : 500,
+        lc: active ? '#F4F4F8' : done ? 'rgba(244,244,248,.68)' : 'rgba(244,244,248,.44)',
+        line: done ? '#7C5CFF' : 'rgba(255,255,255,.10)'
+      };
+    });
+    return { steps, showStepper: cur > 0, crumb: this.props.crumb || '' };
+  }
+}
+</script>
+</body>
+</html>

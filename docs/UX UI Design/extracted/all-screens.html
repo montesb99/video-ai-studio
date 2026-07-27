@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="bcba6e8d-0145-4d12-89d5-6efaa92873cb"></script>
+
+
+
+
+
+
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("181c7fd7-33d5-4746-89b9-79e07f03f701") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a53c14df-adf3-4d66-8d6c-2457ae04cbf8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d38367f0-0730-477b-8e37-89a1f9d5e8f7") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("77edbabe-0cbb-4fa7-91fc-4ff0ec0667c8") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8c9f5289-71e6-484b-acf6-9b1577250231") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3c170712-071e-4486-8c1b-798714b50971") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("27973b48-46eb-4cb2-88d7-5f3c17c3b4e3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("181c7fd7-33d5-4746-89b9-79e07f03f701") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a53c14df-adf3-4d66-8d6c-2457ae04cbf8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d38367f0-0730-477b-8e37-89a1f9d5e8f7") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("77edbabe-0cbb-4fa7-91fc-4ff0ec0667c8") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8c9f5289-71e6-484b-acf6-9b1577250231") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3c170712-071e-4486-8c1b-798714b50971") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("27973b48-46eb-4cb2-88d7-5f3c17c3b4e3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("181c7fd7-33d5-4746-89b9-79e07f03f701") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("a53c14df-adf3-4d66-8d6c-2457ae04cbf8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d38367f0-0730-477b-8e37-89a1f9d5e8f7") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("77edbabe-0cbb-4fa7-91fc-4ff0ec0667c8") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8c9f5289-71e6-484b-acf6-9b1577250231") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("3c170712-071e-4486-8c1b-798714b50971") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("27973b48-46eb-4cb2-88d7-5f3c17c3b4e3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("181c7fd7-33d5-4746-89b9-79e07f03f701") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("a53c14df-adf3-4d66-8d6c-2457ae04cbf8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("d38367f0-0730-477b-8e37-89a1f9d5e8f7") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("77edbabe-0cbb-4fa7-91fc-4ff0ec0667c8") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8c9f5289-71e6-484b-acf6-9b1577250231") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("3c170712-071e-4486-8c1b-798714b50971") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("27973b48-46eb-4cb2-88d7-5f3c17c3b4e3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  html,body{margin:0;padding:0;background:#0B0B10;color:#F4F4F8;font-family:Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  a{color:#B06AF0;text-decoration:none}
+  a:hover{color:#C79BF5}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.10);border-radius:8px;border:3px solid #0B0B10}
+  :focus-visible{outline:2px solid #7C5CFF;outline-offset:2px}
+</style>
+</helmet>
+
+<div style="min-height:100vh;min-width:1280px;background:var(--bg,#0B0B10);--bg:{{ vBg }};--panel:{{ vPanel }};--elev:{{ vElev }};--acc:{{ vAcc }};--acc2:{{ vAcc2 }};--soft:{{ vSoft }};--brd:{{ vBrd }};--glow:{{ vGlow }};--pad:{{ vPad }};--gap:{{ vGap }};--r:{{ vR }};--fs:{{ vFs }}">
+
+<!-- ══ 1 · PANEL DE RENDIMIENTO ══ -->
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="inicio" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Análisis / Rendimiento" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:var(--pad,28px) 32px 40px">
+
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:var(--pad,24px);flex-wrap:wrap">
+        <div>
+          <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Rendimiento</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">Tus publicaciones en Instagram · últimos 30 días</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px;height:38px;padding:0 14px 0 6px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320)">
+            <span style="width:26px;height:26px;border-radius:50%;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 4px,#202034 4px,#202034 8px)"></span>
+            <span style="font-size:13px;font-weight:500">@diegoinnovacion</span>
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">Conectado</span></span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);font-size:13px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">Últimos 30 días
+            <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg>
+          </div>
+          <div style="display:flex;align-items:center;gap:7px;height:38px;padding:0 16px;border-radius:10px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:13px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">
+            <svg width="14" height="14" sc-camel-view-box="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2.6v8.8M2.6 7h8.8"></path></svg>Crear video
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="5">
+          <div style="padding:16px;border:1px solid rgba(255,255,255,.06);border-radius:var(--r,16px);background:var(--panel,#131320)">
+            <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44)">{{ k.label }}</div>
+            <div style="font-size:26px;font-weight:600;letter-spacing:-.02em;margin:8px 0 10px">{{ k.value }}</div>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:{{ k.chipBg }};color:{{ k.chipFg }};font-size:11px;font-weight:600">{{ k.delta }}</span>
+              <svg width="70" height="24" sc-camel-view-box="0 0 70 24" fill="none"><polyline points="{{ k.spark }}" stroke="var(--acc,#7C5CFF)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+
+          <div style="padding:20px;border:1px solid rgba(255,255,255,.06);border-radius:var(--r,16px);background:var(--panel,#131320)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <div style="font-size:16px;line-height:22px;font-weight:600">Evolución</div>
+              <div style="display:flex;align-items:center;gap:16px">
+                <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.68)"><span style="width:8px;height:8px;border-radius:2px;background:var(--acc,#7C5CFF)"></span>Reproducciones</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.68)"><span style="width:12px;height:2px;border-radius:2px;background:#FF7A2F"></span>Interacciones</span>
+              </div>
+            </div>
+            <div style="position:relative">
+              <svg sc-camel-view-box="0 0 800 200" sc-camel-preserve-aspect-ratio="none" style="width:100%;height:200px;display:block">
+                <defs><linearGradient id="ev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--acc,#7C5CFF)" stop-opacity=".38"></stop><stop offset="1" stop-color="var(--acc,#7C5CFF)" stop-opacity="0"></stop></linearGradient></defs>
+                <g stroke="rgba(255,255,255,.06)" stroke-width="1"><line x1="0" y1="40" x2="800" y2="40"></line><line x1="0" y1="90" x2="800" y2="90"></line><line x1="0" y1="140" x2="800" y2="140"></line><line x1="0" y1="190" x2="800" y2="190"></line></g>
+                <path d="M0,152 L67,132 L133,142 L200,112 L267,122 L333,92 L400,101 L467,72 L533,86 L600,56 L667,68 L733,42 L800,30 L800,200 L0,200 Z" fill="url(#ev)"></path>
+                <path d="M0,152 L67,132 L133,142 L200,112 L267,122 L333,92 L400,101 L467,72 L533,86 L600,56 L667,68 L733,42 L800,30" fill="none" stroke="var(--acc,#7C5CFF)" stroke-width="2" stroke-linejoin="round"></path>
+                <path d="M0,176 L67,170 L133,174 L200,160 L267,166 L333,150 L400,158 L467,142 L533,150 L600,132 L667,140 L733,124 L800,116" fill="none" stroke="#FF7A2F" stroke-width="1.4" stroke-linejoin="round"></path>
+              </svg>
+              <div style="position:absolute;left:66.6%;top:0;bottom:0;width:1px;background:var(--brd,rgba(124,92,255,.45))"></div>
+              <div style="position:absolute;left:66.6%;top:43%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--acc,#7C5CFF);box-shadow:0 0 0 3px var(--soft,rgba(124,92,255,.25))"></div>
+              <div style="position:absolute;left:66.6%;top:6px;transform:translateX(-50%);padding:8px 10px;border-radius:10px;background:#202034;border:1px solid rgba(255,255,255,.10);box-shadow:0 8px 24px rgba(0,0,0,.45);white-space:nowrap">
+                <div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44);margin-bottom:4px">18 jul</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600"><span style="width:8px;height:8px;border-radius:2px;background:var(--acc,#7C5CFF)"></span>38.240 reproducciones</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-top:3px"><span style="width:8px;height:2px;border-radius:2px;background:#FF7A2F"></span>2.910 interacciones</div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:10px;font-size:11px;font-weight:500;color:rgba(244,244,248,.44)"><span>18 jun</span><span>25 jun</span><span>2 jul</span><span>9 jul</span><span>18 jul</span></div>
+          </div>
+
+          <div style="border:1px solid rgba(255,255,255,.06);border-radius:var(--r,16px);background:var(--panel,#131320);overflow:hidden">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px">
+              <div style="font-size:16px;line-height:22px;font-weight:600">Publicaciones</div>
+              <div style="display:flex;gap:4px;padding:3px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+                <span style="height:28px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:12px;font-weight:600;background:var(--soft,rgba(124,92,255,.14));color:#F4F4F8;box-shadow:0 0 0 1px var(--brd,rgba(124,92,255,.45))">Todas</span>
+                <span style="height:28px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:12px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Reels</span>
+                <span style="height:28px;display:flex;align-items:center;padding:0 12px;border-radius:8px;font-size:12px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Carruseles</span>
+              </div>
+            </div>
+            <sc-for list="{{ posts }}" as="p" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 20px;border-top:1px solid rgba(255,255,255,.06);cursor:pointer" style-hover="background:rgba(255,255,255,.03)">
+                <div style="width:38px;height:66px;flex:0 0 38px;border-radius:6px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid rgba(255,255,255,.06)"></div>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                    <span style="font-size:var(--fs,14px);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:320px">{{ p.caption }}</span>
+                    <span style="display:{{ p.top }};align-items:center;height:20px;padding:0 8px;border-radius:999px;background:var(--soft,rgba(124,92,255,.14));color:var(--acc2,#B06AF0);font-size:11px;font-weight:600;box-shadow:inset 0 0 0 1px var(--brd,rgba(124,92,255,.45))">Top</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:10px;font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">
+                    <span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.10);color:rgba(244,244,248,.68)">{{ p.nicho }}</span>
+                    <span>{{ p.fecha }}</span>
+                  </div>
+                </div>
+                <div style="display:flex;gap:22px;flex:0 0 auto;text-align:right">
+                  <div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Repr.</div><div style="font-size:13px;font-weight:600;margin-top:2px">{{ p.repr }}</div></div>
+                  <div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Me gusta</div><div style="font-size:13px;font-weight:600;margin-top:2px">{{ p.likes }}</div></div>
+                  <div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Coment.</div><div style="font-size:13px;font-weight:600;margin-top:2px">{{ p.com }}</div></div>
+                  <div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Guardados</div><div style="font-size:13px;font-weight:600;margin-top:2px">{{ p.guard }}</div></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="padding:18px;border:1px solid rgba(255,255,255,.06);border-radius:var(--r,16px);background:var(--panel,#131320)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:14px">Mejor rendimiento</div>
+            <div style="position:relative;width:100%;aspect-ratio:9/16;max-height:300px;border-radius:12px;overflow:hidden;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 7px,#202034 7px,#202034 14px);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center">
+              <span style="font:500 10px ui-monospace,SFMono-Regular,monospace;color:rgba(244,244,248,.44)">miniatura 9:16</span>
+              <div style="position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:10px;background:rgba(11,11,16,.72);border:1px solid rgba(255,255,255,.10)">
+                <div style="font-size:18px;font-weight:600;line-height:22px">11,2 %</div>
+                <div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">Tasa de interacción</div>
+              </div>
+            </div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:12px;text-wrap:pretty">Tres señales de que tu negocio ya necesita IA</div>
+          </div>
+
+          <div style="padding:18px;border:1px solid rgba(255,255,255,.06);border-radius:var(--r,16px);background:var(--panel,#131320)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:14px">Cuentas conectadas</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+                <span style="width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.68)" stroke-width="1.5"><rect x="2.2" y="2.2" width="11.6" height="11.6" rx="3.4"></rect><circle cx="8" cy="8" r="2.8"></circle></svg></span>
+                <span style="flex:1;font-size:var(--fs,14px);font-weight:500">Instagram</span>
+                <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Conectado</span></span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+                <span style="width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center"><svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.68)" stroke-width="1.5" stroke-linejoin="round"><path d="M9.4 2.2v7.6a2.6 2.6 0 1 1-2.6-2.6"></path><path d="M9.4 2.2a3.4 3.4 0 0 0 3.4 3.4"></path></svg></span>
+                <span style="flex:1;font-size:var(--fs,14px);font-weight:500">TikTok</span>
+                <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Sin conectar</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:18px;border:1px dashed rgba(255,255,255,.10);border-radius:var(--r,16px);background:rgba(19,19,32,.5)">
+            <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin-bottom:10px">Estado vacío</div>
+            <div style="width:56px;height:56px;border-radius:14px;background:var(--soft,rgba(124,92,255,.14));display:flex;align-items:center;justify-content:center;margin-bottom:12px"><svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="var(--acc2,#B06AF0)" stroke-width="1.5" stroke-linecap="round"><path d="M4 18V9M9.3 18V5M14.7 18v-6M20 18v-9"></path></svg></div>
+            <div style="font-size:var(--fs,14px);line-height:21px;font-weight:500;text-wrap:pretty">Conecta tu Instagram para ver cómo rinde tu contenido</div>
+            <div style="margin-top:12px;height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:13px;font-weight:600;cursor:pointer">Conectar Instagram</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!-- ══ 2 · IDEA ══ -->
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="1" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:32px 32px 76px">
+      <div style="max-width:940px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:28px">
+          <div style="font-size:32px;line-height:38px;font-weight:600;letter-spacing:-.02em">¿Qué quieres contar hoy?</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:6px">Elige el formato, escribe tu idea y adjunta lo que tengas.</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,280px));gap:16px;justify-content:center;margin-bottom:24px">
+          <div style="position:relative;padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18));cursor:pointer">
+            <div style="position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--acc,#7C5CFF);display:flex;align-items:center;justify-content:center"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"></path></svg></div>
+            <div style="width:52px;height:52px;border-radius:14px;background:var(--soft,rgba(124,92,255,.14));display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="26" height="26" sc-camel-view-box="0 0 26 26" fill="none" stroke="var(--acc2,#B06AF0)" stroke-width="1.5" stroke-linejoin="round"><rect x="5" y="3.5" width="12" height="16" rx="2"></rect><path d="M8.5 8h5M8.5 11.5h5M8.5 15h3"></path><path d="M19.5 15.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="var(--acc2,#B06AF0)" stroke="none"></path></svg></div>
+            <div style="font-size:16px;line-height:22px;font-weight:600">Informativo</div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:4px;text-wrap:pretty">Explica una idea rápido y claro</div>
+          </div>
+          <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="26" height="26" sc-camel-view-box="0 0 26 26" fill="none" stroke="rgba(244,244,248,.68)" stroke-width="1.5" stroke-linejoin="round"><rect x="3.5" y="5" width="9" height="12" rx="2"></rect><path d="M6.6 9.4 9.8 11 6.6 12.6z" fill="rgba(244,244,248,.68)" stroke="none"></path><path d="M14.5 6.5h8v7h-4.5L15 16.5V13.5h-.5z"></path></svg></div>
+            <div style="font-size:16px;line-height:22px;font-weight:600">Reacción</div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:4px;text-wrap:pretty">Reacciona a una tendencia</div>
+          </div>
+          <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+            <div style="width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="26" height="26" sc-camel-view-box="0 0 26 26" fill="none" stroke="rgba(244,244,248,.68)" stroke-width="1.6" stroke-linecap="round"><path d="M10.6 14.4a3.4 3.4 0 0 0 5.1.4l3-3a3.4 3.4 0 0 0-4.8-4.8l-1.7 1.7"></path><path d="M14.4 10.6a3.4 3.4 0 0 0-5.1-.4l-3 3a3.4 3.4 0 0 0 4.8 4.8l1.7-1.7"></path></svg></div>
+            <div style="font-size:16px;line-height:22px;font-weight:600">Desde un enlace</div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:4px;text-wrap:pretty">Copia la estructura de un video que te gusta</div>
+          </div>
+        </div>
+
+        <div style="border-radius:20px;background:#0F0F1A;border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:0 0 28px var(--soft,rgba(124,92,255,.14));overflow:hidden;margin-bottom:24px">
+          <div style="padding:20px 20px 14px;min-height:120px">
+            <div style="font-size:15px;line-height:26px;text-wrap:pretty">Quiero contar cómo la inteligencia artificial está reemplazando tareas repetitivas en pequeños negocios y permite que los dueños se enfoquen en lo importante. Muestro ejemplos reales, datos actuales y herramientas accesibles para empezar hoy.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+              <div style="display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06)">
+                <span style="width:20px;height:20px;border-radius:5px;background:rgba(239,68,68,.16);color:#EF4444;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700">PDF</span>
+                <span style="font-size:13px;font-weight:500">informe-ia-2026.pdf · 12 pág.</span>
+                <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.6" stroke-linecap="round" style="cursor:pointer"><path d="M3 3l6 6M9 3l-6 6"></path></svg>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06)">
+                <span style="width:20px;height:20px;border-radius:5px;background:rgba(59,130,246,.16);display:flex;align-items:center;justify-content:center"><svg width="11" height="11" sc-camel-view-box="0 0 16 16" fill="none" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round"><path d="M6.6 9.4a2.2 2.2 0 0 0 3.3.2l1.9-1.9a2.2 2.2 0 1 0-3.1-3.1L7.6 5.7"></path><path d="M9.4 6.6a2.2 2.2 0 0 0-3.3-.2L4.2 8.3a2.2 2.2 0 1 0 3.1 3.1l1.1-1.1"></path></svg></span>
+                <span style="font-size:13px;font-weight:500">elpais.com/tecnologia/...</span>
+                <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.6" stroke-linecap="round" style="cursor:pointer"><path d="M3 3l6 6M9 3l-6 6"></path></svg>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06)">
+                <span style="width:20px;height:20px;border-radius:5px;background:rgba(236,72,153,.16);display:flex;align-items:center;justify-content:center"><svg width="11" height="11" sc-camel-view-box="0 0 16 16" fill="none" stroke="#EC4899" stroke-width="1.5"><rect x="2.2" y="2.2" width="11.6" height="11.6" rx="3.4"></rect><circle cx="8" cy="8" r="2.8"></circle></svg></span>
+                <span style="font-size:13px;font-weight:500">instagram.com/reel/C8x...</span>
+                <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.6" stroke-linecap="round" style="cursor:pointer"><path d="M3 3l6 6M9 3l-6 6"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;padding:10px 14px;border-top:1px solid rgba(255,255,255,.06);background:var(--panel,#131320)">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:74px;padding:6px 0;border-radius:10px;color:rgba(244,244,248,.44);cursor:pointer" style-hover="background:rgba(255,255,255,.05)">
+              <svg width="17" height="17" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M14.4 8.4 8.8 14a3.4 3.4 0 0 1-4.8-4.8l5.6-5.6a2.3 2.3 0 0 1 3.2 3.2l-5.6 5.6a1.1 1.1 0 0 1-1.6-1.6l5.2-5.2"></path></svg>
+              <span style="font-size:10px;font-weight:500">Adjuntar archivo</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:74px;padding:6px 0;border-radius:10px;color:rgba(244,244,248,.44);cursor:pointer" style-hover="background:rgba(255,255,255,.05)">
+              <svg width="17" height="17" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7.4 10.6a2.6 2.6 0 0 0 3.9.3l2.2-2.2a2.6 2.6 0 1 0-3.6-3.6L8.6 6.4"></path><path d="M10.6 7.4a2.6 2.6 0 0 0-3.9-.3L4.5 9.3a2.6 2.6 0 1 0 3.6 3.6l1.3-1.3"></path></svg>
+              <span style="font-size:10px;font-weight:500">Pegar enlace</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:74px;padding:6px 0;border-radius:10px;color:rgba(244,244,248,.44);cursor:pointer" style-hover="background:rgba(255,255,255,.05)">
+              <svg width="17" height="17" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2.4" y="3.4" width="13.2" height="11.2" rx="2"></rect><circle cx="6.4" cy="7.2" r="1.2"></circle><path d="M2.6 12.4 6.6 9l3 2.6 2.4-2 3.4 3"></path></svg>
+              <span style="font-size:10px;font-weight:500">Imagen</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;width:74px;padding:6px 0;border-radius:10px;color:rgba(244,244,248,.44);cursor:pointer" style-hover="background:rgba(255,255,255,.05)">
+              <svg width="17" height="17" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="6.6" y="2.2" width="4.8" height="8.4" rx="2.4"></rect><path d="M4 8.8a5 5 0 0 0 10 0M9 13.8v2"></path></svg>
+              <span style="font-size:10px;font-weight:500">Nota de voz</span>
+            </div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+              <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">3 fuentes</span>
+              <span style="width:1px;height:22px;background:rgba(255,255,255,.10)"></span>
+              <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="filter:brightness(1.08)"><svg width="18" height="18" sc-camel-view-box="0 0 18 18" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14.4V3.6M4.4 8.2 9 3.6l4.6 4.6"></path></svg></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px">Nicho</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+              <sc-for list="{{ nichos }}" as="c" hint-placeholder-count="10">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+                  <span style="height:36px;display:inline-flex;align-items:center;gap:7px;padding:0 14px;border-radius:999px;border:1px solid {{ c.brd }};background:{{ c.bg }};box-shadow:{{ c.glow }};font-size:13px;font-weight:{{ c.fw }};color:{{ c.fg }};cursor:pointer">{{ c.label }}</span>
+                  <span style="display:{{ c.noteShow }};align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--acc2,#B06AF0)">Detectado automáticamente</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="text-align:right;flex:0 0 auto">
+            <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Generar ideas
+              <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8h10.4M9.2 4l4 4-4 4"></path></svg>
+            </div>
+            <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44);margin-top:8px">Gratis · no consume créditos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 3 · PROPUESTAS ══ -->
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="2" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="margin-bottom:20px">
+        <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Elige tu idea</div>
+        <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">3 propuestas para IA y Tecnología · basadas en tus 3 fuentes</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch">
+        <sc-for list="{{ ideas }}" as="i" hint-placeholder-count="3">
+          <div style="position:relative;display:flex;flex-direction:column;padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid {{ i.brd }};box-shadow:{{ i.glow }};opacity:{{ i.op }};cursor:pointer">
+            <div style="position:absolute;top:-9px;right:16px;display:{{ i.checkShow }};width:24px;height:24px;border-radius:50%;background:var(--acc,#7C5CFF);align-items:center;justify-content:center;border:2px solid var(--panel,#131320)"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"></path></svg></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)">
+              <span style="height:32px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06);font-size:13px;font-weight:500">{{ i.enfoque }}</span>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <div style="position:relative;width:52px;height:52px">
+                  <svg width="52" height="52" sc-camel-view-box="0 0 52 52"><circle cx="26" cy="26" r="22" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="4"></circle><circle cx="26" cy="26" r="22" fill="none" stroke="var(--acc,#7C5CFF)" stroke-width="4" stroke-linecap="round" stroke-dasharray="{{ i.dash }}" transform="rotate(-90 26 26)"></circle></svg>
+                  <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600">{{ i.score }}</span>
+                </div>
+                <span style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Viralidad</span>
+              </div>
+            </div>
+            <div style="padding-top:16px">
+              <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:var(--acc2,#B06AF0);margin-bottom:6px">GANCHO</div>
+              <div style="font-size:18px;line-height:25px;font-weight:600;letter-spacing:-.01em;text-wrap:pretty">{{ i.hook }}</div>
+            </div>
+            <div style="padding:16px 0;margin-top:16px;border-top:1px solid rgba(255,255,255,.06)">
+              <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:var(--acc2,#B06AF0);margin-bottom:6px">LA IDEA</div>
+              <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);text-wrap:pretty">{{ i.idea }}</div>
+            </div>
+            <div style="display:flex;gap:9px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)">
+              <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" style="flex:0 0 16px;margin-top:1px"><path d="M6 12.4h4M6.6 14.4h2.8"></path><path d="M8 1.6a4.4 4.4 0 0 1 2.6 7.9c-.5.4-.8 1-.8 1.6H6.2c0-.6-.3-1.2-.8-1.6A4.4 4.4 0 0 1 8 1.6z"></path></svg>
+              <div>
+                <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:var(--acc2,#B06AF0);margin-bottom:4px">POR QUÉ FUNCIONA</div>
+                <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);text-wrap:pretty">{{ i.porque }}</div>
+              </div>
+            </div>
+            <div style="margin-top:16px;padding:14px;border-radius:12px;background:rgba(255,122,47,.10);border:1px solid rgba(255,122,47,.24)">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px">
+                <span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:#FF7A2F">CTA SUGERIDO</span>
+                <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:{{ i.ctaBg }};color:{{ i.ctaFg }};font-size:11px;font-weight:600">{{ i.ctaTipo }}</span>
+              </div>
+              <div style="font-size:13px;line-height:20px;text-wrap:pretty">{{ i.cta }} <span style="display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:6px;background:rgba(255,122,47,.18);color:#FF7A2F;font-size:11px;font-weight:700;letter-spacing:.04em">INNOVACION</span></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">
+              <span>50 s</span><span>≈ 128 palabras</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px">
+        <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);font-size:14px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+          <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13.4 8a5.4 5.4 0 1 1-1.6-3.8"></path><path d="M13.4 2.4V5h-2.6"></path></svg>Generar otras 3
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Escribir guion
+          <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8h10.4M9.2 4l4 4-4 4"></path></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!-- ══ 4 · GUION ══ -->
+<sc-if value="{{ s4 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="3" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start">
+        <div style="min-width:0">
+          <div style="margin-bottom:18px">
+            <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Tu guion</div>
+            <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">50 segundos · 4 bloques · editable</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:12px;padding:16px 18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);border-left:3px solid #7C5CFF">
+              <div style="display:flex;flex-direction:column;gap:3px;padding-top:6px;cursor:grab"><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span></div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                  <span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:#7C5CFF">HOOK</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.06);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">0:00 – 0:03</span>
+                  <span style="margin-left:auto;color:rgba(244,244,248,.44);font-size:16px;cursor:pointer">···</span>
+                </div>
+                <div style="font-size:16px;line-height:24px;font-weight:500">La próxima revolución de tu negocio ya está aquí.</div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;padding:16px 18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);border-left:3px solid #3B82F6">
+              <div style="display:flex;flex-direction:column;gap:3px;padding-top:6px;cursor:grab"><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span></div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                  <span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:#3B82F6">PROMESA</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.06);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">0:03 – 0:08</span>
+                  <span style="margin-left:auto;color:rgba(244,244,248,.44);font-size:16px;cursor:pointer">···</span>
+                </div>
+                <div style="font-size:16px;line-height:24px;font-weight:500;text-wrap:pretty">En menos de un minuto te muestro cómo la IA hace el trabajo repetitivo por ti y qué necesitas para empezar hoy.</div>
+              </div>
+            </div>
+
+            <div style="position:relative;display:flex;gap:12px;padding:16px 18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);border-left:3px solid #22C55E">
+              <div style="display:flex;flex-direction:column;gap:3px;padding-top:6px;cursor:grab"><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span></div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                  <span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:#22C55E">CONTENIDO</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.06);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">0:08 – 0:43</span>
+                  <span style="margin-left:auto;color:rgba(244,244,248,.44);font-size:16px;cursor:pointer">···</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:24px">
+                  <div style="display:flex;gap:10px"><span style="color:rgba(244,244,248,.44);font-weight:500;flex:0 0 14px">1.</span><span>Un negocio pequeño pierde catorce horas por semana en tareas que nadie disfruta.</span></div>
+                  <div style="display:flex;gap:10px"><span style="color:rgba(244,244,248,.44);font-weight:500;flex:0 0 14px">2.</span><span>Hoy la IA responde mensajes, arma presupuestos y ordena tu inventario.</span></div>
+                  <div style="position:relative;display:flex;gap:10px;padding:4px 6px;margin:0 -6px;border-radius:8px;background:var(--soft,rgba(124,92,255,.14));box-shadow:inset 0 0 0 1px var(--brd,rgba(124,92,255,.45))">
+                    <span style="color:rgba(244,244,248,.44);font-weight:500;flex:0 0 14px">3.</span><span>No reemplaza a tu equipo: le devuelve el tiempo para vender y atender mejor.</span>
+                    <div style="position:absolute;left:0;top:-52px;display:flex;align-items:center;gap:2px;padding:5px;border-radius:12px;background:#202034;border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 32px rgba(0,0,0,.55);z-index:5">
+                      <span style="height:30px;display:flex;align-items:center;padding:0 11px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:rgba(255,255,255,.06)">Acortar</span>
+                      <span style="height:30px;display:flex;align-items:center;padding:0 11px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:rgba(255,255,255,.06)">Más directo</span>
+                      <span style="height:30px;display:flex;align-items:center;padding:0 11px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:rgba(255,255,255,.06)">Subir tensión</span>
+                      <span style="height:30px;display:flex;align-items:center;padding:0 11px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer" style-hover="background:rgba(255,255,255,.06)">Reescribir</span>
+                      <span style="width:1px;height:20px;background:rgba(255,255,255,.10);margin:0 3px"></span>
+                      <span style="height:30px;display:flex;align-items:center;gap:6px;padding:0 11px;border-radius:8px;background:var(--soft,rgba(124,92,255,.14));color:var(--acc2,#B06AF0);font-size:13px;font-weight:600;cursor:pointer"><svg width="13" height="13" sc-camel-view-box="0 0 14 14" fill="currentColor"><path d="M7 1.4l1.1 2.9 2.9 1.1-2.9 1.1L7 9.4 5.9 6.5 3 5.4l2.9-1.1z"></path></svg>IA</span>
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:10px"><span style="color:rgba(244,244,248,.44);font-weight:500;flex:0 0 14px">4.</span><span>Empieza por una sola tarea, mídela una semana y decide con datos.</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:12px;padding:16px 18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);border-left:3px solid #FF7A2F">
+              <div style="display:flex;flex-direction:column;gap:3px;padding-top:6px;cursor:grab"><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="width:3px;height:3px;border-radius:50%;background:rgba(244,244,248,.26)"></span></div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                  <span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:#FF7A2F">CTA FINAL</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.06);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">0:43 – 0:50</span>
+                  <span style="margin-left:auto;color:rgba(244,244,248,.44);font-size:16px;cursor:pointer">···</span>
+                </div>
+                <div style="font-size:16px;line-height:24px;font-weight:500">Escribe <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;background:rgba(255,122,47,.18);color:#FF7A2F;font-size:12px;font-weight:700;letter-spacing:.04em;vertical-align:middle">INNOVACION</span> y te mando la guía con las herramientas.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px">
+            <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);font-size:14px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+              <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 8H2.8M6.8 4l-4 4 4 4"></path></svg>Volver a las ideas
+            </div>
+            <div style="text-align:right">
+              <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Confirmar guion
+                <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8h10.4M9.2 4l4 4-4 4"></path></svg>
+              </div>
+              <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44);margin-top:8px">A partir de aquí se usan créditos</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:10px">Duración</div>
+            <div style="font-size:32px;line-height:38px;font-weight:600;letter-spacing:-.02em;margin-bottom:12px">0:50</div>
+            <div style="display:flex;gap:3px;margin-bottom:12px">
+              <div style="height:8px;border-radius:999px;background:#7C5CFF;flex:6"></div>
+              <div style="height:8px;border-radius:999px;background:#3B82F6;flex:10"></div>
+              <div style="height:8px;border-radius:999px;background:#22C55E;flex:70"></div>
+              <div style="height:8px;border-radius:999px;background:#FF7A2F;flex:14"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:13px;font-weight:500;color:rgba(244,244,248,.68)">Dentro del objetivo</span></div>
+          </div>
+
+          <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px">Métricas</div>
+            <div style="display:flex;flex-direction:column;gap:9px;font-size:13px">
+              <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Palabras</span><span style="font-weight:600">128</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Ritmo</span><span style="font-weight:600">2,39 pal/s</span></div>
+              <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Legibilidad</span><span style="font-weight:600;color:#22C55E">Alta</span></div>
+            </div>
+          </div>
+
+          <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><svg width="16" height="16" sc-camel-view-box="0 0 14 14" fill="var(--acc2,#B06AF0)"><path d="M7 1.4l1.1 2.9 2.9 1.1-2.9 1.1L7 9.4 5.9 6.5 3 5.4l2.9-1.1z"></path></svg><span style="font-size:16px;line-height:22px;font-weight:600">Asistente</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+                <div style="flex:1;font-size:13px;line-height:19px;text-wrap:pretty"><strong style="font-weight:600">Buena estructura.</strong> <span style="color:rgba(244,244,248,.68)">La promesa gana si mencionas el ahorro de horas.</span></div>
+                <span style="height:28px;display:inline-flex;align-items:center;padding:0 11px;border-radius:8px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:12px;font-weight:600;cursor:pointer;flex:0 0 auto">Aplicar</span>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+                <div style="flex:1;font-size:13px;line-height:19px;color:rgba(244,244,248,.68);text-wrap:pretty">La línea 3 es sólida. Puedes subir un poco la tensión antes del cierre.</div>
+                <span style="height:28px;display:inline-flex;align-items:center;padding:0 11px;border-radius:8px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:12px;font-weight:600;cursor:pointer;flex:0 0 auto">Aplicar</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px">Versiones</div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <div style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:9px;background:var(--soft,rgba(124,92,255,.14));box-shadow:0 0 0 1px var(--brd,rgba(124,92,255,.45))"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc,#7C5CFF)"></span><span style="font-size:13px;font-weight:600">v3 · ahora</span></div>
+              <div style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:9px;cursor:pointer" style-hover="background:rgba(255,255,255,.04)"><span style="width:8px;height:8px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="font-size:13px;font-weight:500;color:rgba(244,244,248,.68)">v2 · hace 4 min</span></div>
+              <div style="display:flex;align-items:center;gap:10px;height:34px;padding:0 10px;border-radius:9px;cursor:pointer" style-hover="background:rgba(255,255,255,.04)"><span style="width:8px;height:8px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="font-size:13px;font-weight:500;color:rgba(244,244,248,.68)">v1 · original</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 5 · VOZ ══ -->
+<sc-if value="{{ s5 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="4" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="margin-bottom:18px">
+        <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Voz</div>
+        <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">La voz que hablará tu avatar</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start">
+        <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px">
+            <span style="display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 8px;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06);font-size:13px;font-weight:600"><span style="width:18px;height:18px;border-radius:5px;background:#F4F4F8;display:flex;align-items:center;justify-content:center"><svg width="10" height="10" sc-camel-view-box="0 0 10 10"><rect x="1.6" y="1.4" width="2.2" height="7.2" rx="1" fill="#0B0B10"></rect><rect x="6.2" y="1.4" width="2.2" height="7.2" rx="1" fill="#0B0B10"></rect></svg></span>ElevenLabs</span>
+            <div style="display:flex;align-items:center;gap:8px;height:36px;width:280px;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10)">
+              <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.6" stroke-linecap="round"><circle cx="7.2" cy="7.2" r="4.4"></circle><path d="M10.6 10.6 13.6 13.6"></path></svg>
+              <span style="font-size:13px;color:rgba(244,244,248,.44)">Buscar voz...</span>
+            </div>
+          </div>
+
+          <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:rgba(244,244,248,.44);margin-bottom:8px">MIS VOCES</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:#0F0F1A;border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18))">
+              <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));display:flex;align-items:center;justify-content:center;flex:0 0 34px;cursor:pointer"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="#0B0B10"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+              <span style="font-size:var(--fs,14px);font-weight:600;flex:0 0 auto">Voz Profesional — Diego</span>
+              <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:var(--soft,rgba(124,92,255,.14));color:var(--acc2,#B06AF0);font-size:11px;font-weight:600">Clonada</span>
+              <svg sc-camel-view-box="0 0 240 24" sc-camel-preserve-aspect-ratio="none" style="flex:1;height:24px;min-width:0"><g fill="var(--acc,#7C5CFF)"><rect x="0" y="9" width="2" height="6" rx="1"></rect><rect x="5" y="6" width="2" height="12" rx="1"></rect><rect x="10" y="2" width="2" height="20" rx="1"></rect><rect x="15" y="8" width="2" height="8" rx="1"></rect><rect x="20" y="4" width="2" height="16" rx="1"></rect><rect x="25" y="10" width="2" height="4" rx="1"></rect><rect x="30" y="5" width="2" height="14" rx="1"></rect><rect x="35" y="3" width="2" height="18" rx="1"></rect><rect x="40" y="9" width="2" height="6" rx="1"></rect><rect x="45" y="6" width="2" height="12" rx="1"></rect><rect x="50" y="2" width="2" height="20" rx="1"></rect><rect x="55" y="8" width="2" height="8" rx="1"></rect><rect x="60" y="5" width="2" height="14" rx="1"></rect><rect x="65" y="10" width="2" height="4" rx="1"></rect><rect x="70" y="4" width="2" height="16" rx="1"></rect><rect x="75" y="7" width="2" height="10" rx="1"></rect><rect x="80" y="3" width="2" height="18" rx="1"></rect><rect x="85" y="9" width="2" height="6" rx="1"></rect><rect x="90" y="6" width="2" height="12" rx="1"></rect><rect x="95" y="2" width="2" height="20" rx="1"></rect><rect x="100" y="8" width="2" height="8" rx="1"></rect><rect x="105" y="5" width="2" height="14" rx="1"></rect><rect x="110" y="10" width="2" height="4" rx="1"></rect><rect x="115" y="4" width="2" height="16" rx="1"></rect><rect x="120" y="7" width="2" height="10" rx="1"></rect></g></svg>
+              <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44);flex:0 0 auto">0:03</span>
+              <span style="width:22px;height:22px;border-radius:50%;background:var(--acc,#7C5CFF);display:flex;align-items:center;justify-content:center;flex:0 0 22px"><svg width="11" height="11" sc-camel-view-box="0 0 12 12" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"></path></svg></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+              <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));display:flex;align-items:center;justify-content:center;flex:0 0 34px"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="#0B0B10"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+              <span style="font-size:var(--fs,14px);font-weight:500;flex:0 0 auto">Voz Amigable — Diego</span>
+              <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:var(--soft,rgba(124,92,255,.14));color:var(--acc2,#B06AF0);font-size:11px;font-weight:600">Clonada</span>
+              <svg sc-camel-view-box="0 0 240 24" sc-camel-preserve-aspect-ratio="none" style="flex:1;height:24px;min-width:0"><g fill="var(--acc,#7C5CFF)" opacity=".7"><rect x="0" y="7" width="2" height="10" rx="1"></rect><rect x="5" y="4" width="2" height="16" rx="1"></rect><rect x="10" y="9" width="2" height="6" rx="1"></rect><rect x="15" y="3" width="2" height="18" rx="1"></rect><rect x="20" y="8" width="2" height="8" rx="1"></rect><rect x="25" y="5" width="2" height="14" rx="1"></rect><rect x="30" y="10" width="2" height="4" rx="1"></rect><rect x="35" y="6" width="2" height="12" rx="1"></rect><rect x="40" y="2" width="2" height="20" rx="1"></rect><rect x="45" y="9" width="2" height="6" rx="1"></rect><rect x="50" y="5" width="2" height="14" rx="1"></rect><rect x="55" y="7" width="2" height="10" rx="1"></rect><rect x="60" y="3" width="2" height="18" rx="1"></rect><rect x="65" y="8" width="2" height="8" rx="1"></rect><rect x="70" y="6" width="2" height="12" rx="1"></rect><rect x="75" y="10" width="2" height="4" rx="1"></rect><rect x="80" y="4" width="2" height="16" rx="1"></rect><rect x="85" y="7" width="2" height="10" rx="1"></rect><rect x="90" y="9" width="2" height="6" rx="1"></rect><rect x="95" y="5" width="2" height="14" rx="1"></rect><rect x="100" y="3" width="2" height="18" rx="1"></rect><rect x="105" y="8" width="2" height="8" rx="1"></rect><rect x="110" y="6" width="2" height="12" rx="1"></rect><rect x="115" y="10" width="2" height="4" rx="1"></rect><rect x="120" y="7" width="2" height="10" rx="1"></rect></g></svg>
+              <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44);flex:0 0 auto">0:03</span>
+            </div>
+          </div>
+
+          <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;color:rgba(244,244,248,.44);margin-bottom:8px">BIBLIOTECA</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ voces }}" as="v" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+                <span style="width:34px;height:34px;border-radius:50%;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;flex:0 0 34px"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="rgba(244,244,248,.68)"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+                <span style="font-size:var(--fs,14px);font-weight:500;flex:0 0 130px">{{ v.nombre }}</span>
+                <svg sc-camel-view-box="0 0 240 24" sc-camel-preserve-aspect-ratio="none" style="flex:1;height:22px;min-width:0"><g fill="rgba(244,244,248,.26)"><rect x="0" y="8" width="2" height="8" rx="1"></rect><rect x="5" y="5" width="2" height="14" rx="1"></rect><rect x="10" y="9" width="2" height="6" rx="1"></rect><rect x="15" y="3" width="2" height="18" rx="1"></rect><rect x="20" y="7" width="2" height="10" rx="1"></rect><rect x="25" y="10" width="2" height="4" rx="1"></rect><rect x="30" y="6" width="2" height="12" rx="1"></rect><rect x="35" y="4" width="2" height="16" rx="1"></rect><rect x="40" y="9" width="2" height="6" rx="1"></rect><rect x="45" y="7" width="2" height="10" rx="1"></rect><rect x="50" y="3" width="2" height="18" rx="1"></rect><rect x="55" y="8" width="2" height="8" rx="1"></rect><rect x="60" y="5" width="2" height="14" rx="1"></rect><rect x="65" y="10" width="2" height="4" rx="1"></rect><rect x="70" y="6" width="2" height="12" rx="1"></rect><rect x="75" y="8" width="2" height="8" rx="1"></rect><rect x="80" y="4" width="2" height="16" rx="1"></rect><rect x="85" y="9" width="2" height="6" rx="1"></rect><rect x="90" y="7" width="2" height="10" rx="1"></rect><rect x="95" y="5" width="2" height="14" rx="1"></rect></g></svg>
+                <span style="display:flex;gap:6px;flex:0 0 auto">
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">Segura</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">Cálida</span>
+                  <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">Narración</span>
+                </span>
+                <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44);flex:0 0 auto">0:03</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)">
+            <span style="font-size:16px;line-height:22px;font-weight:600">Ajustes de voz</span>
+            <div style="display:flex;gap:3px;padding:3px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+              <span style="height:30px;display:flex;align-items:center;padding:0 16px;border-radius:8px;background:var(--soft,rgba(124,92,255,.14));box-shadow:0 0 0 1px var(--brd,rgba(124,92,255,.45));font-size:13px;font-weight:600">Natural</span>
+              <span style="height:30px;display:flex;align-items:center;padding:0 16px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Enérgico</span>
+              <span style="height:30px;display:flex;align-items:center;padding:0 16px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Narración</span>
+            </div>
+            <span style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:rgba(244,244,248,.68);cursor:pointer">Avanzado <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4.5 3 7.5 6 4.5 9"></path></svg></span>
+          </div>
+        </div>
+
+        <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:14px">Audio del guion</div>
+          <div style="height:44px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:14px" style-hover="filter:brightness(1.08)">
+            <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="currentColor"><rect x="1" y="6" width="1.6" height="4" rx=".8"></rect><rect x="4" y="3" width="1.6" height="10" rx=".8"></rect><rect x="7" y="5" width="1.6" height="6" rx=".8"></rect><rect x="10" y="2" width="1.6" height="12" rx=".8"></rect><rect x="13" y="6" width="1.6" height="4" rx=".8"></rect></svg>Generar audio
+          </div>
+          <div style="padding:16px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);margin-bottom:14px">
+            <div style="position:relative;margin-bottom:14px">
+              <svg sc-camel-view-box="0 0 320 60" sc-camel-preserve-aspect-ratio="none" style="width:100%;height:60px;display:block"><g fill="var(--acc,#7C5CFF)"><rect x="0" y="24" width="2" height="12" rx="1"></rect><rect x="5" y="18" width="2" height="24" rx="1"></rect><rect x="10" y="8" width="2" height="44" rx="1"></rect><rect x="15" y="22" width="2" height="16" rx="1"></rect><rect x="20" y="14" width="2" height="32" rx="1"></rect><rect x="25" y="26" width="2" height="8" rx="1"></rect><rect x="30" y="12" width="2" height="36" rx="1"></rect><rect x="35" y="20" width="2" height="20" rx="1"></rect><rect x="40" y="6" width="2" height="48" rx="1"></rect><rect x="45" y="24" width="2" height="12" rx="1"></rect><rect x="50" y="16" width="2" height="28" rx="1"></rect><rect x="55" y="22" width="2" height="16" rx="1"></rect><rect x="60" y="10" width="2" height="40" rx="1"></rect><rect x="65" y="25" width="2" height="10" rx="1"></rect><rect x="70" y="18" width="2" height="24" rx="1"></rect><rect x="75" y="13" width="2" height="34" rx="1"></rect><rect x="80" y="23" width="2" height="14" rx="1"></rect><rect x="85" y="9" width="2" height="42" rx="1"></rect><rect x="90" y="21" width="2" height="18" rx="1"></rect><rect x="95" y="26" width="2" height="8" rx="1"></rect><rect x="100" y="15" width="2" height="30" rx="1"></rect><rect x="105" y="19" width="2" height="22" rx="1"></rect><rect x="110" y="7" width="2" height="46" rx="1"></rect><rect x="115" y="24" width="2" height="12" rx="1"></rect><rect x="120" y="17" width="2" height="26" rx="1"></rect><rect x="125" y="22" width="2" height="16" rx="1"></rect><rect x="130" y="11" width="2" height="38" rx="1"></rect><rect x="135" y="25" width="2" height="10" rx="1"></rect><rect x="140" y="16" width="2" height="28" rx="1"></rect><rect x="145" y="20" width="2" height="20" rx="1"></rect><rect x="150" y="8" width="2" height="44" rx="1"></rect><rect x="155" y="23" width="2" height="14" rx="1"></rect></g><g fill="rgba(244,244,248,.26)"><rect x="160" y="18" width="2" height="24" rx="1"></rect><rect x="165" y="12" width="2" height="36" rx="1"></rect><rect x="170" y="24" width="2" height="12" rx="1"></rect><rect x="175" y="20" width="2" height="20" rx="1"></rect><rect x="180" y="9" width="2" height="42" rx="1"></rect><rect x="185" y="26" width="2" height="8" rx="1"></rect><rect x="190" y="15" width="2" height="30" rx="1"></rect><rect x="195" y="22" width="2" height="16" rx="1"></rect><rect x="200" y="10" width="2" height="40" rx="1"></rect><rect x="205" y="25" width="2" height="10" rx="1"></rect><rect x="210" y="17" width="2" height="26" rx="1"></rect><rect x="215" y="21" width="2" height="18" rx="1"></rect><rect x="220" y="7" width="2" height="46" rx="1"></rect><rect x="225" y="24" width="2" height="12" rx="1"></rect><rect x="230" y="14" width="2" height="32" rx="1"></rect><rect x="235" y="23" width="2" height="14" rx="1"></rect><rect x="240" y="11" width="2" height="38" rx="1"></rect><rect x="245" y="26" width="2" height="8" rx="1"></rect><rect x="250" y="19" width="2" height="22" rx="1"></rect><rect x="255" y="16" width="2" height="28" rx="1"></rect><rect x="260" y="8" width="2" height="44" rx="1"></rect><rect x="265" y="25" width="2" height="10" rx="1"></rect><rect x="270" y="20" width="2" height="20" rx="1"></rect><rect x="275" y="13" width="2" height="34" rx="1"></rect><rect x="280" y="23" width="2" height="14" rx="1"></rect><rect x="285" y="18" width="2" height="24" rx="1"></rect><rect x="290" y="10" width="2" height="40" rx="1"></rect><rect x="295" y="26" width="2" height="8" rx="1"></rect><rect x="300" y="21" width="2" height="18" rx="1"></rect><rect x="305" y="15" width="2" height="30" rx="1"></rect><rect x="310" y="24" width="2" height="12" rx="1"></rect><rect x="315" y="19" width="2" height="22" rx="1"></rect></g></svg>
+              <div style="position:absolute;left:50%;top:-6px;bottom:-6px;width:2px;background:#F4F4F8;border-radius:2px"></div>
+              <div style="position:absolute;left:50%;top:-11px;width:10px;height:10px;margin-left:-4px;border-radius:50%;background:#F4F4F8"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="#0B0B10"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+              <span style="font-size:15px;font-weight:600">0:18 <span style="color:rgba(244,244,248,.44);font-weight:500">/ 0:50</span></span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ bloquesAudio }}" as="b" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:12px;height:44px;padding:0 12px;border-radius:10px" style-hover="background:rgba(255,255,255,.04)">
+                <span style="width:8px;height:8px;border-radius:50%;background:{{ b.color }};flex:0 0 8px"></span>
+                <span style="flex:1;font-size:var(--fs,14px);font-weight:500">{{ b.nombre }}</span>
+                <span style="font-size:13px;font-weight:500;color:rgba(244,244,248,.68)">{{ b.dur }}</span>
+                <span style="width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(244,244,248,.68);cursor:pointer" style-hover="background:rgba(255,255,255,.06)"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="currentColor"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+                <span style="width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(244,244,248,.68);cursor:pointer" style-hover="background:rgba(255,255,255,.06)"><svg width="13" height="13" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13.4 8a5.4 5.4 0 1 1-1.6-3.8"></path><path d="M13.4 2.4V5h-2.6"></path></svg></span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+            <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" style="flex:0 0 15px;margin-top:2px"><circle cx="8" cy="8" r="6.2"></circle><path d="M8 7.2v4M8 5.2v.4" stroke-linecap="round"></path></svg>
+            <span style="font-size:12px;line-height:18px;color:rgba(244,244,248,.44);text-wrap:pretty">Escucha antes de generar el video. Regenerar un bloque es barato.</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px">
+        <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);font-size:14px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+          <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 8H2.8M6.8 4l-4 4 4 4"></path></svg>Volver al guion
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Continuar a Avatar
+          <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8h10.4M9.2 4l4 4-4 4"></path></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!-- ══ 6 · AVATAR Y MARCA ══ -->
+<sc-if value="{{ s6 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="5" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:24px 32px 76px">
+      <div style="margin-bottom:16px">
+        <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Avatar y marca</div>
+        <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">Cómo se verá tu video</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:300px minmax(0,1fr) 320px;gap:16px;align-items:start">
+        <div style="padding:16px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <span style="font-size:16px;line-height:22px;font-weight:600">Avatar</span>
+            <span style="height:26px;display:inline-flex;align-items:center;gap:6px;padding:0 10px;border-radius:8px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.06);font-size:12px;font-weight:600">HeyGen</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <sc-for list="{{ avatares }}" as="a" hint-placeholder-count="6">
+              <div style="position:relative;aspect-ratio:3/4;border-radius:10px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 6px,#202034 6px,#202034 12px);border:1px solid {{ a.brd }};box-shadow:{{ a.glow }};display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;cursor:pointer">
+                <span style="font:500 9px ui-monospace,monospace;color:rgba(244,244,248,.44)">{{ a.tag }}</span>
+                <span style="position:absolute;top:6px;right:6px;display:{{ a.checkShow }};width:20px;height:20px;border-radius:50%;background:var(--acc,#7C5CFF);align-items:center;justify-content:center"><svg width="11" height="11" sc-camel-view-box="0 0 12 12" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"></path></svg></span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin:16px 0 8px">Looks</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+            <div style="aspect-ratio:3/4;border-radius:8px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid rgba(255,255,255,.06);cursor:pointer"></div>
+            <div style="aspect-ratio:3/4;border-radius:8px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18));cursor:pointer"></div>
+            <div style="aspect-ratio:3/4;border-radius:8px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid rgba(255,255,255,.06);cursor:pointer"></div>
+            <div style="aspect-ratio:3/4;border-radius:8px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid rgba(255,255,255,.06);cursor:pointer"></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:16px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)">
+            <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.68)" stroke-width="1.5" stroke-linejoin="round" style="flex:0 0 16px"><path d="M3 6.2h2.2L8.4 3.4v9.2L5.2 9.8H3z"></path><path d="M10.6 6.2a2.6 2.6 0 0 1 0 3.6" stroke-linecap="round"></path></svg>
+            <span style="flex:1;font-size:13px;line-height:19px;color:rgba(244,244,248,.68)">Hablará con: <span style="color:#F4F4F8;font-weight:500">Voz Profesional — Diego</span></span>
+            <a href="#voz" style="font-size:13px;font-weight:600;color:var(--acc2,#B06AF0);flex:0 0 auto">Cambiar</a>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <div style="position:relative;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:var(--r,16px);overflow:hidden;background:linear-gradient(180deg,#1A1A2B,#0B0B10 70%);border:1px solid rgba(255,255,255,.10)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 38%,var(--soft,rgba(124,92,255,.14)),transparent 60%)"></div>
+            <div style="position:absolute;left:50%;top:18%;transform:translateX(-50%);width:62%;aspect-ratio:3/4;border-radius:14px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.05) 8px,rgba(255,255,255,.02) 8px,rgba(255,255,255,.02) 16px);border:1px dashed rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center">
+              <span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.44);text-align:center">avatar<br>de pecho arriba</span>
+            </div>
+            <div style="position:absolute;top:14px;right:14px;height:26px;padding:0 10px;border-radius:7px;background:rgba(11,11,16,.6);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:.06em;color:rgba(244,244,248,.68)">DIEGO INNOVACIÓN</div>
+            <div style="position:absolute;left:0;right:0;bottom:30%;padding:0 22px;text-align:center">
+              <div style="font-size:22px;line-height:30px;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.7)">La <span style="background:#F5C518;color:#0B0B10;padding:0 6px;border-radius:5px">innovación</span> no es solo una idea, es una decisión.</div>
+            </div>
+            <div style="position:absolute;left:0;right:0;bottom:0;height:8px;display:flex"><span style="width:22%;background:#FF7A2F"></span><span style="flex:1;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0))"></span></div>
+          </div>
+          <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">Vista previa en vivo</span>
+        </div>
+
+        <div style="padding:16px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px">Marca</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;height:40px;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer;margin-bottom:16px">Kit: Diego Innovación
+            <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg>
+          </div>
+
+          <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Colores</div>
+          <div style="display:flex;gap:10px;margin-bottom:16px">
+            <div style="text-align:center"><div style="width:52px;height:44px;border-radius:10px;background:var(--acc,#7C5CFF);border:1px solid rgba(255,255,255,.16)"></div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44);margin-top:5px">Primario</div></div>
+            <div style="text-align:center"><div style="width:52px;height:44px;border-radius:10px;background:#141A33;border:1px solid rgba(255,255,255,.16)"></div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44);margin-top:5px">Secundario</div></div>
+            <div style="text-align:center"><div style="width:52px;height:44px;border-radius:10px;background:#FF7A2F;border:1px solid rgba(255,255,255,.16)"></div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44);margin-top:5px">Acento</div></div>
+            <div style="text-align:center"><div style="width:52px;height:44px;border-radius:10px;border:1px dashed rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;color:rgba(244,244,248,.44);cursor:pointer">+</div><div style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44);margin-top:5px">Añadir</div></div>
+          </div>
+
+          <div style="display:flex;gap:14px;margin-bottom:16px">
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Logo</div>
+              <div style="height:56px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;letter-spacing:.06em;color:rgba(244,244,248,.68)">DIEGO INNOVACIÓN</div>
+            </div>
+            <div style="flex:0 0 auto">
+              <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Posición</div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">
+                <span style="width:26px;height:26px;border-radius:6px;border:1px solid rgba(255,255,255,.10);position:relative;cursor:pointer"><span style="position:absolute;top:4px;left:4px;width:6px;height:6px;border-radius:2px;background:rgba(244,244,248,.26)"></span></span>
+                <span style="width:26px;height:26px;border-radius:6px;border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18));position:relative;cursor:pointer"><span style="position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:2px;background:var(--acc,#7C5CFF)"></span></span>
+                <span style="width:26px;height:26px;border-radius:6px;border:1px solid rgba(255,255,255,.10);position:relative;cursor:pointer"><span style="position:absolute;bottom:4px;left:4px;width:6px;height:6px;border-radius:2px;background:rgba(244,244,248,.26)"></span></span>
+                <span style="width:26px;height:26px;border-radius:6px;border:1px solid rgba(255,255,255,.10);position:relative;cursor:pointer"><span style="position:absolute;bottom:4px;right:4px;width:6px;height:6px;border-radius:2px;background:rgba(244,244,248,.26)"></span></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Subtítulos</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+            <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:9px;background:var(--soft,rgba(124,92,255,.14));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18));font-size:13px;font-weight:600">Karaoke</span>
+            <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:9px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;color:rgba(244,244,248,.68);cursor:pointer">Bloque</span>
+            <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:9px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;color:rgba(244,244,248,.68);cursor:pointer">Pop</span>
+            <span style="margin-left:auto;width:34px;height:34px;border-radius:9px;background:#F5C518;border:1px solid rgba(255,255,255,.16);cursor:pointer"></span>
+          </div>
+
+          <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Tipografía</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;height:40px;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer">Inter Semibold
+            <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
+          <span style="font-size:16px;line-height:22px;font-weight:600">Recursos</span>
+          <span style="font-size:13px;color:rgba(244,244,248,.68)">Sube imágenes o videos. Los colocamos donde mejor encajen.</span>
+        </div>
+        <div style="display:flex;gap:14px;align-items:stretch">
+          <div style="flex:0 0 200px;border-radius:12px;border:1px dashed rgba(255,255,255,.16);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px;cursor:pointer" style-hover="border-color:var(--brd)">
+            <svg width="26" height="26" sc-camel-view-box="0 0 26 26" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 17.5a4.5 4.5 0 0 1 .6-8.96A6 6 0 0 1 19 9.2a3.9 3.9 0 0 1-.5 8.3"></path><path d="M13 12v8M9.6 15.4 13 12l3.4 3.4"></path></svg>
+            <span style="font-size:13px;font-weight:500;text-align:center">Arrastra imágenes o videos</span>
+            <span style="font-size:12px;color:rgba(244,244,248,.44)">o <a href="#buscar">busca en tu equipo</a></span>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-width:0">
+            <sc-for list="{{ recursos }}" as="r" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+                <div style="position:relative;aspect-ratio:16/10;border-radius:10px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 7px,#202034 7px,#202034 14px);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center">
+                  <span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.44)">{{ r.tipo }}</span>
+                  <span style="position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:rgba(11,11,16,.7);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="9" height="9" sc-camel-view-box="0 0 12 12" fill="none" stroke="#F4F4F8" stroke-width="1.8" stroke-linecap="round"><path d="M3 3l6 6M9 3l-6 6"></path></svg></span>
+                  <span style="position:absolute;bottom:6px;right:6px;display:{{ r.durShow }};height:20px;align-items:center;padding:0 7px;border-radius:6px;background:rgba(11,11,16,.72);font-size:11px;font-weight:500">0:06</span>
+                </div>
+                <span style="height:26px;display:inline-flex;align-items:center;gap:6px;padding:0 9px;border-radius:999px;background:{{ r.pillBg }};color:{{ r.pillFg }};font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.pill }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="flex:0 0 auto;display:flex;align-items:center;gap:18px;padding-left:6px">
+            <span style="width:1px;align-self:stretch;background:rgba(255,255,255,.10)"></span>
+            <div style="width:180px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><svg width="15" height="15" sc-camel-view-box="0 0 14 14" fill="var(--acc2,#B06AF0)"><path d="M7 1.4l1.1 2.9 2.9 1.1-2.9 1.1L7 9.4 5.9 6.5 3 5.4l2.9-1.1z"></path></svg><span style="font-size:var(--fs,14px);font-weight:600">Escenas sin recurso: 2</span></div>
+              <div style="height:36px;border-radius:10px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:var(--soft)">Generar con IA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;margin-top:20px">
+        <div style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Continuar a Escenas
+          <svg width="16" height="16" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 8h10.4M9.2 4l4 4-4 4"></path></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 7 · ESCENAS ══ -->
+<sc-if value="{{ s7 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="6" crumb="Creación / Nuevo video" hint-size="100%,150px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:24px 32px 72px">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start">
+        <div style="min-width:0">
+          <div style="margin-bottom:16px">
+            <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Revisa tus escenas</div>
+            <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">6 escenas · 0:50 · 1080x1920 · Plantilla Informativo</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+            <sc-for list="{{ escenas }}" as="e" hint-placeholder-count="6">
+              <div>
+                <div style="position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:{{ e.bg }};border:1px solid rgba(255,255,255,.06)">
+                  <div style="position:absolute;left:0;right:0;top:0;height:2px;background:var(--acc,#7C5CFF);opacity:.8"></div>
+                  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center">
+                    <span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.68);line-height:15px">{{ e.contenido }}</span>
+                  </div>
+                  <span style="position:absolute;top:8px;left:8px;height:20px;display:inline-flex;align-items:center;gap:4px;padding:0 8px;border-radius:999px;background:{{ e.badgeBg }};color:{{ e.badgeFg }};font-size:10px;font-weight:600">{{ e.badge }}</span>
+                  <span style="position:absolute;bottom:8px;right:8px;width:24px;height:24px;border-radius:8px;background:rgba(11,11,16,.72);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="12" height="12" sc-camel-view-box="0 0 16 16" fill="none" stroke="#F4F4F8" stroke-width="1.6" stroke-linecap="round"><path d="M13.4 8a5.4 5.4 0 1 1-1.6-3.8"></path><path d="M13.4 2.4V5h-2.6"></path></svg></span>
+                </div>
+                <div style="margin-top:8px;font-size:12px;font-weight:600">{{ e.t }}</div>
+                <div style="font-size:11px;line-height:16px;color:rgba(244,244,248,.68);text-wrap:pretty">{{ e.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:20px;padding:16px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+              <span style="font-size:16px;line-height:22px;font-weight:600">Línea de tiempo</span>
+              <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">Cambio visual cada 8 s · La música baja bajo la voz</span>
+            </div>
+            <div style="display:flex;gap:10px">
+              <div style="flex:0 0 104px;display:flex;flex-direction:column;gap:6px;padding-top:22px">
+                <sc-for list="{{ pistas }}" as="p" hint-placeholder-count="6">
+                  <div style="height:{{ p.h }};display:flex;align-items:center;gap:7px">
+                    <span style="width:8px;height:8px;border-radius:2px;background:{{ p.color }};flex:0 0 8px"></span>
+                    <span style="font-size:10px;line-height:14px;font-weight:600;letter-spacing:.04em;color:rgba(244,244,248,.68)">{{ p.nombre }}</span>
+                    <span style="display:{{ p.lockShow }};margin-left:auto"><svg width="11" height="11" sc-camel-view-box="0 0 14 14" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.4"><rect x="3" y="6.2" width="8" height="6" rx="1.4"></rect><path d="M4.8 6.2V4.6a2.2 2.2 0 0 1 4.4 0v1.6"></path></svg></span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="flex:1;min-width:0;position:relative">
+                <div style="display:flex;justify-content:space-between;height:16px;font-size:10px;font-weight:500;color:rgba(244,244,248,.44)"><span>0:00</span><span>0:08</span><span>0:16</span><span>0:24</span><span>0:32</span><span>0:40</span><span>0:50</span></div>
+                <div style="position:absolute;left:0;right:0;top:16px;bottom:0;display:flex;pointer-events:none">
+                  <span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span><span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span><span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span><span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span><span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span><span style="flex:1;border-left:1px dashed rgba(255,255,255,.06)"></span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;position:relative">
+                  <div style="height:22px;border-radius:6px;background:rgba(167,139,250,.14);display:flex;align-items:center;gap:3px;padding:0 4px;overflow:hidden">
+                    <sc-for list="{{ palabras }}" as="w" hint-placeholder-count="40">
+                      <span style="width:{{ w.w }};height:9px;border-radius:2px;background:#A78BFA;opacity:.75;flex:0 0 auto"></span>
+                    </sc-for>
+                  </div>
+                  <div style="height:26px;position:relative">
+                    <span style="position:absolute;left:0;width:14%;top:0;bottom:0;border-radius:6px;background:rgba(255,122,47,.9)"></span>
+                    <span style="position:absolute;left:30%;width:18%;top:0;bottom:0;border-radius:6px;background:rgba(255,122,47,.9)"></span>
+                    <span style="position:absolute;left:68%;width:16%;top:0;bottom:0;border-radius:6px;background:rgba(255,122,47,.9)"></span>
+                    <span style="position:absolute;left:14%;top:9px;width:8px;height:8px;background:#FF7A2F;transform:rotate(45deg)"></span>
+                    <span style="position:absolute;left:48%;top:9px;width:8px;height:8px;background:#FF7A2F;transform:rotate(45deg)"></span>
+                    <span style="position:absolute;left:84%;top:9px;width:8px;height:8px;background:#FF7A2F;transform:rotate(45deg)"></span>
+                  </div>
+                  <div style="height:26px;position:relative">
+                    <span style="position:absolute;left:2%;width:20%;top:0;bottom:0;border-radius:6px;background:#64748B;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.10) 5px,transparent 5px,transparent 10px)"></span>
+                    <span style="position:absolute;left:34%;width:16%;top:0;bottom:0;border-radius:6px;background:#64748B;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.10) 5px,transparent 5px,transparent 10px)"></span>
+                    <span style="position:absolute;left:58%;width:22%;top:0;bottom:0;border-radius:6px;background:#64748B;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.10) 5px,transparent 5px,transparent 10px)"></span>
+                  </div>
+                  <div style="height:26px;position:relative;opacity:.85">
+                    <span style="position:absolute;left:16%;width:14%;top:0;bottom:0;border-radius:6px;background:#5B3FD6"></span>
+                    <span style="position:absolute;left:48%;width:18%;top:0;bottom:0;border-radius:6px;background:#5B3FD6"></span>
+                    <span style="position:absolute;left:82%;width:16%;top:0;bottom:0;border-radius:6px;background:#5B3FD6"></span>
+                  </div>
+                  <div style="height:26px;position:relative">
+                    <span style="position:absolute;left:0;width:56%;top:0;bottom:0;border-radius:6px;background:rgba(34,197,94,.75);display:flex;align-items:center;padding:0 8px;font-size:10px;font-weight:600;color:#0B0B10;overflow:hidden">Épico inspiracional</span>
+                    <span style="position:absolute;left:52%;right:0;top:0;bottom:0;border-radius:6px;background:rgba(34,197,94,.5);display:flex;align-items:center;justify-content:flex-end;padding:0 8px;font-size:10px;font-weight:600;color:#0B0B10;overflow:hidden">Corporate loop</span>
+                    <span style="position:absolute;left:52%;width:4%;top:0;bottom:0;background:linear-gradient(135deg,transparent 47%,rgba(11,11,16,.6) 47%,rgba(11,11,16,.6) 53%,transparent 53%),linear-gradient(45deg,transparent 47%,rgba(11,11,16,.6) 47%,rgba(11,11,16,.6) 53%,transparent 53%)"></span>
+                  </div>
+                  <div style="height:18px;border-radius:6px;background:rgba(148,163,184,.12);display:flex;align-items:center;gap:2px;padding:0 4px;overflow:hidden;opacity:.85">
+                    <sc-for list="{{ ondaVoz }}" as="o" hint-placeholder-count="60">
+                      <span style="width:2px;height:{{ o.h }};border-radius:1px;background:#94A3B8;flex:0 0 2px"></span>
+                    </sc-for>
+                  </div>
+                  <div style="position:absolute;left:32%;top:-22px;bottom:0;width:2px;background:var(--acc,#7C5CFF)"></div>
+                  <div style="position:absolute;left:32%;top:-30px;margin-left:-15px;height:20px;padding:0 6px;border-radius:6px;background:var(--acc,#7C5CFF);color:#0B0B10;font-size:10px;font-weight:700;display:flex;align-items:center">0:16</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:18px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:14px">Resumen</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Plantilla</span><span style="font-weight:500">Informativo</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Nicho</span><span style="font-weight:500">IA y Tecnología</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Avatar</span><span style="font-weight:500">Presentador 3</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Voz</span><span style="font-weight:500">Profesional — Diego</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Marca</span><span style="font-weight:500">Diego Innovación</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Música</span><span style="font-weight:500">Épico inspiracional</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:rgba(244,244,248,.68)">Formato</span><span style="font-weight:500">1080x1920 · 0:50</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)"><span style="color:rgba(244,244,248,.68)">Créditos estimados</span><span style="font-weight:600;font-size:15px">14</span></div>
+          </div>
+          <div style="height:44px;margin-top:16px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Generar video</div>
+          <div style="font-size:12px;line-height:18px;color:rgba(244,244,248,.44);margin-top:8px;text-align:center;text-wrap:pretty">Recibirás el MP4 y el proyecto abierto en el editor.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!-- ══ 8 · GENERANDO ══ -->
+<sc-if value="{{ s8 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Creación / Generando" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:32px 32px 76px">
+      <div style="max-width:940px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start">
+
+        <div style="padding:24px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Estamos armando tu video</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px;margin-bottom:22px">Suele tardar entre 8 y 9 minutos</div>
+
+          <div aria-live="polite" style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ pasos }}" as="p" hint-placeholder-count="6">
+              <div style="display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:12px;background:{{ p.bg }};box-shadow:{{ p.glow }}">
+                <span style="width:20px;height:20px;border-radius:50%;flex:0 0 20px;margin-top:1px;display:flex;align-items:center;justify-content:center;background:{{ p.dotBg }};border:1.5px solid {{ p.dotBrd }};color:#0B0B10;font-size:11px;font-weight:700">{{ p.mark }}</span>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                    <span style="font-size:var(--fs,14px);font-weight:{{ p.fw }};color:{{ p.fg }}">{{ p.label }}</span>
+                    <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">{{ p.time }}</span>
+                  </div>
+                  <div style="display:{{ p.barShow }};margin-top:10px;height:6px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden">
+                    <div style="width:64%;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0))"></div>
+                  </div>
+                  <div style="display:{{ p.barShow }};margin-top:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">64 % · 218 de 340 fotogramas clave</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:16px">
+            <div>
+              <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">Tiempo estimado restante</div>
+              <div style="font-size:32px;line-height:38px;font-weight:600;letter-spacing:-.02em;margin-top:2px">5 min</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);max-width:340px">
+              <span style="width:8px;height:8px;border-radius:50%;background:#3B82F6;flex:0 0 8px"></span>
+              <span style="font-size:13px;line-height:19px;color:rgba(244,244,248,.68);text-wrap:pretty">Puedes cerrar esta pestaña. Te avisamos cuando esté listo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(239,68,68,.24)">
+          <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin-bottom:14px">Estado de fallo</div>
+          <div style="width:44px;height:44px;border-radius:12px;background:rgba(239,68,68,.14);display:flex;align-items:center;justify-content:center;margin-bottom:14px"><svg width="22" height="22" sc-camel-view-box="0 0 22 22" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><path d="M6 6l10 10M16 6L6 16"></path></svg></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span style="width:8px;height:8px;border-radius:50%;background:#EF4444"></span><span style="font-size:var(--fs,14px);font-weight:600">No pudimos generar el avatar</span></div>
+          <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);text-wrap:pretty;margin-bottom:14px">El proveedor del avatar no respondió a tiempo. Tu guion y tu audio quedaron guardados.</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;background:rgba(34,197,94,.10);border:1px solid rgba(34,197,94,.24);margin-bottom:14px">
+            <span style="width:8px;height:8px;border-radius:50%;background:#22C55E;flex:0 0 8px"></span>
+            <span style="font-size:13px;font-weight:600;color:#F4F4F8">Se te devolvieron 14 créditos</span>
+          </div>
+          <div style="height:40px;border-radius:10px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">Volver a intentar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 9 · VIDEO LISTO ══ -->
+<sc-if value="{{ s9 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="crear" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Creación / Video listo" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:32px 32px 76px;display:flex;align-items:center;justify-content:center">
+      <div style="display:flex;gap:36px;align-items:center;max-width:940px">
+        <div style="position:relative;width:320px;flex:0 0 320px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#1A1A2B,#0B0B10);border:1px solid rgba(255,255,255,.10)">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,var(--soft,rgba(124,92,255,.14)),transparent 60%);display:flex;align-items:center;justify-content:center">
+            <span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.44)">player 9:16</span>
+          </div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(11,11,16,.6);border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="22" height="22" sc-camel-view-box="0 0 12 12" fill="#F4F4F8"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></div>
+          <div style="position:absolute;left:16px;right:16px;bottom:16px">
+            <div style="height:4px;border-radius:999px;background:rgba(255,255,255,.20);overflow:hidden"><div style="width:34%;height:100%;background:#F4F4F8"></div></div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;font-weight:500;color:rgba(244,244,248,.68)"><span>0:17</span><span>0:50</span></div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#22C55E">Listo</span></div>
+          <div style="font-size:32px;line-height:38px;font-weight:600;letter-spacing:-.02em">Tu video está listo</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:6px;margin-bottom:24px">0:50 · 1080x1920 · 33,7 MB</div>
+          <div style="display:flex;flex-direction:column;gap:10px;max-width:320px">
+            <div style="height:46px;border-radius:12px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;display:flex;align-items:center;justify-content:center;gap:9px;font-size:15px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">
+              <svg width="17" height="17" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.6v9M5 7.6 9 11.6l4-4M3 14.4h12"></path></svg>Descargar MP4
+            </div>
+            <div style="height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+              <svg width="16" height="16" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M11.4 3.2 14.8 6.6 6.4 15H3v-3.4z"></path></svg>Abrir en el editor
+            </div>
+            <div style="height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+              <svg width="16" height="16" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2.6" width="9.4" height="9.4" rx="2"></rect><path d="M12 15.4H4.6a2 2 0 0 1-2-2V6"></path></svg>Duplicar proyecto
+            </div>
+          </div>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);max-width:420px">
+            <div style="font-size:13px;font-weight:500;color:rgba(244,244,248,.68)">Se usaron 14 créditos</div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.44);margin-top:6px;text-wrap:pretty">En el editor puedes ajustar el motion graphics, los subtítulos y la música.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 10 · INTEGRACIONES ══ -->
+<sc-if value="{{ s10 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="integraciones" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Configuración / Integraciones" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="max-width:1080px">
+        <div style="margin-bottom:20px">
+          <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Integraciones</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">Conecta tus cuentas para generar videos.</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start">
+          <div style="border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);overflow:hidden">
+
+            <div style="padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06)">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <span style="width:38px;height:38px;border-radius:11px;background:#F4F4F8;display:flex;align-items:center;justify-content:center;flex:0 0 38px"><svg width="16" height="16" sc-camel-view-box="0 0 10 10"><rect x="1.6" y="1.4" width="2.2" height="7.2" rx="1" fill="#0B0B10"></rect><rect x="6.2" y="1.4" width="2.2" height="7.2" rx="1" fill="#0B0B10"></rect></svg></span>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font-size:16px;line-height:22px;font-weight:600">ElevenLabs</span>
+                    <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Conectado</span></span>
+                    <span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(244,244,248,.44)">••••4f2a</span>
+                  </div>
+                  <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:3px">Genera la voz de tus videos · Verificado hace 2 h</div>
+                  <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;padding-left:14px;border-left:1px solid rgba(255,255,255,.10)">
+                    <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:13px;color:rgba(244,244,248,.68)">Cuenta — 4 voces · 2 clonadas</span></div>
+                    <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:13px;color:rgba(244,244,248,.68)">Vinculada con HeyGen — Sí · 2 voces visibles</span></div>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex:0 0 auto">
+                  <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">Verificar</span>
+                  <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;color:rgba(244,244,248,.68);cursor:pointer" style-hover="border-color:rgba(239,68,68,.45);color:#EF4444">Desconectar</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06)">
+              <div style="display:flex;align-items:flex-start;gap:14px">
+                <span style="width:38px;height:38px;border-radius:11px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;flex:0 0 38px;font-size:13px;font-weight:700">H</span>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font-size:16px;line-height:22px;font-weight:600">HeyGen</span>
+                    <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Conectado</span></span>
+                    <span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(244,244,248,.44)">••••9b71</span>
+                  </div>
+                  <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:3px">Genera el avatar que habla</div>
+                  <div style="display:flex;gap:14px;margin-top:8px;font-size:12px;font-weight:500;color:rgba(244,244,248,.44)"><span>8 avatares · Avatar III</span><span>Créditos: 1.240</span></div>
+                </div>
+                <div style="display:flex;gap:8px;flex:0 0 auto">
+                  <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">Verificar</span>
+                  <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;color:rgba(244,244,248,.68);cursor:pointer">Desconectar</span>
+                </div>
+              </div>
+            </div>
+
+            <sc-for list="{{ integraciones }}" as="g" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <span style="width:38px;height:38px;border-radius:11px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;flex:0 0 38px;font-size:13px;font-weight:700;color:rgba(244,244,248,.68)">{{ g.inicial }}</span>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font-size:16px;line-height:22px;font-weight:600">{{ g.nombre }}</span>
+                    <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:rgba(244,244,248,.26)"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Sin conectar</span></span>
+                    <span style="display:{{ g.optShow }};height:20px;align-items:center;padding:0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">Opcional</span>
+                  </div>
+                  <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:3px">{{ g.para }}</div>
+                </div>
+                <span style="height:34px;display:inline-flex;align-items:center;padding:0 16px;border-radius:10px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:13px;font-weight:600;cursor:pointer;flex:0 0 auto" style-hover="background:var(--soft)">Conectar</span>
+              </div>
+            </sc-for>
+
+            <div style="padding:18px 20px">
+              <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin-bottom:12px">Estados de error</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="display:flex;align-items:flex-start;gap:9px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(239,68,68,.24)"><span style="width:8px;height:8px;border-radius:50%;background:#EF4444;margin-top:5px;flex:0 0 8px"></span><span style="font-size:13px;line-height:19px;text-wrap:pretty">Falta el permiso <span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(244,244,248,.68)">text_to_speech</span> en tu clave</span></div>
+                <div style="display:flex;align-items:flex-start;gap:9px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(245,158,11,.24)"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;margin-top:5px;flex:0 0 8px"></span><span style="font-size:13px;line-height:19px;text-wrap:pretty">Sin créditos en HeyGen · <a href="#recargar">recargar</a></span></div>
+                <div style="display:flex;align-items:flex-start;gap:9px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(239,68,68,.24)"><span style="width:8px;height:8px;border-radius:50%;background:#EF4444;margin-top:5px;flex:0 0 8px"></span><span style="font-size:13px;line-height:19px">Tu clave de HeyGen ya no es válida</span></div>
+                <div style="display:flex;align-items:flex-start;gap:9px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06)"><span style="width:8px;height:8px;border-radius:50%;background:rgba(244,244,248,.26);margin-top:5px;flex:0 0 8px"></span><span style="font-size:13px;line-height:19px;color:rgba(244,244,248,.68)">Sin verificar todavía</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid var(--brd,rgba(124,92,255,.45));box-shadow:var(--glow,0 0 0 1px rgba(124,92,255,.45), 0 0 24px rgba(124,92,255,.18))">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px">
+              <span style="font-size:16px;line-height:22px;font-weight:600">Vincular tu voz con HeyGen</span>
+              <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">Paso 1/3</span>
+            </div>
+            <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);text-wrap:pretty;margin-bottom:18px">Para que tus voces clonadas aparezcan en HeyGen, hay que pegar tu clave allí una sola vez.</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="width:22px;height:22px;border-radius:50%;background:var(--acc,#7C5CFF);color:#0B0B10;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:0 0 22px">1</span>
+                <span style="flex:1;height:38px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:600;cursor:pointer">Copiar mi clave</span>
+                <span style="display:flex;align-items:center;gap:5px;flex:0 0 auto"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:500;color:#22C55E">Copiada</span></span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.16);color:rgba(244,244,248,.44);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:0 0 22px">2</span>
+                <span style="flex:1;height:38px;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:10px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:600;cursor:pointer">Abrir HeyGen <svg width="12" height="12" sc-camel-view-box="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 2.6H2.6v8.8h8.8V8.6"></path><path d="M8 2.6h3.4V6M11.4 2.6 6.6 7.4"></path></svg></span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.16);color:rgba(244,244,248,.44);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:0 0 22px">3</span>
+                <span style="flex:1;height:38px;display:flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:13px;font-weight:600;cursor:pointer">Ya lo hice, comprobar</span>
+              </div>
+            </div>
+            <div style="font-size:12px;line-height:18px;color:rgba(244,244,248,.44);margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">Esto se hace una vez, no por cada video.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!-- ══ 11 · BIBLIOTECA ══ -->
+<sc-if value="{{ s11 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="biblioteca" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Análisis / Biblioteca" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:20px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em">Biblioteca</div>
+          <div style="font-size:var(--fs,14px);line-height:21px;color:rgba(244,244,248,.68);margin-top:4px">24 videos · 3 en proceso</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="display:flex;align-items:center;gap:8px;height:38px;width:240px;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10)">
+            <svg width="15" height="15" sc-camel-view-box="0 0 16 16" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.6" stroke-linecap="round"><circle cx="7.2" cy="7.2" r="4.4"></circle><path d="M10.6 10.6 13.6 13.6"></path></svg>
+            <span style="font-size:13px;color:rgba(244,244,248,.44)">Buscar en tus videos...</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);background:var(--panel,#131320);font-size:13px;font-weight:500;cursor:pointer">Todos los nichos
+            <svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:4px;padding:3px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);width:fit-content;margin-bottom:20px">
+        <span style="height:30px;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:600;background:var(--soft,rgba(124,92,255,.14));box-shadow:0 0 0 1px var(--brd,rgba(124,92,255,.45))">Todos</span>
+        <span style="height:30px;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">En proceso</span>
+        <span style="height:30px;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Listos</span>
+        <span style="height:30px;display:flex;align-items:center;padding:0 14px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Fallidos</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px">
+        <sc-for list="{{ videos }}" as="v" hint-placeholder-count="8">
+          <div style="border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06);overflow:hidden;cursor:pointer" style-hover="border-color:rgba(255,255,255,.16)">
+            <div style="position:relative;aspect-ratio:9/16;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 7px,#202034 7px,#202034 14px);display:flex;align-items:center;justify-content:center">
+              <span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.44)">miniatura 9:16</span>
+              <div style="position:absolute;left:8px;right:8px;bottom:8px;display:{{ v.progShow }};flex-direction:column;gap:6px;padding:8px;border-radius:10px;background:rgba(11,11,16,.82);border:1px solid rgba(255,255,255,.10)">
+                <span style="font-size:11px;font-weight:600">Generando — paso 5 de 6</span>
+                <span style="height:4px;border-radius:999px;background:rgba(255,255,255,.14);overflow:hidden;display:block"><span style="display:block;width:78%;height:100%;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0))"></span></span>
+              </div>
+              <div style="position:absolute;left:8px;right:8px;bottom:8px;display:{{ v.failShow }};align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:rgba(11,11,16,.82);border:1px solid rgba(239,68,68,.3)">
+                <span style="width:8px;height:8px;border-radius:50%;background:#EF4444;flex:0 0 8px"></span>
+                <span style="flex:1;font-size:11px;line-height:15px">El avatar no respondió</span>
+                <span style="height:22px;display:inline-flex;align-items:center;padding:0 8px;border-radius:7px;border:1px solid rgba(255,255,255,.16);font-size:11px;font-weight:600">Reintentar</span>
+              </div>
+            </div>
+            <div style="padding:12px">
+              <div style="font-size:13px;line-height:19px;font-weight:500;text-wrap:pretty;margin-bottom:8px">{{ v.titulo }}</div>
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+                <span style="height:20px;display:inline-flex;align-items:center;padding:0 8px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">{{ v.nicho }}</span>
+                <span style="font-size:11px;font-weight:500;color:rgba(244,244,248,.44)">{{ v.dur }} · {{ v.fecha }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:{{ v.estadoColor }}"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">{{ v.estado }}</span></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top:24px;padding:32px;border-radius:var(--r,16px);border:1px dashed rgba(255,255,255,.10);background:rgba(19,19,32,.5);text-align:center;max-width:520px">
+        <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin-bottom:16px">Estado vacío</div>
+        <div style="width:64px;height:64px;border-radius:18px;background:var(--soft,rgba(124,92,255,.14));display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><svg width="28" height="28" sc-camel-view-box="0 0 28 28" fill="none" stroke="var(--acc2,#B06AF0)" stroke-width="1.5" stroke-linejoin="round"><rect x="4" y="7" width="14" height="14" rx="3"></rect><path d="M18 12.4 24 9v10l-6-3.4z"></path></svg></div>
+        <div style="font-size:16px;line-height:22px;font-weight:600">Todavía no has creado ningún video</div>
+        <div style="font-size:13px;line-height:20px;color:rgba(244,244,248,.68);margin-top:6px">Tu primer video toma menos de 10 minutos.</div>
+        <div style="display:inline-flex;align-items:center;height:40px;padding:0 20px;border-radius:11px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;font-size:14px;font-weight:600;margin-top:16px;cursor:pointer">Crear mi primer video</div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 12 · PERFIL, EQUIPO Y FACTURACIÓN ══ -->
+<sc-if value="{{ s12 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="integraciones" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Configuración / Cuenta" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="max-width:1000px">
+        <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em;margin-bottom:16px">Cuenta</div>
+        <div style="display:flex;gap:4px;padding:3px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);width:fit-content;margin-bottom:20px">
+          <span style="height:32px;display:flex;align-items:center;padding:0 16px;border-radius:8px;font-size:13px;font-weight:600;background:var(--soft,rgba(124,92,255,.14));box-shadow:0 0 0 1px var(--brd,rgba(124,92,255,.45))">Perfil</span>
+          <span style="height:32px;display:flex;align-items:center;padding:0 16px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Equipo</span>
+          <span style="height:32px;display:flex;align-items:center;padding:0 16px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(244,244,248,.44);cursor:pointer">Facturación</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start">
+          <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:16px">Perfil</div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+              <span style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#5B3FD6,#B06AF0);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#0B0B10">DM</span>
+              <span style="height:34px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer">Cambiar foto</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div><div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:6px">Nombre</div><div style="height:40px;display:flex;align-items:center;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);font-size:14px">Diego Montes</div></div>
+              <div><div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:6px">Correo</div><div style="height:40px;display:flex;align-items:center;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);font-size:14px;color:rgba(244,244,248,.68)">diego@diegoinnovacion.com</div></div>
+              <div><div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:6px">Idioma</div><div style="height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-radius:10px;background:#0F0F1A;border:1px solid rgba(255,255,255,.10);font-size:14px;cursor:pointer">Español (Latinoamérica)<svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5 6 7.5 9 4.5"></path></svg></div></div>
+            </div>
+
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)">
+              <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:12px">Mi voz</div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);margin-bottom:14px">
+                <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));display:flex;align-items:center;justify-content:center;flex:0 0 34px"><svg width="12" height="12" sc-camel-view-box="0 0 12 12" fill="#0B0B10"><path d="M3 1.6 9.6 6 3 10.4z"></path></svg></span>
+                <div style="flex:1"><div style="font-size:14px;font-weight:500">Voz Profesional — Diego</div><div style="font-size:12px;color:rgba(244,244,248,.44)">Clonada hace 3 meses · 0:03 de muestra</div></div>
+                <span style="height:32px;display:inline-flex;align-items:center;padding:0 13px;border-radius:9px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer">Volver a clonar</span>
+              </div>
+              <div style="display:flex;gap:10px;padding:12px;border-radius:12px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.24)">
+                <span style="width:18px;height:18px;border-radius:5px;border:1.5px solid var(--brd,rgba(124,92,255,.45));background:var(--acc,#7C5CFF);display:flex;align-items:center;justify-content:center;flex:0 0 18px;margin-top:1px"><svg width="11" height="11" sc-camel-view-box="0 0 12 12" fill="none" stroke="#0B0B10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2 4.8 8.5 9.5 3.8"></path></svg></span>
+                <span style="font-size:13px;line-height:19px;text-wrap:pretty">Confirmo que esta voz es mía o que tengo autorización expresa de su titular para clonarla.</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                <span style="font-size:16px;line-height:22px;font-weight:600">Equipo</span>
+                <span style="height:32px;display:inline-flex;align-items:center;padding:0 13px;border-radius:9px;border:1px solid var(--brd,rgba(124,92,255,.45));color:var(--acc2,#B06AF0);font-size:13px;font-weight:600;cursor:pointer">Invitar por correo</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <sc-for list="{{ equipo }}" as="m" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px" style-hover="background:rgba(255,255,255,.03)">
+                    <span style="width:32px;height:32px;border-radius:50%;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:rgba(244,244,248,.68);flex:0 0 32px">{{ m.ini }}</span>
+                    <div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:500">{{ m.nombre }}</div><div style="font-size:12px;color:rgba(244,244,248,.44)">{{ m.correo }}</div></div>
+                    <span style="height:26px;display:inline-flex;align-items:center;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.06);font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">{{ m.rol }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+              <div style="font-size:16px;line-height:22px;font-weight:600;margin-bottom:14px">Facturación</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);margin-bottom:14px">
+                <div><div style="font-size:14px;font-weight:600">Plan Premium</div><div style="font-size:12px;color:rgba(244,244,248,.44);margin-top:2px">Renueva el 18 ago · 20.000 créditos al mes</div></div>
+                <span style="height:32px;display:inline-flex;align-items:center;padding:0 13px;border-radius:9px;border:1px solid rgba(255,255,255,.10);font-size:13px;font-weight:500;cursor:pointer">Cambiar plan</span>
+              </div>
+              <div style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68);margin-bottom:8px">Movimientos de créditos</div>
+              <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:14px">
+                <sc-for list="{{ ledger }}" as="l" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:12px;height:36px;padding:0 10px;border-radius:9px" style-hover="background:rgba(255,255,255,.03)">
+                    <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.06);font-size:11px;font-weight:500;color:rgba(244,244,248,.68);flex:0 0 auto">{{ l.motivo }}</span>
+                    <span style="flex:1;font-size:13px;color:rgba(244,244,248,.68);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ l.detalle }}</span>
+                    <span style="font-size:12px;color:rgba(244,244,248,.44);flex:0 0 auto">{{ l.fecha }}</span>
+                    <span style="font-size:13px;font-weight:600;color:{{ l.color }};flex:0 0 62px;text-align:right">{{ l.monto }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+                <div style="display:flex;align-items:center;gap:10px"><span style="width:34px;height:24px;border-radius:5px;background:var(--elev,#1A1A2B);border:1px solid rgba(255,255,255,.10)"></span><span style="font-size:13px;color:rgba(244,244,248,.68)">Visa terminada en 4271</span></div>
+                <a href="#facturas" style="font-size:13px;font-weight:600">Ver facturas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ══ 13 · DETALLE DE PUBLICACIÓN ══ -->
+<sc-if value="{{ s13 }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;height:100vh;overflow:hidden">
+  <dc-import name="Sidebar" active="biblioteca" hint-size="232px,100%"></dc-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0">
+    <dc-import name="TopBar" step="0" crumb="Análisis / Biblioteca / Publicación" hint-size="100%,64px"></dc-import>
+    <div style="flex:1;overflow-y:auto;padding:28px 32px 76px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <a href="#volver" style="display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:rgba(244,244,248,.68)"><svg width="14" height="14" sc-camel-view-box="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 8H2.8M6.8 4l-4 4 4 4"></path></svg>Biblioteca</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:220px minmax(0,1fr) 300px;gap:20px;align-items:start">
+        <div>
+          <div style="aspect-ratio:9/16;border-radius:var(--r,16px);background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 7px,#202034 7px,#202034 14px);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center"><span style="font:500 10px ui-monospace,monospace;color:rgba(244,244,248,.44)">miniatura 9:16</span></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px"><span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span><span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.68)">Publicado el 18 jul</span></div>
+        </div>
+
+        <div style="min-width:0">
+          <div style="font-size:24px;line-height:30px;font-weight:600;letter-spacing:-.02em;text-wrap:pretty">Tres señales de que tu negocio ya necesita IA</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:8px;margin-bottom:20px">
+            <span style="height:22px;display:inline-flex;align-items:center;padding:0 9px;border-radius:999px;border:1px solid rgba(255,255,255,.10);font-size:11px;font-weight:500;color:rgba(244,244,248,.68)">IA y Tecnología</span>
+            <span style="font-size:12px;font-weight:500;color:rgba(244,244,248,.44)">Reel · 0:50 · hace 8 días</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+            <div style="padding:14px;border-radius:12px;background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44)">Reproducciones</div><div style="font-size:22px;font-weight:600;margin-top:6px">128.400</div></div>
+            <div style="padding:14px;border-radius:12px;background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44)">Me gusta</div><div style="font-size:22px;font-weight:600;margin-top:6px">9.240</div></div>
+            <div style="padding:14px;border-radius:12px;background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44)">Comentarios</div><div style="font-size:22px;font-weight:600;margin-top:6px">412</div></div>
+            <div style="padding:14px;border-radius:12px;background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)"><div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44)">Guardados</div><div style="font-size:22px;font-weight:600;margin-top:6px">1.830</div></div>
+          </div>
+
+          <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <span style="font-size:16px;line-height:22px;font-weight:600">Crecimiento en el tiempo</span>
+              <div style="display:flex;align-items:center;gap:16px">
+                <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.68)"><span style="width:8px;height:8px;border-radius:2px;background:var(--acc,#7C5CFF)"></span>Esta publicación</span>
+                <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:rgba(244,244,248,.68)"><span style="width:12px;height:2px;background:rgba(244,244,248,.44)"></span>Media de tu cuenta</span>
+              </div>
+            </div>
+            <svg sc-camel-view-box="0 0 800 200" sc-camel-preserve-aspect-ratio="none" style="width:100%;height:180px;display:block">
+              <defs><linearGradient id="pd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--acc,#7C5CFF)" stop-opacity=".34"></stop><stop offset="1" stop-color="var(--acc,#7C5CFF)" stop-opacity="0"></stop></linearGradient></defs>
+              <g stroke="rgba(255,255,255,.06)"><line x1="0" y1="50" x2="800" y2="50"></line><line x1="0" y1="100" x2="800" y2="100"></line><line x1="0" y1="150" x2="800" y2="150"></line></g>
+              <path d="M0,190 C120,150 200,80 320,54 C460,26 620,20 800,14 L800,200 L0,200 Z" fill="url(#pd)"></path>
+              <path d="M0,190 C120,150 200,80 320,54 C460,26 620,20 800,14" fill="none" stroke="var(--acc,#7C5CFF)" stroke-width="2.4"></path>
+              <path d="M0,194 C140,178 300,150 480,128 C620,112 700,104 800,98" fill="none" stroke="rgba(244,244,248,.44)" stroke-width="1.4" stroke-dasharray="5 5"></path>
+            </svg>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;font-weight:500;color:rgba(244,244,248,.44)"><span>día 1</span><span>día 3</span><span>día 5</span><span>día 8</span></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
+              <span style="width:8px;height:8px;border-radius:50%;background:#22C55E"></span>
+              <span style="font-size:13px;color:rgba(244,244,248,.68)">Rinde <span style="color:#F4F4F8;font-weight:600">31,4 %</span> por encima de la media de tu cuenta</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:20px;border-radius:var(--r,16px);background:var(--panel,#131320);border:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);margin-bottom:12px">Proyecto que lo generó</div>
+          <div style="display:flex;gap:12px;padding:12px;border-radius:12px;background:#0F0F1A;border:1px solid rgba(255,255,255,.06);margin-bottom:14px">
+            <span style="width:36px;height:62px;border-radius:7px;background:repeating-linear-gradient(135deg,#1A1A2B,#1A1A2B 5px,#202034 5px,#202034 10px);border:1px solid rgba(255,255,255,.06);flex:0 0 36px"></span>
+            <div style="flex:1;min-width:0"><div style="font-size:13px;line-height:19px;font-weight:500;text-wrap:pretty">Tres señales de que tu negocio ya necesita IA</div><div style="font-size:11px;color:rgba(244,244,248,.44);margin-top:5px">Plantilla Informativo · 6 escenas</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px;font-size:13px;margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Avatar</span><span style="font-weight:500">Presentador 3</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Voz</span><span style="font-weight:500">Profesional — Diego</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">CTA</span><span style="font-weight:500">Leads</span></div>
+            <div style="display:flex;justify-content:space-between"><span style="color:rgba(244,244,248,.68)">Créditos usados</span><span style="font-weight:500">14</span></div>
+          </div>
+          <div style="height:42px;border-radius:11px;background:linear-gradient(90deg,var(--acc,#7C5CFF),var(--acc2,#B06AF0));color:#0B0B10;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;cursor:pointer" style-hover="filter:brightness(1.08)">
+            <svg width="15" height="15" sc-camel-view-box="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2.6" width="9.4" height="9.4" rx="2"></rect><path d="M12 15.4H4.6a2 2 0 0 1-2-2V6"></path></svg>Duplicar proyecto
+          </div>
+          <div style="font-size:12px;line-height:18px;color:rgba(244,244,248,.44);margin-top:10px;text-align:center;text-wrap:pretty">Reutiliza el guion, la voz y la marca con una idea nueva.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<!--SCREENS-->
+</div>
+
+<div style="position:fixed;right:16px;bottom:16px;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(16,16,26,.92);border:1px solid rgba(255,255,255,.10);box-shadow:0 12px 40px rgba(0,0,0,.6);z-index:60;backdrop-filter:blur(12px)">
+  <span style="font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,244,248,.44);padding:0 8px 0 10px">Pantalla</span>
+  <sc-for list="{{ nav }}" as="n" hint-placeholder-count="13">
+    <div sc-camel-on-click="{{ n.go }}" title="{{ n.title }}" style="width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;cursor:pointer;color:{{ n.fg }};background:{{ n.bg }}" style-hover="background:rgba(255,255,255,.10)">{{ n.n }}</div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;screen&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:13,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Prototipo&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#7C5CFF&quot;,&quot;#3B82F6&quot;,&quot;#F43F5E&quot;,&quot;#10B981&quot;],&quot;default&quot;:&quot;#7C5CFF&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;comoda&quot;,&quot;compacta&quot;],&quot;default&quot;:&quot;comoda&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;signature&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;sutil&quot;,&quot;estandar&quot;,&quot;intensa&quot;],&quot;default&quot;:&quot;estandar&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Tema&quot;}}">
+class Component extends DCLogic {
+  state = { screen: 1 };
+  componentDidMount() {
+    const p = Number(this.props.screen || 0);
+    if (p >= 1 && p <= 13) this.setState({ screen: p });
+  }
+  componentDidUpdate(prev) {
+    if (prev.screen !== this.props.screen) {
+      const p = Number(this.props.screen || 0);
+      if (p >= 1 && p <= 13) this.setState({ screen: p });
+    }
+  }
+  theme() {
+    const acc = this.props.accent || '#7C5CFF';
+    const map = {
+      '#7C5CFF': '#B06AF0', '#3B82F6': '#22D3EE', '#F43F5E': '#FB923C', '#10B981': '#A3E635'
+    };
+    const acc2 = map[acc] || '#B06AF0';
+    const rgb = (h) => {
+      const s = h.replace('#', '');
+      return [0, 2, 4].map(i => parseInt(s.slice(i, i + 2), 16)).join(',');
+    };
+    const dens = this.props.density || 'comoda';
+    const sig = this.props.signature || 'estandar';
+    const glowMap = {
+      sutil: `0 0 0 1px rgba(${rgb(acc)},.32)`,
+      estandar: `0 0 0 1px rgba(${rgb(acc)},.45), 0 0 24px rgba(${rgb(acc)},.18)`,
+      intensa: `0 0 0 1.5px rgba(${rgb(acc)},.7), 0 0 44px rgba(${rgb(acc)},.34)`
+    };
+    const densMap = {
+      comoda: { pad: '28px', gap: '16px', r: '16px', fs: '14px' },
+      compacta: { pad: '18px', gap: '10px', r: '12px', fs: '13px' }
+    };
+    const d = densMap[dens] || densMap.comoda;
+    return {
+      vBg: '#0B0B10', vPanel: '#131320', vElev: '#1A1A2B',
+      vAcc: acc, vAcc2: acc2,
+      vSoft: `rgba(${rgb(acc)},.14)`, vBrd: `rgba(${rgb(acc)},.45)`,
+      vGlow: glowMap[sig] || glowMap.estandar,
+      vPad: d.pad, vGap: d.gap, vR: d.r, vFs: d.fs
+    };
+  }
+  renderVals() {
+    const cur = this.state.screen;
+    const titles = ['Panel de rendimiento','Idea','Propuestas','Guion','Voz','Avatar y marca','Escenas','Generando','Video listo','Integraciones','Biblioteca','Perfil y facturación','Detalle de publicación'];
+    const nav = titles.map((t, i) => {
+      const n = i + 1, on = n === cur;
+      return {
+        n: String(n), title: n + ' · ' + t,
+        fg: on ? '#0B0B10' : 'rgba(244,244,248,.68)',
+        bg: on ? (this.props.accent || '#7C5CFF') : 'transparent',
+        go: () => this.setState({ screen: n })
+      };
+    });
+    const sc = {};
+    for (let i = 1; i <= 13; i++) sc['s' + i] = cur === i;
+
+    const kpis = [
+      { label:'Reproducciones', value:'842.100', delta:'▲ 18,4 %', up:true, spark:'0,19 12,16 24,17 36,11 48,13 60,6 70,3' },
+      { label:'Interacciones', value:'61.480', delta:'▲ 12,1 %', up:true, spark:'0,18 12,19 24,13 36,15 48,9 60,10 70,5' },
+      { label:'Alcance', value:'512.300', delta:'▲ 9,7 %', up:true, spark:'0,16 12,18 24,14 36,15 48,10 60,12 70,7' },
+      { label:'Nuevos seguidores', value:'4.920', delta:'▲ 24,3 %', up:true, spark:'0,20 12,17 24,18 36,12 48,8 60,9 70,2' },
+      { label:'Tasa de interacción', value:'7,3 %', delta:'▼ 1,2 %', up:false, spark:'0,8 12,7 24,11 36,10 48,14 60,13 70,17' }
+    ].map(k => ({ ...k, chipBg: k.up ? 'rgba(34,197,94,.14)' : 'rgba(239,68,68,.14)', chipFg: k.up ? '#22C55E' : '#EF4444' }));
+
+    const posts = [
+      { caption:'Tres señales de que tu negocio ya necesita IA', nicho:'IA y Tecnología', fecha:'18 jul', repr:'128.400', likes:'9.240', com:'412', guard:'1.830', top:'inline-flex' },
+      { caption:'El error de precios que hunde a los pequeños negocios', nicho:'Finanzas', fecha:'14 jul', repr:'96.120', likes:'6.480', com:'298', guard:'1.140', top:'none' },
+      { caption:'Automaticé mi atención al cliente en una tarde', nicho:'IA y Tecnología', fecha:'11 jul', repr:'74.900', likes:'5.210', com:'187', guard:'980', top:'none' },
+      { caption:'Dormir mal te cuesta más dinero del que crees', nicho:'Salud', fecha:'7 jul', repr:'52.340', likes:'3.870', com:'126', guard:'640', top:'none' },
+      { caption:'Cuatro herramientas gratis que uso cada semana', nicho:'IA y Tecnología', fecha:'2 jul', repr:'41.780', likes:'2.940', com:'98', guard:'520', top:'none' }
+    ];
+
+    const acc = this.props.accent || '#7C5CFF';
+    const nichos = ['Finanzas','IA y Tecnología','Salud','Fitness','Marketing','Mentalidad','Cripto','Bienes Raíces','Educación','E-commerce'].map(label => {
+      const on = label === 'IA y Tecnología';
+      return {
+        label,
+        bg: on ? 'var(--soft)' : 'var(--panel,#131320)',
+        brd: on ? 'transparent' : 'rgba(255,255,255,.10)',
+        glow: on ? 'var(--glow)' : 'none',
+        fw: on ? 600 : 500,
+        fg: on ? '#F4F4F8' : 'rgba(244,244,248,.68)',
+        noteShow: on ? 'flex' : 'none'
+      };
+    });
+
+    const ideas = [
+      { enfoque:'Storytelling informativo', score:82, hook:'La historia no contada de la inteligencia artificial', idea:'Un recorrido por los orígenes de la IA, sus hitos y cómo llegamos hasta aquí.', porque:'Conecta con la emoción y educa. Sirve para retener y generar confianza.', ctaTipo:'Leads', cta:'“Descarga la guía gratuita y potencia tu negocio hoy con', sel:false },
+      { enfoque:'Reacción informativa', score:91, hook:'Mi reacción a las 5 noticias de IA que lo cambian todo', idea:'Reacciono a las noticias de IA más impactantes de la semana y explico qué significan para ti.', porque:'Aprovecha la curiosidad y el formato de reacción para maximizar el alcance.', ctaTipo:'Leads', cta:'“Descarga la guía gratuita y potencia tu negocio hoy con', sel:true },
+      { enfoque:'Dato duro', score:76, hook:'5 datos de IA que te harán ver el futuro diferente', idea:'Datos y estadísticas clave sobre la IA que están transformando los negocios pequeños.', porque:'Los datos generan autoridad y se comparten por su impacto.', ctaTipo:'Seguidores', cta:'“Sígueme para más datos que te mantienen un paso adelante con', sel:false }
+    ].map(i => ({
+      ...i,
+      dash: (2 * Math.PI * 22 * i.score / 100).toFixed(1) + ' ' + (2 * Math.PI * 22).toFixed(1),
+      brd: i.sel ? 'var(--brd)' : 'rgba(255,255,255,.06)',
+      glow: i.sel ? 'var(--glow)' : 'none',
+      op: i.sel ? 1 : .7,
+      checkShow: i.sel ? 'flex' : 'none',
+      ctaBg: i.ctaTipo === 'Leads' ? 'rgba(255,122,47,.18)' : 'var(--soft)',
+      ctaFg: i.ctaTipo === 'Leads' ? '#FF7A2F' : 'var(--acc2,#B06AF0)'
+    }));
+
+    const voces = [{ nombre:'Sofía Natural' }, { nombre:'Andrés Claro' }, { nombre:'Lucía Narradora' }];
+    const bloquesAudio = [
+      { nombre:'Hook', dur:'0:03', color:'#7C5CFF' },
+      { nombre:'Promesa', dur:'0:05', color:'#3B82F6' },
+      { nombre:'Contenido', dur:'0:35', color:'#22C55E' },
+      { nombre:'CTA final', dur:'0:07', color:'#FF7A2F' }
+    ];
+
+    const avatares = [1,2,3,4,5,6].map(n => ({
+      tag: 'presentador ' + n,
+      brd: n === 3 ? 'var(--brd)' : 'rgba(255,255,255,.06)',
+      glow: n === 3 ? 'var(--glow)' : 'none',
+      checkShow: n === 3 ? 'flex' : 'none'
+    }));
+
+    const recursos = [
+      { tipo:'foto', pill:'Sugerido para: Gancho — 00:00', asig:true, dur:false },
+      { tipo:'foto', pill:'Sugerido para: Dato — 00:15', asig:true, dur:false },
+      { tipo:'gráfico', pill:'Sugerido para: Apoyo — 00:28', asig:true, dur:false },
+      { tipo:'clip de video', pill:'Sin asignar', asig:false, dur:true }
+    ].map(r => ({
+      ...r,
+      durShow: r.dur ? 'inline-flex' : 'none',
+      pillBg: r.asig ? 'var(--soft,rgba(124,92,255,.14))' : 'rgba(255,255,255,.06)',
+      pillFg: r.asig ? 'var(--acc2,#B06AF0)' : 'rgba(244,244,248,.44)'
+    }));
+
+    const escenas = [
+      { t:'00:00', label:'Gancho — motion completo', gen:true, contenido:'título a sangre\ntipografía cinética\nformas geométricas', bg:'linear-gradient(150deg,#3B2A7A,#7A3A22)' },
+      { t:'00:08', label:'Avatar + subtítulos', gen:false, contenido:'avatar\nsubtítulos karaoke\nbarra de marca', bg:'linear-gradient(180deg,#1A1A2B,#0F0F1A)' },
+      { t:'00:16', label:'Dato — motion completo', gen:true, contenido:'estadística\nnúmero enorme\ngráfico', bg:'linear-gradient(150deg,#2A2160,#4A2B6E)' },
+      { t:'00:24', label:'Avatar + imagen de apoyo', gen:false, contenido:'avatar\nrecorte de foto\nal lado', bg:'linear-gradient(180deg,#1A1A2B,#0F0F1A)' },
+      { t:'00:35', label:'Comparativa — motion', gen:true, contenido:'2 columnas\ncon iconos', bg:'linear-gradient(150deg,#20305E,#3B2A7A)' },
+      { t:'00:43', label:'Cierre + CTA', gen:true, contenido:'logo\nCTA de seguir\nflecha', bg:'linear-gradient(150deg,#4A2B6E,#7A3A22)' }
+    ].map(e => ({
+      ...e,
+      badge: e.gen ? 'Generado' : 'Subido',
+      badgeBg: e.gen ? 'var(--soft,rgba(124,92,255,.14))' : 'rgba(255,255,255,.10)',
+      badgeFg: e.gen ? 'var(--acc2,#B06AF0)' : 'rgba(244,244,248,.68)'
+    }));
+
+    const pistas = [
+      { nombre:'SUBTÍTULOS', color:'#A78BFA', h:'22px', lock:false },
+      { nombre:'MOTION', color:'#FF7A2F', h:'26px', lock:false },
+      { nombre:'RECURSOS', color:'#64748B', h:'26px', lock:false },
+      { nombre:'AVATAR', color:'#5B3FD6', h:'26px', lock:true },
+      { nombre:'MÚSICA', color:'#22C55E', h:'26px', lock:false },
+      { nombre:'VOZ', color:'#94A3B8', h:'18px', lock:true }
+    ].map(p => ({ ...p, lockShow: p.lock ? 'inline-flex' : 'none' }));
+
+    const palabras = Array.from({ length: 46 }, (_, i) => ({ w: (6 + ((i * 7) % 16)) + 'px' }));
+    const ondaVoz = Array.from({ length: 72 }, (_, i) => ({ h: (4 + Math.abs(Math.sin(i / 3.1)) * 9).toFixed(1) + 'px' }));
+
+    const pasos = [
+      { label:'Analizando tus fuentes', time:'12 s', st:'ok' },
+      { label:'Escribiendo el guion', time:'8 s', st:'ok' },
+      { label:'Generando la voz', time:'8 s', st:'ok' },
+      { label:'Generando las imágenes', time:'41 s', st:'ok' },
+      { label:'Generando el avatar', time:'3 m 29 s', st:'now' },
+      { label:'Componiendo el video', time:'pendiente', st:'wait' }
+    ].map(p => ({
+      ...p,
+      mark: p.st === 'ok' ? '✓' : p.st === 'now' ? '◐' : '',
+      dotBg: p.st === 'ok' ? '#22C55E' : p.st === 'now' ? 'var(--acc,#7C5CFF)' : 'transparent',
+      dotBrd: p.st === 'wait' ? 'rgba(255,255,255,.16)' : 'transparent',
+      bg: p.st === 'now' ? 'var(--soft,rgba(124,92,255,.14))' : 'transparent',
+      glow: p.st === 'now' ? 'var(--glow)' : 'none',
+      fw: p.st === 'now' ? 600 : 500,
+      fg: p.st === 'wait' ? 'rgba(244,244,248,.44)' : '#F4F4F8',
+      barShow: p.st === 'now' ? 'block' : 'none'
+    }));
+
+    const integraciones = [
+      { nombre:'OpenAI', inicial:'O', para:'Genera las imágenes de tus escenas', opt:false },
+      { nombre:'Instagram', inicial:'I', para:'Métricas de tus publicaciones', opt:false },
+      { nombre:'Apify', inicial:'A', para:'Analiza enlaces de TikTok e Instagram', opt:true }
+    ].map(g => ({ ...g, optShow: g.opt ? 'inline-flex' : 'none' }));
+
+    const videos = [
+      { titulo:'Tres señales de que tu negocio ya necesita IA', nicho:'IA y Tecnología', dur:'0:50', fecha:'18 jul', st:'listo' },
+      { titulo:'El error de precios que hunde a los pequeños negocios', nicho:'Finanzas', dur:'0:48', fecha:'14 jul', st:'listo' },
+      { titulo:'Automaticé mi atención al cliente en una tarde', nicho:'IA y Tecnología', dur:'0:52', fecha:'11 jul', st:'proceso' },
+      { titulo:'Dormir mal te cuesta más dinero del que crees', nicho:'Salud', dur:'0:47', fecha:'7 jul', st:'listo' },
+      { titulo:'Cuatro herramientas gratis que uso cada semana', nicho:'IA y Tecnología', dur:'0:50', fecha:'2 jul', st:'fallido' },
+      { titulo:'Cómo cobrar más sin perder clientes', nicho:'Marketing', dur:'0:49', fecha:'28 jun', st:'listo' },
+      { titulo:'La regla de las dos listas para decidir rápido', nicho:'Mentalidad', dur:'0:46', fecha:'24 jun', st:'proceso' },
+      { titulo:'Lo que nadie te cuenta del interés compuesto', nicho:'Finanzas', dur:'0:51', fecha:'20 jun', st:'listo' }
+    ].map(v => ({
+      ...v,
+      estado: v.st === 'listo' ? 'Listo' : v.st === 'proceso' ? 'En proceso' : 'Falló',
+      estadoColor: v.st === 'listo' ? '#22C55E' : v.st === 'proceso' ? '#3B82F6' : '#EF4444',
+      progShow: v.st === 'proceso' ? 'flex' : 'none',
+      failShow: v.st === 'fallido' ? 'flex' : 'none'
+    }));
+
+    const equipo = [
+      { ini:'DM', nombre:'Diego Montes', correo:'diego@diegoinnovacion.com', rol:'Propietario' },
+      { ini:'LR', nombre:'Lucía Rojas', correo:'lucia@diegoinnovacion.com', rol:'Administrador' },
+      { ini:'AC', nombre:'Andrés Cornejo', correo:'andres@diegoinnovacion.com', rol:'Editor' },
+      { ini:'SP', nombre:'Sofía Paredes', correo:'sofia@diegoinnovacion.com', rol:'Lector' }
+    ];
+
+    const ledger = [
+      { motivo:'Consumo', detalle:'Video · Tres señales de que tu negocio ya necesita IA', fecha:'18 jul', monto:'−14', color:'#F4F4F8' },
+      { motivo:'Devolución', detalle:'Fallo al generar el avatar', fecha:'16 jul', monto:'+14', color:'#22C55E' },
+      { motivo:'Reserva', detalle:'Generación en curso', fecha:'16 jul', monto:'−14', color:'rgba(244,244,248,.68)' },
+      { motivo:'Compra', detalle:'Renovación Plan Premium', fecha:'18 jun', monto:'+20.000', color:'#22C55E' }
+    ];
+
+    return { ...this.theme(), ...sc, nav, kpis, posts, nichos, ideas, acc, voces, bloquesAudio, avatares, recursos, escenas, pistas, palabras, ondaVoz, pasos, integraciones, videos, equipo, ledger };
+  }
+}
+</script>
+
+
+</body></html>

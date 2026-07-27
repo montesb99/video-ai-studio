@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "create": "Crear video",
+    "library": "Biblioteca",
+    "brand": "Identidad de marca",
+    "templates": "Plantillas",
+    "integrations": "Integraciones",
+    "settings": "Ajustes",
+    "signOut": "Cerrar sesión",
+    "credits": "Créditos",
+    "upgradeTitle": "Plan Premium",
+    "upgradeBody": "Más créditos, avatares premium y exportación sin marca de agua.",
+    "upgradeCta": "Mejorar plan"
+  },
+  "step": {
+    "1": "Idea",
+    "2": "Propuestas",
+    "3": "Guion",
+    "4": "Voz",
+    "5": "Avatar y marca",
+    "6": "Escenas"
+  },
+  "auth": {
+    "brandTitle": "Video AI Studio",
+    "login": {
+      "title": "Inicia sesión",
+      "subtitle": "Entra para ver el rendimiento de tus videos.",
+      "email": "Correo",
+      "emailPlaceholder": "tu@correo.com",
+      "password": "Contraseña",
+      "submit": "Entrar",
+      "submitting": "Entrando...",
+      "noAccount": "¿Todavía no tienes cuenta?",
+      "createAccount": "Crear una cuenta",
+      "error": "No pudimos iniciar tu sesión. Revisa tu correo y contraseña."
+    },
+    "register": {
+      "title": "Crea tu cuenta",
+      "subtitle": "Empieza a generar videos en minutos.",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Correo",
+      "emailPlaceholder": "tu@correo.com",
+      "password": "Contraseña",
+      "passwordHint": "Al menos 8 caracteres.",
+      "submit": "Crear cuenta",
+      "submitting": "Creando cuenta...",
+      "hasAccount": "¿Ya tienes cuenta?",
+      "signIn": "Inicia sesión",
+      "error": "No pudimos crear tu cuenta. Inténtalo de nuevo."
+    }
+  },
+  "dash": {
+    "title": "Rendimiento",
+    "subtitle": "Tus publicaciones en Instagram · últimos 30 días",
+    "range30": "Últimos 30 días",
+    "create": "Crear video",
+    "kpi": {
+      "views": "Reproducciones",
+      "interactions": "Interacciones",
+      "reach": "Alcance",
+      "newFollowers": "Nuevos seguidores",
+      "engagementRate": "Tasa de interacción"
+    },
+    "chart": {
+      "title": "Evolución",
+      "views": "Reproducciones",
+      "interactions": "Interacciones"
+    },
+    "posts": {
+      "title": "Publicaciones",
+      "filterAll": "Todas",
+      "filterReels": "Reels",
+      "filterCarousels": "Carruseles"
+    },
+    "accounts": {
+      "title": "Cuentas conectadas",
+      "connected": "Conectado",
+      "notConnected": "Sin conectar"
+    },
+    "empty": {
+      "title": "Todavía no vemos tus métricas",
+      "body": "Conecta tu Instagram para ver cómo rinde tu contenido.",
+      "cta": "Conectar Instagram"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "comingSoon": "Próximamente"
+  }
+}

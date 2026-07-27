@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files — nunca secretos en el repo
+.env
+.env.local
+.env*.local
+spike/.env
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# artefactos locales del proyecto — no se versionan
+spike/out/
+renders/
+snapshots/
+videos/test-motion-naranja/public/.transcode-cache/
+videos/test-motion-naranja/output.mp4
+videos/test-motion-naranja/public/avatar.webm
+videos/test-motion-naranja/public/voz.mp3
+
+# configuración local de Claude Code — no compartida entre máquinas
+.claude/settings.local.json
