@@ -9,8 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        // "Botón fantasma" — docs/05-DESIGN-TOKENS.md §8: fondo transparente,
+        // borde --border-default, hover rgba(255,255,255,.04). Tema oscuro
+        // único en F1 (docs/05 §1), de ahí el alpha blanco fijo en vez de un
+        // token que cambie con el modo claro.
         outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
+          "border-border bg-transparent hover:bg-white/[0.04] hover:text-foreground aria-expanded:bg-white/[0.04] aria-expanded:text-foreground dark:border-input dark:bg-transparent",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:

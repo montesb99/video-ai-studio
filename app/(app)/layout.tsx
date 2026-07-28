@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { getCurrentWorkspaceId } from "@/lib/supabase/workspace";
 import { Sidebar } from "@/components/shell/sidebar";
 import { TopBar } from "@/components/shell/topbar";
 
@@ -17,14 +18,16 @@ export default async function AppLayout({
     redirect("/login");
   }
 
+  // Resuelto por workspace_members (mismo criterio que current_workspaces() de
+  // RLS), no por workspaces.owner_id — un miembro invitado no-owner también
+  // debe ver su saldo de créditos aquí.
+  const workspaceId = await getCurrentWorkspaceId(supabase);
+
   const [{ data: profile }, { data: workspace }] = await Promise.all([
     supabase.from("profiles").select("full_name").eq("id", user.id).single(),
-    supabase
-      .from("workspaces")
-      .select("credits_balance")
-      .eq("owner_id", user.id)
-      .limit(1)
-      .single(),
+    workspaceId
+      ? supabase.from("workspaces").select("credits_balance").eq("id", workspaceId).single()
+      : Promise.resolve({ data: null }),
   ]);
 
   const userName = profile?.full_name || user.email || "";
