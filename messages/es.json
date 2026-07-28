@@ -88,5 +88,222 @@
   "common": {
     "loading": "Cargando...",
     "comingSoon": "Próximamente"
+  },
+  "integrations": {
+    "title": "Integraciones",
+    "subtitle": "Conecta tus cuentas para generar voz, avatar e imágenes con tu propia clave.",
+    "providers": {
+      "elevenlabs": {
+        "name": "ElevenLabs",
+        "description": "Genera la voz de tus videos"
+      },
+      "heygen": {
+        "name": "HeyGen",
+        "description": "Genera el avatar que habla en tus videos"
+      },
+      "openai": {
+        "name": "OpenAI",
+        "description": "Genera las imágenes de escena cuando no subes una"
+      }
+    },
+    "status": {
+      "active": "Conectado",
+      "invalid": "Clave inválida",
+      "expired": "Sesión caducada",
+      "unverified": "No verificado",
+      "notConnected": "Sin conectar",
+      "noCredits": "Sin créditos en {provider}",
+      "rateLimited": "Límite alcanzado"
+    },
+    "missingPermission": "Falta el permiso {permission}",
+    "lastFour": "Termina en {lastFour}",
+    "verifiedAt": "Verificado hace {time}",
+    "counts": {
+      "voices": "{total} voces · {cloned} clonadas",
+      "avatars": "{total} avatares · Avatar III",
+      "avatarsWithCredits": "{total} avatares · Avatar III · Créditos: {credits}"
+    },
+    "voiceLink": {
+      "linked": "Vinculada con HeyGen",
+      "notLinked": "No vinculada con HeyGen",
+      "guided": {
+        "title": "Conecta tu voz a HeyGen",
+        "body": "HeyGen todavía no permite vincular tu clave de ElevenLabs de forma automática. Hazlo en 3 pasos:",
+        "step1": "Copia tu clave de API desde tu cuenta de ElevenLabs.",
+        "step2": "Pégala en HeyGen, en la configuración de proveedor de voz.",
+        "step3": "Vuelve aquí y confirma.",
+        "openElevenlabs": "Abrir ElevenLabs",
+        "openHeygen": "Abrir HeyGen",
+        "confirm": "Ya lo hice, comprobar"
+      }
+    },
+    "actions": {
+      "connect": "Conectar",
+      "verify": "Comprobar",
+      "disconnect": "Desconectar",
+      "cancel": "Cancelar",
+      "save": "Guardar"
+    },
+    "dialog": {
+      "label": "Clave de API",
+      "body": "Pega tu clave de API. Se guarda cifrada y nunca se muestra de nuevo completa.",
+      "placeholder": "Pega tu clave aquí",
+      "submitting": "Verificando..."
+    },
+    "errors": {
+      "empty_key": "Pega tu clave antes de guardar.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "save_failed": "No pudimos guardar la conexión. Inténtalo de nuevo.",
+      "verification_failed": "No pudimos verificar tu clave ahora mismo. Inténtalo de nuevo en unos minutos.",
+      "unexpected_error": "Algo salió mal. Inténtalo de nuevo."
+    }
+  },
+  "wizard": {
+    "desktopOnly": {
+      "title": "Crea tus videos desde una pantalla más grande",
+      "body": "El asistente de creación está pensado para escritorio. Desde el celular puedes revisar tu biblioteca y el rendimiento de tus videos."
+    },
+    "createError": {
+      "title": "No pudimos crear tu proyecto",
+      "body": "Vuelve a intentarlo en unos segundos."
+    }
+  },
+  "idea": {
+    "title": "¿De qué va tu video?",
+    "subtitle": "Cuéntanos la idea o pega una fuente — un enlace, un dato, lo que tengas.",
+    "type": {
+      "label": "Tipo de video",
+      "options": {
+        "informativo": {
+          "title": "Informativo",
+          "description": "Un tema o dato que quieres explicar."
+        },
+        "reaccion": {
+          "title": "Reacción",
+          "description": "Reaccionas a una noticia o publicación."
+        },
+        "desde_enlace": {
+          "title": "Desde un enlace",
+          "description": "Partes de un artículo o página que ya tienes."
+        }
+      }
+    },
+    "niche": {
+      "label": "Nicho",
+      "auto": "Detectar automáticamente"
+    },
+    "source": {
+      "label": "Fuentes",
+      "modeText": "Texto",
+      "modeLink": "Enlace",
+      "textPlaceholder": "Escribe tu idea. Por ejemplo: quiero explicar cómo la IA está reemplazando tareas repetitivas en negocios pequeños del Perú.",
+      "linkPlaceholder": "https://...",
+      "adding": "Agregando...",
+      "addButton": "Agregar",
+      "generating": "Generando...",
+      "generateButton": "Generar propuestas",
+      "waitingSources": "Esperando a que termine de procesarse una fuente.",
+      "missingLink": "Agrega un enlace para poder generar propuestas.",
+      "tooMuch": "Mucho material. Resumiremos las fuentes más largas.",
+      "remove": "Quitar",
+      "status": {
+        "pending": "Procesando..."
+      },
+      "kindLabel": {
+        "text": "Texto pegado",
+        "link": "Enlace"
+      },
+      "errors": {
+        "invalid_url": "Ese enlace no es válido.",
+        "blocked_ip": "No podemos leer ese enlace.",
+        "dns_error": "No pudimos resolver ese enlace.",
+        "unsupported_type": "Ese tipo de contenido todavía no es compatible.",
+        "too_large": "El contenido es demasiado grande.",
+        "timeout": "El enlace tardó demasiado en responder.",
+        "http_error": "No pudimos leer ese enlace.",
+        "too_many_redirects": "Ese enlace redirige demasiadas veces.",
+        "social_requires_apify": "Los enlaces de redes sociales todavía no son compatibles.",
+        "pdf_not_supported_yet": "Los PDF todavía no son compatibles como enlace directo.",
+        "empty_content": "No encontramos texto para leer ahí.",
+        "unexpected_error": "Algo salió mal al leer esa fuente."
+      },
+      "generateErrors": {
+        "missing_source": "Agrega al menos una fuente lista antes de generar propuestas.",
+        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+        "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo."
+      }
+    }
+  },
+  "proposals": {
+    "title": "Elige un ángulo",
+    "subtitle": "3 propuestas distintas a partir de tus fuentes.",
+    "empty": "Todavía no hay propuestas generadas.",
+    "regenerateButton": "Generar otras 3",
+    "regenerating": "Generando...",
+    "selectButton": "Elegir esta",
+    "selected": "Elegida",
+    "estimatedSeconds": "~{seconds}s",
+    "ctaKeyword": "Palabra clave: {keyword}",
+    "generateErrors": {
+      "missing_source": "Falta al menos una fuente lista.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo."
+    }
+  },
+  "script": {
+    "title": "Guion",
+    "subtitle": "Edita el texto que se va a leer en voz alta. Los datos en pantalla se generan aparte.",
+    "saving": "Guardando...",
+    "generateButton": "Generar guion",
+    "generating": "Generando...",
+    "missingProposal": "Elige una propuesta antes de generar el guion.",
+    "generateErrors": {
+      "missing_proposal": "Elige una propuesta antes de generar el guion.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "generation_failed": "No pudimos generar el guion. Inténtalo de nuevo."
+    },
+    "blocks": {
+      "hook": "Hook",
+      "promise": "Promesa",
+      "content": "Contenido {n}",
+      "cta": "CTA"
+    },
+    "duration": "~{seconds}s",
+    "tooLong": "Va largo: ~{seconds}s",
+    "tooShort": "Va corto: ~{seconds}s",
+    "confirmButton": "Confirmar guion",
+    "confirming": "Confirmando...",
+    "confirmed": "Guion confirmado",
+    "errors": {
+      "insufficientCredits": "No te alcanzan los créditos para este video. Necesitas {needed} y tienes {available}.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "save_failed": "No pudimos confirmar el guion. Inténtalo de nuevo."
+    },
+    "cta": {
+      "label": "Palabra clave del CTA",
+      "errors": {
+        "invalid_keyword": "Usa una sola palabra, sin espacios ni símbolos.",
+        "not_found": "No pudimos guardar el cambio. Inténtalo de nuevo."
+      }
+    },
+    "assist": {
+      "shorten": "Acortar",
+      "direct": "Más directo",
+      "tension": "Subir tensión",
+      "rewrite": "Reescribir",
+      "applying": "Aplicando...",
+      "errors": {
+        "not_found": "No pudimos aplicar el cambio.",
+        "generation_failed": "No pudimos generar la reescritura. Inténtalo de nuevo.",
+        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión."
+      }
+    },
+    "versions": {
+      "label": "Versiones:"
+    }
+  },
+  "voice": {
+    "title": "Guion confirmado",
+    "body": "Retuvimos los créditos de este video. La generación de voz y avatar llega en el próximo sprint — por ahora, tu guion queda guardado acá."
   }
 }
