@@ -10,44 +10,59 @@ import type { StructuredCallInput, StructuredCallResult } from "./llm-types";
 //
 // Verificado en vivo contra la API real (no asumido de memoria) el 4-ago-2026:
 //   - Endpoint: POST https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
-//     (API "Generate Content", hoy documentada como "Legacy" frente a la nueva
-//     Interactions API de Google -- ai.google.dev/gemini-api/docs/interactions-overview
-//     -- pero sigue soportada y sigue recibiendo los modelos "mainline" segun
-//     ai.google.dev/gemini-api/docs/migrate-to-interactions. Se eligio esta
-//     por ser la forma estable de una sola llamada sin estado de conversacion
-//     en servidor, igual que /v1/messages de Claude en este mismo directorio.)
 //   - Auth: header x-goog-api-key (confirmado con una clave invalida real:
 //     devuelve 400 con body {"error":{"code":400,"status":"INVALID_ARGUMENT",
 //     "details":[{"reason":"API_KEY_INVALID"}]}} -- NO 401. Hay que mapear
 //     400+API_KEY_INVALID a "invalid", no un 401 que esta API no usa para esto).
 //   - Salida estructurada: generationConfig.responseMimeType = "application/json"
-//     + generationConfig.responseSchema -- confirmado contra
-//     ai.google.dev/gemini-api/docs/structured-output. responseSchema es un
-//     subconjunto de OpenAPI 3.0 (NO el JSON Schema que usa el resto del
-//     pipeline): "type" en mayusculas ("OBJECT"/"STRING"/"ARRAY"/...) y sin
-//     soporte de $ref/$defs en esta variante estable -- de ahi
-//     toGeminiSchema() mas abajo, que resuelve los $ref de
-//     lib/pipeline/schemas.ts contra su propio $defs antes de enviar nada.
-//     (Google anuncio en su blog soporte mas amplio de JSON Schema, incluido
-//     $ref, via un campo nuevo response_json_schema, pero sin un ejemplo
-//     curl verificable de forma independiente al momento de escribir esto;
-//     se prefirio responseSchema, la forma con documentacion estable y
-//     contrastada. Revisar si conviene migrar cuando esa via tenga ejemplos
-//     oficiales confirmados.)
+//     + generationConfig.responseSchema -- subconjunto de OpenAPI 3.0 (NO el
+//     JSON Schema que usa el resto del pipeline): "type" en mayusculas
+//     ("OBJECT"/"STRING"/"ARRAY"/...) y sin soporte de $ref/$defs -- de ahi
+//     toGeminiSchema() mas abajo.
+//   - ⚠ additionalProperties NO es aceptado por el modelo realmente disponible
+//     hoy (probado en vivo: 400 INVALID_ARGUMENT "Unknown name
+//     additionalProperties"), pese a que la documentacion de nov-2025 decia
+//     que la API lo soportaba -- el soporte real depende del modelo, cambio
+//     entre cuando se investigo esto por primera vez y ahora. Un objeto libre
+//     (p.ej. onScreen: z.record(...) en lib/pipeline/schemas.ts) sin
+//     `properties` NI `additionalProperties` siempre vuelve como `{}` vacio
+//     -- Gemini no tiene forma de saber que claves llenar. Por eso
+//     toGeminiSchema() convierte cualquier objeto libre a un campo STRING que
+//     debe contener JSON codificado, y restoreFreeformObjects() lo decodifica
+//     de vuelta despues de parsear la respuesta, antes de la validacion zod.
+//   - ⚠ thinkingConfig.thinkingBudget NO es aceptado por el modelo realmente
+//     disponible hoy (probado en vivo: 400 INVALID_ARGUMENT) -- ese parametro
+//     es especifico de la familia gemini-2.5, no de gemini-3.x. Como distintas
+//     familias de modelo usan nombres de campo distintos (o ninguno) para
+//     apagar el "thinking", en vez de intentar seguirle el ritmo a esto se
+//     deja el thinking activado y se compensa con maxOutputTokens generoso
+//     (ver DEFAULT_MAX_TOKENS) -- confirmado en vivo que con margen suficiente
+//     el modelo igual entrega el JSON real despues de pensar.
 //   - Reintentos: mismo criterio que el resto de proveedores via fetchWithRetry.
 
 const BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models";
 
-// gemini-2.5-flash: modelo estable (no preview) confirmado en el tier
-// gratuito de Google AI Studio (1500 solicitudes/dia, 15 RPM, hasta 1M TPM --
-// ai.google.dev/gemini-api/docs/rate-limits y ai.google.dev/gemini-api/docs/pricing,
-// ago-2026). gemini-2.0-flash (el otro candidato considerado) quedo
-// descartado: deprecado el 18-feb-2026, apagado el 1-jun-2026. Existen
-// familias mas nuevas (gemini-3.x-flash) tambien listadas en el tier
-// gratuito, pero en su mayoria "-preview" -- se prefirio 2.5-flash por ser
-// GA y no preview para una integracion de produccion; revisar cuando
-// gemini-3-flash tenga un release estable sin sufijo preview.
-export const GEMINI_FLASH = "gemini-2.5-flash" as const;
+// "gemini-flash-latest": alias oficial de Google al modelo flash vigente,
+// NO un modelo fijo. Se eligio a proposito en vez de una version fechada
+// (p.ej. "gemini-2.5-flash"): probado en vivo el 4-ago-2026, "gemini-2.5-flash"
+// -- pese a figurar todavia en /v1beta/models -- devuelve 404 "This model is
+// no longer available to new users" para una clave de Google AI Studio recien
+// creada, y "gemini-2.0-flash" devuelve 429 con cuota gratuita en 0 (quedo
+// deprecado). El alias "-latest" es la unica opcion que respondio 200 con una
+// clave nueva real. Riesgo aceptado: el modelo detras del alias puede cambiar
+// sin aviso (hoy resuelve a "gemini-3.6-flash", visible en
+// response.modelVersion) -- se prefiere eso a que la integracion quede rota
+// para cualquier usuario que conecte una clave nueva, que es exactamente lo
+// que le paso al usuario de este proyecto con "gemini-2.5-flash" el mismo dia
+// que se escribio este archivo.
+export const GEMINI_FLASH = "gemini-flash-latest" as const;
+
+// Sin control sobre thinkingConfig (ver nota de arriba), el presupuesto de
+// tokens de salida tiene que cubrir tanto el "pensamiento" interno del modelo
+// como el JSON real. Probado en vivo: un ping trivial con 20 tokens ya
+// consume ~16-27 en pensamiento antes de poder emitir texto. 4096 (el default
+// que ya usaba claude.ts) deja margen de sobra para guiones completos.
+const DEFAULT_MAX_TOKENS = 4096;
 
 type GeminiPart = { text: string };
 type GeminiContent = { role: "user" | "model"; parts: GeminiPart[] };
@@ -75,12 +90,26 @@ function toGeminiType(jsonSchemaType: string): string {
   }
 }
 
+function resolveRef(node: JsonSchemaNode, defs: Record<string, JsonSchemaNode>): JsonSchemaNode {
+  if (typeof node.$ref !== "string") return node;
+  const refName = node.$ref.replace(/^#\/\$defs\//, "");
+  const target = defs[refName];
+  if (!target) throw new Error(`toGeminiSchema: no se pudo resolver ${node.$ref} contra $defs`);
+  return resolveRef(target, defs);
+}
+
 /**
  * Convierte JSON Schema estandar (el que ya usa lib/pipeline/schemas.ts, con
  * $ref/$defs y "type" en minusculas) al subconjunto de OpenAPI que exige
  * responseSchema de Gemini. Resuelve cada $ref: "#/$defs/x" inline contra
  * los $defs del propio esquema raiz -- Gemini no entiende referencias, asi
  * que el caller nunca tiene que mantener dos copias del esquema a mano.
+ *
+ * Un objeto libre (`{type:"object"}` sin `properties`, p.ej. blockSchema.onScreen)
+ * se convierte a `{type:"STRING"}`, no a `{type:"OBJECT", additionalProperties:true}`
+ * -- ver la nota de cabecera del archivo sobre por que additionalProperties no
+ * es una opcion viable hoy. `restoreFreeformObjects()` decodifica ese string de
+ * vuelta a objeto real despues de recibir la respuesta.
  */
 export function toGeminiSchema(schemaJson: JsonSchemaNode): Record<string, unknown> {
   const defs = (schemaJson.$defs as Record<string, JsonSchemaNode> | undefined) ?? {};
@@ -89,17 +118,7 @@ export function toGeminiSchema(schemaJson: JsonSchemaNode): Record<string, unkno
     if (Array.isArray(node)) return node.map(convert);
     if (node === null || typeof node !== "object") return node;
 
-    const obj = node as JsonSchemaNode;
-
-    if (typeof obj.$ref === "string") {
-      const refName = obj.$ref.replace(/^#\/\$defs\//, "");
-      const target = defs[refName];
-      if (!target) {
-        throw new Error(`toGeminiSchema: no se pudo resolver ${obj.$ref} contra $defs`);
-      }
-      return convert(target);
-    }
-
+    const obj = resolveRef(node as JsonSchemaNode, defs);
     const out: Record<string, unknown> = {};
 
     const rawType = obj.type;
@@ -124,21 +143,13 @@ export function toGeminiSchema(schemaJson: JsonSchemaNode): Record<string, unkno
       // declaramos en schemas.ts -- mejora la consistencia de la salida.
       out.propertyOrdering = Object.keys(props);
     } else if (out.type === "OBJECT") {
-      // `{ type: "object" }` sin `properties` -- es el caso de
-      // `onScreen: z.record(z.string(), z.unknown())` en blockSchema (bloque
-      // por bloque, docs/07-METODOLOGIA-GUION.md §3-bis): un objeto libre,
-      // no un objeto vacio. `additionalProperties` es soportado por la API
-      // de Gemini desde nov-2025; sin fijarlo aqui, un OBJECT sin
-      // `properties` puede terminar siempre generando `{}` porque el modelo
-      // no tiene forma de saber que claves llenar. Confirmado via
-      // ai.google.dev + github.com/googleapis/python-genai#1815.
-      out.additionalProperties = true;
-    }
-
-    if (typeof obj.additionalProperties === "boolean") {
-      out.additionalProperties = obj.additionalProperties;
-    } else if (obj.additionalProperties && typeof obj.additionalProperties === "object") {
-      out.additionalProperties = convert(obj.additionalProperties);
+      // Objeto libre (docs/07-METODOLOGIA-GUION.md §3-bis: onScreen por
+      // bloque) -- ver comentario de cabecera del archivo. Se pide como JSON
+      // codificado en un string; restoreFreeformObjects() lo decodifica.
+      out.type = "STRING";
+      out.description = [obj.description, "JSON valido codificado como string (objeto con pares clave-valor libres)."]
+        .filter(Boolean)
+        .join(" ");
     }
 
     if (Array.isArray(obj.required)) out.required = obj.required;
@@ -150,15 +161,56 @@ export function toGeminiSchema(schemaJson: JsonSchemaNode): Record<string, unkno
     if (typeof obj.maxLength === "number") out.maxLength = obj.maxLength;
     if (typeof obj.minimum === "number") out.minimum = obj.minimum;
     if (typeof obj.maximum === "number") out.maximum = obj.maximum;
-    if (typeof obj.description === "string") out.description = obj.description;
+    if (out.description === undefined && typeof obj.description === "string") out.description = obj.description;
 
     return out;
   }
 
-  // No hace falta quitar `$defs` antes de convertir: `convert()` sólo copia
-  // a `out` los campos de Schema que reconoce explícitamente, así que la
-  // clave `$defs` del nodo raíz simplemente nunca se lee ni se reenvía.
   return convert(schemaJson) as Record<string, unknown>;
+}
+
+/**
+ * Contraparte de toGeminiSchema(): recorre `data` guiado por el JSON Schema
+ * ORIGINAL (no el convertido) y, en cada punto donde el schema original tenia
+ * un objeto libre sin `properties` (que toGeminiSchema forzo a STRING),
+ * decodifica el JSON si `data` llego como string. Si el modelo no llego a
+ * emitir JSON valido en ese campo, se deja el string tal cual -- la
+ * validacion zod que sigue es la que decide si eso es aceptable o no.
+ */
+export function restoreFreeformObjects(schemaJson: JsonSchemaNode, data: unknown): unknown {
+  const defs = (schemaJson.$defs as Record<string, JsonSchemaNode> | undefined) ?? {};
+
+  function walk(node: unknown, value: unknown): unknown {
+    if (node === null || typeof node !== "object") return value;
+    const obj = resolveRef(node as JsonSchemaNode, defs);
+
+    if (obj.type === "object" && obj.properties && typeof obj.properties === "object" && value && typeof value === "object" && !Array.isArray(value)) {
+      const out: Record<string, unknown> = { ...(value as Record<string, unknown>) };
+      for (const [key, childSchema] of Object.entries(obj.properties as Record<string, unknown>)) {
+        if (key in out) out[key] = walk(childSchema, out[key]);
+      }
+      return out;
+    }
+
+    if (obj.type === "object" && !obj.properties) {
+      if (typeof value === "string") {
+        try {
+          return JSON.parse(value);
+        } catch {
+          return value;
+        }
+      }
+      return value;
+    }
+
+    if (obj.type === "array" && obj.items !== undefined && Array.isArray(value)) {
+      return value.map((item) => walk(obj.items, item));
+    }
+
+    return value;
+  }
+
+  return walk(schemaJson, data);
 }
 
 type GeminiCallOutcome =
@@ -196,14 +248,6 @@ async function callOnce(
           responseMimeType: "application/json",
           responseSchema,
           maxOutputTokens: maxTokens,
-          // gemini-2.5-flash tiene "thinking" dinámico activado por defecto,
-          // y esos tokens de razonamiento se descuentan del mismo
-          // maxOutputTokens que la salida real -- sin esto, una respuesta
-          // puede agotar el presupuesto pensando y terminar en
-          // finishReason "MAX_TOKENS" con el JSON vacío. La tarea acá es
-          // salida estructurada determinista contra un schema, no
-          // razonamiento abierto, así que se desactiva.
-          thinkingConfig: { thinkingBudget: 0 },
         },
       }),
     },
@@ -262,7 +306,7 @@ export async function generateStructured<T>(
       input.system,
       contents,
       responseSchema,
-      input.maxTokens ?? 4096,
+      input.maxTokens ?? DEFAULT_MAX_TOKENS,
     );
 
     if (!result.ok) {
@@ -271,7 +315,8 @@ export async function generateStructured<T>(
       continue;
     }
 
-    const parsed = input.schema.safeParse(result.input);
+    const restored = restoreFreeformObjects(input.schemaJson, result.input);
+    const parsed = input.schema.safeParse(restored);
     if (parsed.success) return { ok: true, data: parsed.data };
 
     if (attempt === maxAttempts - 1) return { ok: false, reason: "invalid_json" };
@@ -300,9 +345,9 @@ export type GeminiVerifyResult = {
 };
 
 /**
- * Llamada real minima (maxOutputTokens bajo, sin responseSchema) para
+ * Llamada real minima (maxOutputTokens con margen, sin responseSchema) para
  * validar la clave. Estados confirmados contra la API real (no asumidos de
- * memoria, probado el 4-ago-2026 con una clave invalida):
+ * memoria, probado el 4-ago-2026 con una clave invalida real):
  *   - Clave invalida: HTTP 400 (NO 401) con
  *     error.details[0].reason === "API_KEY_INVALID".
  *   - Sin acceso al proyecto/API no habilitada: 403 PERMISSION_DENIED.
@@ -326,10 +371,7 @@ export async function verifyKey(apiKey: string): Promise<GeminiVerifyResult> {
       },
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ text: "ping" }] }],
-        // thinkingBudget: 0 por el mismo motivo que en callOnce -- sin esto,
-        // este ping mínimo puede terminar en MAX_TOKENS por el thinking
-        // dinámico y no decir nada real sobre si la clave sirve para generar.
-        generationConfig: { maxOutputTokens: 8, thinkingConfig: { thinkingBudget: 0 } },
+        generationConfig: { maxOutputTokens: 64 },
       }),
     },
     { maxAttempts: 2 },
