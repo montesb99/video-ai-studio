@@ -1,9 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { getProposalsScreenData } from "./data";
-import { ProposalCard } from "./_components/proposal-card";
+import { ProposalsGrid } from "./_components/proposals-grid";
 import { RegenerateButton } from "./_components/regenerate-button";
 
-export const maxDuration = 60;
+// selectProposal encadena select_proposal (RPC, <1s) + runGenerateScript
+// completo — el mismo trabajo al que guion/page.tsx le dedica sus 60s
+// propios. Sin este ajuste, esta ruta cortaba la función a mitad de la
+// generación con los 60s por defecto, antes de que el guion terminara.
+export const maxDuration = 70;
 
 export default async function ProposalsPage({ params }: { params: Promise<{ projectId: string }> }) {
   const { projectId } = await params;
@@ -25,16 +29,7 @@ export default async function ProposalsPage({ params }: { params: Promise<{ proj
           {t("empty")}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {proposals.map((proposal) => (
-            <ProposalCard
-              key={proposal.id}
-              projectId={projectId}
-              proposal={proposal}
-              hasSelection={proposals.some((p) => p.isSelected)}
-            />
-          ))}
-        </div>
+        <ProposalsGrid projectId={projectId} proposals={proposals} />
       )}
     </div>
   );

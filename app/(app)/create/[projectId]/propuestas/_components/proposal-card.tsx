@@ -1,34 +1,29 @@
 "use client";
 
-import { useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { CheckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { selectProposal } from "../actions";
 import { ViralityBadge } from "./virality-badge";
 import type { ProposalRow } from "../data";
 
 export function ProposalCard({
-  projectId,
   proposal,
   hasSelection,
+  disabled,
+  isSelecting,
+  onSelect,
+  error,
 }: {
-  projectId: string;
   proposal: ProposalRow;
   hasSelection: boolean;
+  /** Alguna propuesta (esta u otra) se está eligiendo/generando ahora mismo. */
+  disabled: boolean;
+  /** Esta tarjeta puntual es la que se está generando. */
+  isSelecting: boolean;
+  onSelect: () => void;
+  error: string | null;
 }) {
   const t = useTranslations("proposals");
-  const [isPending, startTransition] = useTransition();
-
-  function handleSelect() {
-    startTransition(async () => {
-      try {
-        await selectProposal(projectId, proposal.id);
-      } catch {
-        // silencioso — el usuario puede volver a hacer clic
-      }
-    });
-  }
 
   return (
     <div
@@ -62,11 +57,13 @@ export function ProposalCard({
       <Button
         className="mt-4 bg-gradient-accent text-white hover:brightness-110"
         size="sm"
-        disabled={isPending || proposal.isSelected}
-        onClick={handleSelect}
+        disabled={disabled || proposal.isSelected}
+        onClick={onSelect}
       >
-        {proposal.isSelected ? t("selected") : t("selectButton")}
+        {proposal.isSelected ? t("selected") : isSelecting ? t("selecting") : t("selectButton")}
       </Button>
+
+      {error && <p className="mt-2 text-xs text-danger">{t(`selectErrors.${error}`)}</p>}
     </div>
   );
 }

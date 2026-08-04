@@ -251,6 +251,7 @@
     "regenerateButton": "Generar otras 3",
     "regenerating": "Generando...",
     "selectButton": "Elegir esta",
+    "selecting": "Generando guion...",
     "selected": "Elegida",
     "estimatedSeconds": "~{seconds}s",
     "ctaKeyword": "Palabra clave: {keyword}",
@@ -259,6 +260,12 @@
       "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
       "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
       "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
+    },
+    "selectErrors": {
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "save_failed": "No pudimos elegir esa propuesta. Inténtalo de nuevo.",
+      "generation_failed": "No pudimos elegir esa propuesta. Inténtalo de nuevo.",
+      "already_generating": "Ya hay un guion generándose para este proyecto. Espera un momento."
     }
   },
   "script": {
@@ -272,7 +279,8 @@
       "missing_proposal": "Elige una propuesta antes de generar el guion.",
       "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
       "generation_failed": "No pudimos generar el guion. Inténtalo de nuevo.",
-      "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
+      "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones.",
+      "already_generating": "Ya hay un guion generándose para este proyecto. Espera un momento."
     },
     "blocks": {
       "hook": "Hook",
