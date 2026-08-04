@@ -91,7 +91,8 @@
   },
   "integrations": {
     "title": "Integraciones",
-    "subtitle": "Conecta tus cuentas para generar voz, avatar e imágenes con tu propia clave.",
+    "subtitle": "Conecta tus cuentas para generar ideas, guion, voz, avatar e imágenes con tu propia clave.",
+    "optional": "Opcional",
     "providers": {
       "elevenlabs": {
         "name": "ElevenLabs",
@@ -104,6 +105,14 @@
       "openai": {
         "name": "OpenAI",
         "description": "Genera las imágenes de escena cuando no subes una"
+      },
+      "anthropic": {
+        "name": "Claude (Anthropic)",
+        "description": "Genera las ideas y el guion de tus videos"
+      },
+      "gemini": {
+        "name": "Google Gemini",
+        "description": "Alternativa gratuita a Claude para generar ideas y guion"
       }
     },
     "status": {
@@ -230,7 +239,8 @@
       "generateErrors": {
         "missing_source": "Agrega al menos una fuente lista antes de generar propuestas.",
         "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
-        "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo."
+        "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
+        "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
       }
     }
   },
@@ -247,7 +257,8 @@
     "generateErrors": {
       "missing_source": "Falta al menos una fuente lista.",
       "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
-      "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo."
+      "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
+      "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
     }
   },
   "script": {
@@ -260,7 +271,8 @@
     "generateErrors": {
       "missing_proposal": "Elige una propuesta antes de generar el guion.",
       "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
-      "generation_failed": "No pudimos generar el guion. Inténtalo de nuevo."
+      "generation_failed": "No pudimos generar el guion. Inténtalo de nuevo.",
+      "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
     },
     "blocks": {
       "hook": "Hook",
@@ -295,7 +307,8 @@
       "errors": {
         "not_found": "No pudimos aplicar el cambio.",
         "generation_failed": "No pudimos generar la reescritura. Inténtalo de nuevo.",
-        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión."
+        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+        "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
       }
     },
     "versions": {

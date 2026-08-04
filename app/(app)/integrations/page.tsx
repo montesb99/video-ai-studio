@@ -3,7 +3,7 @@ import { IntegrationCard } from "./_components/integration-card";
 import { getCatalogCounts, getIntegrations } from "./data";
 import type { IntegrationProvider } from "./actions";
 
-const PROVIDERS: IntegrationProvider[] = ["elevenlabs", "heygen", "openai"];
+const PROVIDERS: IntegrationProvider[] = ["elevenlabs", "heygen", "openai", "anthropic", "gemini"];
 
 export default async function IntegrationsPage() {
   const t = await getTranslations("integrations");
@@ -24,6 +24,7 @@ export default async function IntegrationsPage() {
             provider={provider}
             summary={integrations.find((i) => i.provider === provider)}
             heygenActive={provider === "elevenlabs" ? heygenActive : undefined}
+            optional={provider === "anthropic" || provider === "gemini"}
             catalogCounts={catalogCounts}
           />
         ))}

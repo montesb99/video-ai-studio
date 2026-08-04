@@ -119,13 +119,16 @@ export async function removeSource(projectId: string, sourceId: string): Promise
   return { ok: !error };
 }
 
-export type GenerateProposalsResult = { ok: false; reason: "missing_source" | "no_workspace" | "generation_failed" };
+export type GenerateProposalsResult = {
+  ok: false;
+  reason: "missing_source" | "no_workspace" | "generation_failed" | "not_configured";
+};
 
 export async function generateProposals(projectId: string): Promise<GenerateProposalsResult> {
   const owned = await assertProjectOwnership(projectId);
   if (!owned.ok) return { ok: false, reason: "no_workspace" };
 
-  const outcome = await runGenerateProposals(owned.supabase, projectId);
+  const outcome = await runGenerateProposals(owned.supabase, owned.workspaceId, projectId);
   if (!outcome.ok) return outcome;
 
   revalidatePath(`/create/${projectId}`);

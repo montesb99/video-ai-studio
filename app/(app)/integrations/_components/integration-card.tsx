@@ -61,12 +61,15 @@ export function IntegrationCard({
   provider,
   summary,
   heygenActive = false,
+  optional = false,
   catalogCounts,
 }: {
   provider: IntegrationProvider;
   summary: IntegrationSummary | undefined;
   /** Solo relevante para la tarjeta de ElevenLabs: oculta el panel guiado de vinculación hasta que HeyGen también esté conectado. */
   heygenActive?: boolean;
+  /** docs/03-INTEGRATIONS.md §Resumen: proveedores con clave de plataforma de respaldo (Claude, Gemini) no son críticos — se marcan como opcionales. */
+  optional?: boolean;
   catalogCounts?: CatalogCounts;
 }) {
   const t = useTranslations("integrations");
@@ -137,7 +140,14 @@ export function IntegrationCard({
     <div className="rounded-2xl border border-white/6 bg-surface-panel p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="text-sm font-semibold">{t(`providers.${provider}.name`)}</div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm font-semibold">{t(`providers.${provider}.name`)}</span>
+            {optional && (
+              <span className="rounded-full border border-white/12 px-2 py-0.5 text-[11px] text-white/44">
+                {t("optional")}
+              </span>
+            )}
+          </div>
           <div className="mt-0.5 text-[13px] text-white/68">
             {t(`providers.${provider}.description`)}
           </div>

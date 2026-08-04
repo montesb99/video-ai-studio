@@ -9,7 +9,7 @@ export async function regenerateProposals(projectId: string): Promise<GeneratePr
   const owned = await assertProjectOwnership(projectId);
   if (!owned.ok) return { ok: false, reason: "generation_failed" };
 
-  const outcome = await runGenerateProposals(owned.supabase, projectId);
+  const outcome = await runGenerateProposals(owned.supabase, owned.workspaceId, projectId);
   revalidatePath(`/create/${projectId}/propuestas`);
   return outcome;
 }

@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { assertProjectOwnership } from "../shared";
 import { buildSourceContext } from "@/lib/pipeline/context";
 import { composeSystemPrompt, getPromptProfile, getNicheSystemPrompt } from "@/lib/pipeline/prompts";
-import { generateStructured, CLAUDE_SONNET } from "@/lib/providers/claude";
+import { resolveGenerator } from "@/lib/pipeline/llm-provider";
 import {
   scriptBlocksSchema,
   SCRIPT_BLOCKS_JSON_SCHEMA,
@@ -32,12 +32,12 @@ function escapeRegExp(value: string): string {
 
 export type GenerateScriptResult =
   | { ok: true; scriptId: string }
-  | { ok: false; reason: "missing_proposal" | "generation_failed" | "no_workspace" };
+  | { ok: false; reason: "missing_proposal" | "generation_failed" | "no_workspace" | "not_configured" };
 
 export async function generateScript(projectId: string): Promise<GenerateScriptResult> {
   const owned = await assertProjectOwnership(projectId);
   if (!owned.ok) return { ok: false, reason: "no_workspace" };
-  const { supabase } = owned;
+  const { supabase, workspaceId } = owned;
 
   const { data: project } = await supabase.from("projects").select("niche_slug").eq("id", projectId).single();
   if (!project) return { ok: false, reason: "no_workspace" };
@@ -89,8 +89,10 @@ export async function generateScript(projectId: string): Promise<GenerateScriptR
     context,
   ].join("\n");
 
-  const result = await generateStructured({
-    model: CLAUDE_SONNET,
+  const { generate, model, apiKey } = await resolveGenerator(supabase, workspaceId);
+  const result = await generate({
+    apiKey,
+    model,
     system,
     userContent,
     toolName: "emitir_guion",
@@ -99,7 +101,9 @@ export async function generateScript(projectId: string): Promise<GenerateScriptR
     schema: scriptBlocksSchema,
   });
 
-  if (!result.ok) return { ok: false, reason: "generation_failed" };
+  if (!result.ok) {
+    return { ok: false, reason: result.reason === "not_configured" ? "not_configured" : "generation_failed" };
+  }
 
   let blocksJson: ScriptBlocksOutput;
   try {
@@ -127,7 +131,7 @@ export async function generateScript(projectId: string): Promise<GenerateScriptR
       blocks_json: blocksJson,
       word_count: wordCountOf(spokenText),
       estimated_seconds: estimateSeconds(spokenText),
-      model: CLAUDE_SONNET,
+      model,
     })
     .select("id")
     .single();
@@ -140,7 +144,7 @@ export async function generateScript(projectId: string): Promise<GenerateScriptR
 
 export type ApplyAssistResult =
   | { ok: true; newVersion: number }
-  | { ok: false; reason: "not_found" | "generation_failed" | "no_workspace" };
+  | { ok: false; reason: "not_found" | "generation_failed" | "no_workspace" | "not_configured" };
 
 export async function applyAssist(
   projectId: string,
@@ -149,7 +153,7 @@ export async function applyAssist(
 ): Promise<ApplyAssistResult> {
   const owned = await assertProjectOwnership(projectId);
   if (!owned.ok) return { ok: false, reason: "no_workspace" };
-  const { supabase } = owned;
+  const { supabase, workspaceId } = owned;
 
   const { data: scriptRow } = await supabase
     .from("scripts")
@@ -183,8 +187,10 @@ export async function applyAssist(
     `Guion completo (contexto, no editar lo demás): ${JSON.stringify(blocks)}`,
   ].join("\n");
 
-  const result = await generateStructured({
-    model: CLAUDE_SONNET,
+  const { generate, model, apiKey } = await resolveGenerator(supabase, workspaceId);
+  const result = await generate({
+    apiKey,
+    model,
     system,
     userContent,
     toolName: "emitir_bloque",
@@ -193,7 +199,9 @@ export async function applyAssist(
     schema: editAssistSchema,
   });
 
-  if (!result.ok) return { ok: false, reason: "generation_failed" };
+  if (!result.ok) {
+    return { ok: false, reason: result.reason === "not_configured" ? "not_configured" : "generation_failed" };
+  }
 
   // Claude puede tardar varios segundos: se vuelve a leer blocks_json justo
   // antes de mergear para no pisar una edición manual (updateBlockText) que
@@ -225,7 +233,7 @@ export async function applyAssist(
     blocks_json: normalized,
     word_count: wordCountOf(spokenText),
     estimated_seconds: estimateSeconds(spokenText),
-    model: CLAUDE_SONNET,
+    model,
   });
   if (insertError) return { ok: false, reason: "generation_failed" };
 

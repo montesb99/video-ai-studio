@@ -12,7 +12,8 @@
 | Proveedor | Paso | Modelo de clave | Crítico |
 |---|---|---|---|
 | **Apify** | 1 — ingesta de redes | BYOK (opcional) | No |
-| **Claude** | 1, 2, 3, 5 | Nuestra | Sí |
+| **Claude** | 1, 2, 3, 5 | BYOK opcional > nuestra (respaldo) — Sprint 3 Parte E | Sí |
+| **Gemini** | 2, 3 | BYOK (alternativa gratuita a Claude, sin respaldo de plataforma) | No |
 | **ElevenLabs** | 4 — audio + tiempos | **BYOK** | **Sí** |
 | **GPT Image** | 5b — frames de escena | BYOK | Sí |
 | **HeyGen** | 6 — avatar | **BYOK** | **Sí** |
@@ -28,6 +29,8 @@
 | **HeyGen** | En nuestra plataforma | Listar avatares y looks, generar el video del avatar sobre ese audio |
 | **OpenAI** | En nuestra plataforma | Generar imágenes de escena cuando no hay recurso subido |
 | **Apify** | En nuestra plataforma (opcional) | Analizar enlaces de redes en el paso 1 |
+| **Anthropic** | En nuestra plataforma (opcional, Sprint 3 Parte E) | Prioridad sobre la clave de plataforma para ideación/guion (pasos 1, 2, 3, 5) |
+| **Gemini** | En nuestra plataforma (opcional, Sprint 3 Parte E) | Alternativa gratuita a Claude para ideación/guion (pasos 2, 3) si no hay BYOK de Anthropic |
 | **Instagram** | OAuth desde nuestra plataforma | Métricas del panel de rendimiento |
 
 La música **no requiere ninguna clave**: es un catálogo libre de derechos que servimos nosotros.
@@ -435,6 +438,10 @@ npx hyperframes cloud render --dry-run --json
 | 5 | `claude-sonnet-5` | Analizar imágenes/videos subidos y asignarlos a slots |
 
 Opus 5 solo donde el razonamiento estructural paga; Sonnet 5 donde manda la latencia.
+
+### BYOK opcional (Sprint 3 Parte E)
+
+Desde `/integrations` un workspace puede conectar su propia clave de **Anthropic** o de **Google Gemini** (tier gratuito de Google AI Studio, sin tarjeta) para generar ideas y guion. Prioridad de resolución (`lib/pipeline/llm-provider.ts#resolveGenerator`): BYOK Anthropic > BYOK Gemini > `ANTHROPIC_API_KEY` de plataforma. Si el workspace no conecta ninguna, el comportamiento es el de siempre — la clave de plataforma sigue siendo el respaldo, no un requisito eliminado. `lib/providers/gemini.ts` implementa el mismo contrato (`StructuredCallInput`/`StructuredCallResult` en `lib/providers/llm-types.ts`) traduciendo el JSON Schema del pipeline al subconjunto de OpenAPI que exige `responseSchema` de Gemini.
 
 ### Salida estructurada obligatoria
 

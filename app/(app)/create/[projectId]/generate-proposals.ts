@@ -2,12 +2,12 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { buildSourceContext } from "@/lib/pipeline/context";
 import { composeSystemPrompt, getPromptProfile, getNicheSystemPrompt } from "@/lib/pipeline/prompts";
-import { generateStructured, CLAUDE_SONNET } from "@/lib/providers/claude";
+import { resolveGenerator } from "@/lib/pipeline/llm-provider";
 import { proposalsSchema, PROPOSALS_JSON_SCHEMA } from "@/lib/pipeline/schemas";
 
 export type GenerateProposalsOutcome =
   | { ok: true }
-  | { ok: false; reason: "missing_source" | "generation_failed" };
+  | { ok: false; reason: "missing_source" | "generation_failed" | "not_configured" };
 
 /**
  * Núcleo del paso 2 (ideating) — compartido entre idea/actions.ts
@@ -17,6 +17,7 @@ export type GenerateProposalsOutcome =
  */
 export async function runGenerateProposals(
   supabase: Awaited<ReturnType<typeof createClient>>,
+  workspaceId: string,
   projectId: string,
 ): Promise<GenerateProposalsOutcome> {
   const { data: project } = await supabase
@@ -57,8 +58,10 @@ export async function runGenerateProposals(
   }
 
   const system = composeSystemPrompt({ methodologyBase, nicheProfile, taskInstructions });
-  const result = await generateStructured({
-    model: CLAUDE_SONNET,
+  const { generate, model, apiKey } = await resolveGenerator(supabase, workspaceId);
+  const result = await generate({
+    apiKey,
+    model,
     system,
     userContent: `Tipo de video: ${project.video_type}.\n\n${context}`,
     toolName: "emitir_propuestas",
@@ -67,7 +70,9 @@ export async function runGenerateProposals(
     schema: proposalsSchema,
   });
 
-  if (!result.ok) return { ok: false, reason: "generation_failed" };
+  if (!result.ok) {
+    return { ok: false, reason: result.reason === "not_configured" ? "not_configured" : "generation_failed" };
+  }
 
   const { data: existing } = await supabase
     .from("idea_proposals")
@@ -90,7 +95,7 @@ export async function runGenerateProposals(
     cta_text: p.cta.texto,
     cta_keyword: p.cta.palabraClave,
     estimated_seconds: p.duracionEstimada,
-    model: CLAUDE_SONNET,
+    model,
   }));
 
   const { error: insertError } = await supabase.from("idea_proposals").insert(rows);

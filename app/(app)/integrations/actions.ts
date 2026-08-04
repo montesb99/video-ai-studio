@@ -7,8 +7,10 @@ import { decryptSecret, encryptSecret, lastFourOf } from "@/lib/crypto/vault";
 import * as elevenlabs from "@/lib/providers/elevenlabs";
 import * as heygen from "@/lib/providers/heygen";
 import * as openai from "@/lib/providers/openai";
+import * as claude from "@/lib/providers/claude";
+import * as gemini from "@/lib/providers/gemini";
 
-export type IntegrationProvider = "elevenlabs" | "heygen" | "openai";
+export type IntegrationProvider = "elevenlabs" | "heygen" | "openai" | "anthropic" | "gemini";
 
 type ProviderVerification = {
   status: "active" | "invalid" | "unverified";
@@ -33,6 +35,14 @@ async function verifyProviderKey(
     case "openai": {
       const r = await openai.verifyKey(apiKey);
       return { status: r.status, missingPermission: r.missingPermission, amber: r.amber, scopes: r.scopes };
+    }
+    case "anthropic": {
+      const r = await claude.verifyKey(apiKey);
+      return { status: r.status, amber: r.amber, scopes: r.scopes };
+    }
+    case "gemini": {
+      const r = await gemini.verifyKey(apiKey);
+      return { status: r.status, amber: r.amber, scopes: r.scopes };
     }
   }
 }

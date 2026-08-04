@@ -1,42 +1,26 @@
 import "server-only";
 import { fetchWithRetry } from "./http";
-import type { z } from "zod";
+import type { StructuredCallInput, StructuredCallResult } from "./llm-types";
 
-// docs/03-INTEGRATIONS.md — Claude es "nuestra" clave (no BYOK), model
-// sonnet-5 para todo lo interactivo (ideación/guion/ediciones), opus-5
-// reservado a análisis estructural que se llama una sola vez (docs/07 §8).
+// docs/03-INTEGRATIONS.md — Claude es el proveedor de referencia para
+// ideación/guion: modelo sonnet-5 para todo lo interactivo (ideación/guion/
+// ediciones), opus-5 reservado a análisis estructural que se llama una sola
+// vez (docs/07 §8). Desde Sprint 3 Parte E es BYOK-primero (el workspace
+// puede conectar su propia clave en /integrations) con la ANTHROPIC_API_KEY
+// de plataforma como respaldo si no conecta ninguna — ver
+// lib/pipeline/llm-provider.ts#resolveGenerator, que decide qué apiKey pasar.
 
 const BASE_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_VERSION = "2023-06-01";
 
 export const CLAUDE_SONNET = "claude-sonnet-5" as const;
 export const CLAUDE_OPUS = "claude-opus-5" as const;
-type ClaudeModel = typeof CLAUDE_SONNET | typeof CLAUDE_OPUS;
-
-export type StructuredCallInput<T> = {
-  model: ClaudeModel;
-  /** Ya compuesto: metodología + nicho + tarea + reglas anti-injection (lib/pipeline/prompts.ts#composeSystemPrompt). */
-  system: string;
-  /** Incluye <fuentes><fuente id=".." tipo=".."> delimitadas (lib/pipeline/context.ts#buildSourceContext). */
-  userContent: string;
-  toolName: string;
-  toolDescription: string;
-  schemaJson: Record<string, unknown>;
-  schema: z.ZodType<T>;
-  maxTokens?: number;
-  /** Default 2: 1 intento + 1 con el error de esquema reforzado — llamada interactiva, el usuario espera en la UI. */
-  maxAttempts?: number;
-};
-
-export type StructuredCallResult<T> =
-  | { ok: true; data: T }
-  | { ok: false; reason: "invalid_json" | "http_error" | "blocked" | "rate_limited" | "not_configured" };
 
 type ClaudeMessage = { role: "user" | "assistant"; content: string };
 
 async function callOnce(
   apiKey: string,
-  model: ClaudeModel,
+  model: string,
   system: string,
   messages: ClaudeMessage[],
   toolName: string,
@@ -94,15 +78,14 @@ async function callOnce(
 export async function generateStructured<T>(
   input: StructuredCallInput<T>,
 ): Promise<StructuredCallResult<T>> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) return { ok: false, reason: "not_configured" };
+  if (!input.apiKey) return { ok: false, reason: "not_configured" };
 
   const maxAttempts = input.maxAttempts ?? 2;
   const messages: ClaudeMessage[] = [{ role: "user", content: input.userContent }];
 
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     const result = await callOnce(
-      apiKey,
+      input.apiKey,
       input.model,
       input.system,
       messages,
@@ -134,4 +117,56 @@ export async function generateStructured<T>(
   }
 
   return { ok: false, reason: "invalid_json" };
+}
+
+export type ClaudeVerifyResult = {
+  status: "active" | "invalid" | "unverified";
+  amber?: "no_credits" | "rate_limited";
+  scopes: { scriptGeneration: boolean };
+};
+
+/**
+ * Llamada real mínima (max_tokens bajo, sin tools) para validar la clave.
+ * Estados confirmados contra la API real (no asumidos de memoria): 401 clave
+ * inválida; 400 invalid_request_error con "credit balance" en el mensaje es
+ * el caso real que Anthropic devuelve para saldo agotado (no reserva un 402
+ * dedicado, a diferencia de lo documentado para otros proveedores); 429
+ * límite de tasa.
+ */
+export async function verifyKey(apiKey: string): Promise<ClaudeVerifyResult> {
+  const response = await fetchWithRetry(
+    BASE_URL,
+    {
+      method: "POST",
+      headers: {
+        "x-api-key": apiKey,
+        "anthropic-version": ANTHROPIC_VERSION,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: CLAUDE_SONNET,
+        max_tokens: 8,
+        messages: [{ role: "user", content: "ping" }],
+      }),
+    },
+    { maxAttempts: 2 },
+  );
+
+  if (response.status === 401 || response.status === 403) {
+    return { status: "invalid", scopes: { scriptGeneration: false } };
+  }
+  if (response.status === 429) {
+    return { status: "active", amber: "rate_limited", scopes: { scriptGeneration: true } };
+  }
+  if (response.status === 400) {
+    const body = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
+    if (body?.error?.message?.toLowerCase().includes("credit balance")) {
+      return { status: "active", amber: "no_credits", scopes: { scriptGeneration: true } };
+    }
+    return { status: "invalid", scopes: { scriptGeneration: false } };
+  }
+  if (!response.ok) {
+    return { status: "unverified", scopes: { scriptGeneration: false } };
+  }
+  return { status: "active", scopes: { scriptGeneration: true } };
 }
