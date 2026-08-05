@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { unstable_rethrow } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { confirmScript } from "../actions";
@@ -38,7 +39,10 @@ export function ScriptEditor({
             available: "available" in result ? result.available : undefined,
           });
         }
-      } catch {
+      } catch (err) {
+        // confirmScript redirige a /voz en éxito — sin relanzar la señal de
+        // navegación de Next, este catch la trataba como un fallo real.
+        unstable_rethrow(err);
         setConfirmError({ reason: "save_failed" });
       }
     });

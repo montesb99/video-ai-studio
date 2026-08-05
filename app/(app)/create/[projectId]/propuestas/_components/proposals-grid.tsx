@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { unstable_rethrow } from "next/navigation";
 import { selectProposal } from "../actions";
 import { ProposalCard } from "./proposal-card";
 import type { ProposalRow } from "../data";
@@ -25,15 +26,17 @@ export function ProposalsGrid({ projectId, proposals }: { projectId: string; pro
     setSelectingId(proposalId);
     startTransition(async () => {
       try {
-        // En éxito, selectProposal redirige (lanza NEXT_REDIRECT, Next.js lo
-        // atraviesa este try/catch sin que caiga en el catch) — así que si la
-        // promesa resuelve con un valor, es porque falló sin redirigir.
+        // En éxito, selectProposal redirige — unstable_rethrow relanza esa
+        // señal interna de Next (digest NEXT_REDIRECT) en vez de dejar que
+        // el catch de acá abajo la trate como un fallo real y muestre un
+        // error rojo momentáneo pese a que la navegación igual ocurre.
         const result = await selectProposal(projectId, proposalId);
         if (result && !result.ok) {
           setError({ proposalId, reason: result.reason });
           setSelectingId(null);
         }
-      } catch {
+      } catch (err) {
+        unstable_rethrow(err);
         setError({ proposalId, reason: "generation_failed" });
         setSelectingId(null);
       }

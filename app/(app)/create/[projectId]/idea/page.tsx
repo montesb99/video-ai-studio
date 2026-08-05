@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { getIdeaScreenData } from "./data";
 import { TypeSelector } from "./_components/type-selector";
 import { NichePicker } from "./_components/niche-picker";
-import { SourceComposer } from "./_components/source-composer";
+import { IdeaComposer } from "./_components/idea-composer";
 
 // Paso 1 (ingesta de una fuente, hasta ~90s) y paso 2 (ideación, 8-15s)
 // síncronos, sin Inngest todavía (Sprint 5) — ver generateProposals en
@@ -23,7 +23,12 @@ export default async function IdeaPage({ params }: { params: Promise<{ projectId
 
       <TypeSelector projectId={projectId} value={project.videoType} />
       <NichePicker projectId={projectId} niches={niches} value={project.nicheSlug} />
-      <SourceComposer projectId={projectId} sources={sources} videoType={project.videoType} />
+      <IdeaComposer
+        projectId={projectId}
+        sources={sources}
+        videoType={project.videoType}
+        initialIdeaPrompt={project.ideaPrompt}
+      />
     </div>
   );
 }

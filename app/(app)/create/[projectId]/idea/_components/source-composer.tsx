@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { attachTextSource, attachLinkSource, generateProposals } from "../actions";
+import { attachTextSource, attachLinkSource } from "../actions";
 import { SourceChip } from "./source-chip";
 import type { SourceRow } from "../data";
 
@@ -15,28 +15,27 @@ type Mode = "text" | "link";
 // trunca ahí). Se avisa antes de llegar al tope duro, no después.
 const TOO_MUCH_CONTEXT_TOKENS = 35_000;
 
+/**
+ * Panel de fuentes ADJUNTAS — opcional (salvo "Desde un enlace", donde
+ * IdeaComposer exige un enlace listo antes de habilitar Generar). La idea
+ * obligatoria vive en IdeaComposer, guardada en projects.idea_prompt, no acá:
+ * este componente solo agrega contexto complementario a input_sources.
+ */
 export function SourceComposer({
   projectId,
   sources,
-  videoType,
+  defaultMode,
 }: {
   projectId: string;
   sources: SourceRow[];
-  videoType: string;
+  defaultMode: Mode;
 }) {
   const t = useTranslations("idea.source");
-  const [mode, setMode] = useState<Mode>(videoType === "desde_enlace" ? "link" : "text");
+  const [mode, setMode] = useState<Mode>(defaultMode);
   const [value, setValue] = useState("");
   const [isAdding, startAdding] = useTransition();
-  const [isGenerating, startGenerating] = useTransition();
-  const [generateError, setGenerateError] = useState<string | null>(null);
 
   const readySources = sources.filter((s) => s.status === "ready");
-  const hasReadyLink = readySources.some((s) => s.kind === "link");
-  // docs/04-UX-FLOWS.md §5: con "Desde un enlace" el enlace es obligatorio,
-  // no alcanza con haber pegado solo texto.
-  const meetsTypeRequirement = videoType === "desde_enlace" ? hasReadyLink : readySources.length > 0;
-  const hasPendingSource = sources.some((s) => s.status === "pending");
   const totalTokens = readySources.reduce((sum, s) => sum + (s.tokensEst ?? 0), 0);
   const tooMuchContext = totalTokens > TOO_MUCH_CONTEXT_TOKENS;
 
@@ -53,22 +52,13 @@ export function SourceComposer({
     });
   }
 
-  function handleGenerate() {
-    setGenerateError(null);
-    startGenerating(async () => {
-      try {
-        const result = await generateProposals(projectId);
-        if (result && !result.ok) setGenerateError(result.reason);
-      } catch {
-        setGenerateError("generation_failed");
-      }
-    });
-  }
-
   return (
     <div className="mb-6">
       <div className="mb-2 flex items-center justify-between">
-        <div className="text-xs font-medium text-white/68">{t("label")}</div>
+        <div>
+          <div className="text-xs font-medium text-white/68">{t("label")}</div>
+          <div className="text-[11px] text-white/44">{t("hint")}</div>
+        </div>
         <div className="flex gap-1 rounded-lg border border-white/6 p-0.5 text-xs">
           <button
             type="button"
@@ -96,7 +86,7 @@ export function SourceComposer({
           placeholder={t("textPlaceholder")}
           aria-label={t("label")}
           disabled={isAdding}
-          rows={4}
+          rows={3}
           className="mb-2"
         />
       ) : (
@@ -123,21 +113,6 @@ export function SourceComposer({
       )}
 
       {tooMuchContext && <p className="mt-3 text-xs text-warning">{t("tooMuch")}</p>}
-
-      <div className="mt-6 border-t border-white/6 pt-5">
-        <Button
-          className="bg-gradient-accent text-white hover:brightness-110"
-          disabled={isGenerating || hasPendingSource || !meetsTypeRequirement}
-          onClick={handleGenerate}
-        >
-          {isGenerating ? t("generating") : t("generateButton")}
-        </Button>
-        {hasPendingSource && <p className="mt-2 text-xs text-white/44">{t("waitingSources")}</p>}
-        {!hasPendingSource && videoType === "desde_enlace" && !hasReadyLink && (
-          <p className="mt-2 text-xs text-white/44">{t("missingLink")}</p>
-        )}
-        {generateError && <p className="mt-2 text-xs text-danger">{t(`generateErrors.${generateError}`)}</p>}
-      </div>
     </div>
   );
 }

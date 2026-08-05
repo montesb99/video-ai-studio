@@ -33,6 +33,24 @@ export async function setNiche(projectId: string, nicheSlug: string | null): Pro
   return { ok: !error };
 }
 
+// Autoguardado de la casilla de idea (onBlur) para que sobreviva a un
+// refresh antes de generar — generateProposals además la persiste de nuevo
+// de forma atómica junto con la generación, así que este autoguardado es
+// una red de conveniencia, no la única escritura.
+export async function setIdeaPrompt(projectId: string, ideaPrompt: string): Promise<{ ok: boolean }> {
+  const owned = await assertProjectOwnership(projectId);
+  if (!owned.ok) return { ok: false };
+
+  const trimmed = ideaPrompt.trim();
+  const { error } = await owned.supabase
+    .from("projects")
+    .update({ idea_prompt: trimmed || null })
+    .eq("id", projectId);
+
+  revalidatePath(`/create/${projectId}/idea`);
+  return { ok: !error };
+}
+
 export type AttachSourceResult =
   | { ok: true; sourceId: string }
   | { ok: false; reason: "empty" | "no_workspace" | "save_failed" };
@@ -121,12 +139,26 @@ export async function removeSource(projectId: string, sourceId: string): Promise
 
 export type GenerateProposalsResult = {
   ok: false;
-  reason: "missing_source" | "no_workspace" | "generation_failed" | "not_configured";
+  reason: "missing_idea" | "missing_link" | "no_workspace" | "generation_failed" | "not_configured";
 };
 
-export async function generateProposals(projectId: string): Promise<GenerateProposalsResult> {
+// ideaPrompt llega explícito (no se confía en que el autoguardado de
+// setIdeaPrompt ya haya corrido) y se persiste acá mismo, en la misma
+// invocación que dispara la generación — así no hay ventana entre "el
+// usuario tipeó y sacó el foco" y "clickeó Generar" donde una pudiera
+// llegar sin la otra.
+export async function generateProposals(projectId: string, ideaPrompt: string): Promise<GenerateProposalsResult> {
   const owned = await assertProjectOwnership(projectId);
   if (!owned.ok) return { ok: false, reason: "no_workspace" };
+
+  const trimmed = ideaPrompt.trim();
+  if (!trimmed) return { ok: false, reason: "missing_idea" };
+
+  const { error: saveError } = await owned.supabase
+    .from("projects")
+    .update({ idea_prompt: trimmed })
+    .eq("id", projectId);
+  if (saveError) return { ok: false, reason: "generation_failed" };
 
   const outcome = await runGenerateProposals(owned.supabase, owned.workspaceId, projectId);
   if (!outcome.ok) return outcome;

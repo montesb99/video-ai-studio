@@ -179,7 +179,7 @@
   },
   "idea": {
     "title": "¿De qué va tu video?",
-    "subtitle": "Cuéntanos la idea o pega una fuente — un enlace, un dato, lo que tengas.",
+    "subtitle": "Cuéntanos tu idea con tus palabras. Si tienes una fuente de apoyo, puedes adjuntarla más abajo.",
     "type": {
       "label": "Tipo de video",
       "options": {
@@ -201,18 +201,31 @@
       "label": "Nicho",
       "auto": "Detectar automáticamente"
     },
+    "ideaBox": {
+      "label": "Tu idea",
+      "placeholder": "Escribe tu idea. Por ejemplo: quiero explicar cómo la IA está reemplazando tareas repetitivas en negocios pequeños del Perú.",
+      "generating": "Generando...",
+      "generateButton": "Generar propuestas",
+      "missingIdea": "Escribe tu idea antes de generar propuestas.",
+      "waitingSources": "Esperando a que termine de procesarse una fuente.",
+      "missingLink": "Agrega un enlace para poder generar propuestas.",
+      "generateErrors": {
+        "missing_idea": "Escribe tu idea antes de generar propuestas.",
+        "missing_link": "Agrega un enlace listo para poder generar propuestas de este tipo de video.",
+        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+        "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
+        "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
+      }
+    },
     "source": {
-      "label": "Fuentes",
+      "label": "Fuentes (opcional)",
+      "hint": "Adjunta texto o un enlace de apoyo, si tienes.",
       "modeText": "Texto",
       "modeLink": "Enlace",
-      "textPlaceholder": "Escribe tu idea. Por ejemplo: quiero explicar cómo la IA está reemplazando tareas repetitivas en negocios pequeños del Perú.",
+      "textPlaceholder": "Pega el texto que quieras usar como referencia.",
       "linkPlaceholder": "https://...",
       "adding": "Agregando...",
       "addButton": "Agregar",
-      "generating": "Generando...",
-      "generateButton": "Generar propuestas",
-      "waitingSources": "Esperando a que termine de procesarse una fuente.",
-      "missingLink": "Agrega un enlace para poder generar propuestas.",
       "tooMuch": "Mucho material. Resumiremos las fuentes más largas.",
       "remove": "Quitar",
       "status": {
@@ -235,18 +248,12 @@
         "pdf_not_supported_yet": "Los PDF todavía no son compatibles como enlace directo.",
         "empty_content": "No encontramos texto para leer ahí.",
         "unexpected_error": "Algo salió mal al leer esa fuente."
-      },
-      "generateErrors": {
-        "missing_source": "Agrega al menos una fuente lista antes de generar propuestas.",
-        "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
-        "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
-        "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."
       }
     }
   },
   "proposals": {
     "title": "Elige un ángulo",
-    "subtitle": "3 propuestas distintas a partir de tus fuentes.",
+    "subtitle": "3 propuestas distintas a partir de tu idea.",
     "empty": "Todavía no hay propuestas generadas.",
     "regenerateButton": "Generar otras 3",
     "regenerating": "Generando...",
@@ -256,7 +263,8 @@
     "estimatedSeconds": "~{seconds}s",
     "ctaKeyword": "Palabra clave: {keyword}",
     "generateErrors": {
-      "missing_source": "Falta al menos una fuente lista.",
+      "missing_idea": "Falta la idea del proyecto. Vuelve al paso 1.",
+      "missing_link": "Falta un enlace listo. Vuelve al paso 1.",
       "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
       "generation_failed": "No pudimos generar las propuestas. Inténtalo de nuevo.",
       "not_configured": "No hay ninguna clave de IA conectada. Conéctala en Integraciones."

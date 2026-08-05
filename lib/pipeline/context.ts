@@ -7,7 +7,7 @@ export type ContextSource = {
   extractedText: string | null;
 };
 
-function escapeText(text: string): string {
+export function escapeText(text: string): string {
   // Nunca dejar que el contenido de la fuente cierre <fuente> o </fuentes> a
   // mano — es la defensa contra que una fuente maliciosa "escape" del
   // delimitador e inyecte una fuente falsa con instrucciones (docs/07 §5).

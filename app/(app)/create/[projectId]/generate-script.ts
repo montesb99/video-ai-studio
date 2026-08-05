@@ -1,6 +1,6 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
-import { buildSourceContext } from "@/lib/pipeline/context";
+import { buildSourceContext, escapeText } from "@/lib/pipeline/context";
 import { composeSystemPrompt, getPromptProfile, getNicheSystemPrompt } from "@/lib/pipeline/prompts";
 import { resolveGenerator } from "@/lib/pipeline/llm-provider";
 import { scriptBlocksSchema, SCRIPT_BLOCKS_JSON_SCHEMA, type ScriptBlocksOutput } from "@/lib/pipeline/schemas";
@@ -50,7 +50,11 @@ async function runGenerateScriptClaimed(
   workspaceId: string,
   projectId: string,
 ): Promise<GenerateScriptOutcome> {
-  const { data: project } = await supabase.from("projects").select("niche_slug").eq("id", projectId).single();
+  const { data: project } = await supabase
+    .from("projects")
+    .select("niche_slug, idea_prompt")
+    .eq("id", projectId)
+    .single();
   if (!project) return { ok: false, reason: "generation_failed" };
 
   const { data: proposal } = await supabase
@@ -88,7 +92,11 @@ async function runGenerateScriptClaimed(
   }
 
   const system = composeSystemPrompt({ methodologyBase, nicheProfile, taskInstructions });
+  const ideaLines = project.idea_prompt?.trim()
+    ? [`<idea_usuario>\n${escapeText(project.idea_prompt.trim())}\n</idea_usuario>`, ""]
+    : [];
   const userContent = [
+    ...ideaLines,
     "Propuesta elegida:",
     `Gancho: ${proposal.hook_title}`,
     `Descripción: ${proposal.description}`,

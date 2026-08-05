@@ -1,19 +1,24 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
-import { buildSourceContext } from "@/lib/pipeline/context";
+import { buildSourceContext, escapeText } from "@/lib/pipeline/context";
 import { composeSystemPrompt, getPromptProfile, getNicheSystemPrompt } from "@/lib/pipeline/prompts";
 import { resolveGenerator } from "@/lib/pipeline/llm-provider";
 import { proposalsSchema, PROPOSALS_JSON_SCHEMA } from "@/lib/pipeline/schemas";
 
 export type GenerateProposalsOutcome =
   | { ok: true }
-  | { ok: false; reason: "missing_source" | "generation_failed" | "not_configured" };
+  | { ok: false; reason: "missing_idea" | "missing_link" | "generation_failed" | "not_configured" };
 
 /**
  * Núcleo del paso 2 (ideating) — compartido entre idea/actions.ts
  * (generateProposals, primera vez, redirige a /propuestas) y
  * propuestas/actions.ts (regenerateProposals, "Generar otras 3", ya está en
  * esa pantalla). Nunca pisa propuestas anteriores: siguiente índice libre.
+ *
+ * La entrada obligatoria es projects.idea_prompt (la casilla de idea de la
+ * pantalla 1) — las fuentes adjuntas (input_sources) son contexto opcional,
+ * puede no haber ninguna. 024_ideate_uses_idea_prompt.sql actualiza el
+ * prompt de la tarea para reflejar esta prioridad.
  */
 export async function runGenerateProposals(
   supabase: Awaited<ReturnType<typeof createClient>>,
@@ -22,10 +27,13 @@ export async function runGenerateProposals(
 ): Promise<GenerateProposalsOutcome> {
   const { data: project } = await supabase
     .from("projects")
-    .select("video_type, niche_slug")
+    .select("video_type, niche_slug, idea_prompt")
     .eq("id", projectId)
     .single();
   if (!project) return { ok: false, reason: "generation_failed" };
+  if (!project.idea_prompt || !project.idea_prompt.trim()) {
+    return { ok: false, reason: "missing_idea" };
+  }
 
   const { data: readySources } = await supabase
     .from("input_sources")
@@ -33,12 +41,19 @@ export async function runGenerateProposals(
     .eq("project_id", projectId)
     .eq("status", "ready");
 
-  if (!readySources || readySources.length === 0) {
-    return { ok: false, reason: "missing_source" };
+  // docs/04-UX-FLOWS.md §5: con "Desde un enlace" el enlace es obligatorio.
+  // El cliente (idea-composer.tsx) ya deshabilita el botón sin él, pero eso
+  // es UX, no un boundary — sin este chequeo, un POST directo a la Server
+  // Action (o un enlace que falló la extracción y quedó en 'failed', no
+  // 'pending', así que no bloquea el botón) generaba propuestas para un
+  // video "desde enlace" con <fuentes></fuentes> vacío, inventando de qué
+  // trataba el enlace.
+  if (project.video_type === "desde_enlace" && !(readySources ?? []).some((s) => s.kind === "link")) {
+    return { ok: false, reason: "missing_link" };
   }
 
   const context = buildSourceContext(
-    readySources.map((s) => ({
+    (readySources ?? []).map((s) => ({
       kind: s.kind,
       platform: s.platform,
       url: s.url,
@@ -63,7 +78,7 @@ export async function runGenerateProposals(
     apiKey,
     model,
     system,
-    userContent: `Tipo de video: ${project.video_type}.\n\n${context}`,
+    userContent: `Tipo de video: ${project.video_type}.\n\n<idea_usuario>\n${escapeText(project.idea_prompt.trim())}\n</idea_usuario>\n\n${context}`,
     toolName: "emitir_propuestas",
     toolDescription: "Emite exactamente 3 propuestas de video en el formato exigido por el esquema.",
     schemaJson: PROPOSALS_JSON_SCHEMA,
