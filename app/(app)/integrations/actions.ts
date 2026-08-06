@@ -87,6 +87,21 @@ async function syncCatalog(
       })),
       { onConflict: "workspace_id,provider_id" },
     );
+
+    // Limpieza de una sincronización previa: heygen.listAvatars usaba
+    // GET /v2/avatars (sin filtro de dueño), que dejó cientos de avatares
+    // PÚBLICOS de HeyGen guardados como si fueran del workspace. Ahora que
+    // solo trae los propios (ownership=private), borramos cualquier fila
+    // vieja que ya no aparezca en la lista fresca. El cliente de Supabase
+    // no lanza en un error de FK (projects.avatar_id sin ON DELETE
+    // apuntando a una fila vieja) — se ignora el resultado a propósito,
+    // esto es un best-effort de limpieza, no debe tumbar la sincronización
+    // real de las voces/avatares que sí importan.
+    await supabase
+      .from("avatars")
+      .delete()
+      .eq("workspace_id", workspaceId)
+      .not("provider_id", "in", `(${avatars.map((a) => `"${a.providerId}"`).join(",")})`);
   }
 }
 

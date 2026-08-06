@@ -91,9 +91,16 @@ export type HeygenAvatar = {
   thumbUrl: string | null;
 };
 
+// GET /v2/avatars (usado antes) no filtra por dueño — devuelve el catálogo
+// público entero de HeyGen (miles de avatares) además de los propios,
+// encontrado en producción cuando el selector de avatar de la app mostraba
+// más de 1200 opciones que no eran del usuario. GET /v3/avatars sí tiene
+// `ownership`: "public" para el catálogo de HeyGen, "private" para los que
+// el usuario entrenó — acá solo queremos los propios (docs.heygen.com/
+// reference/list-avatars-v2, verificado por WebFetch).
 export async function listAvatars(apiKey: string): Promise<HeygenAvatar[]> {
   const response = await fetchWithRetry(
-    `${BASE_URL}/v2/avatars`,
+    `${BASE_URL}/v3/avatars?ownership=private`,
     { headers: { "X-Api-Key": apiKey } },
     { maxAttempts: 2 },
   );
@@ -101,11 +108,11 @@ export async function listAvatars(apiKey: string): Promise<HeygenAvatar[]> {
     throw new Error(`HeyGen listAvatars falló con status ${response.status}`);
   }
   const body = await response.json();
-  const avatars = (body?.data?.avatars ?? []) as Array<Record<string, unknown>>;
+  const avatars = (body?.data ?? []) as Array<Record<string, unknown>>;
 
   return avatars.map((avatar) => ({
-    providerId: avatar.avatar_id as string,
-    name: (avatar.avatar_name as string) ?? (avatar.avatar_id as string),
+    providerId: avatar.id as string,
+    name: (avatar.name as string) ?? (avatar.id as string),
     thumbUrl: (avatar.preview_image_url as string) ?? null,
   }));
 }
