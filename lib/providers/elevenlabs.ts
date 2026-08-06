@@ -52,14 +52,23 @@ export type ElevenLabsVerifyResult = {
 };
 
 /**
- * Verifica la clave probando los 4 permisos que necesita el pipeline.
+ * Verifica la clave. Solo `voices_read` y `text_to_speech` son estrictamente
+ * necesarios para el pipeline real (listar voces, sintetizar) — `user_read`
+ * y `models_read` quedan como chequeo informativo nomás, nunca bloquean la
+ * conexión: ningún otro lugar del código llama a `/v1/user` ni `/v1/models`.
+ *
+ * Bug real encontrado en producción (Sprint 4): las claves nuevas de
+ * ElevenLabs (formato `sk_`) tienen permisos granulares por categoría, y no
+ * hay ninguna categoría llamada literalmente "User" en su panel de edición
+ * — quedaba sin mapeo claro, así que una clave con `voices_read` y
+ * `text_to_speech` funcionando de verdad quedaba igual bloqueada como
+ * "inválida" solo por fallar `/v1/user`, un endpoint que la app nunca usa.
  *
  * NOTA para quien revise este archivo (api-architect): `text_to_speech` no
  * tiene forma de comprobarse sin una llamada real de síntesis — se hace con
  * el modelo más barato (`eleven_flash_v2_5`) y un texto de una palabra, y
- * solo se intenta si los otros tres permisos ya pasaron, para no gastar en
- * una clave que de todas formas va a fallar. Confirmar que esto sigue siendo
- * lo más barato disponible antes de dar el sprint por cerrado.
+ * solo se intenta si `voices_read` ya pasó, para no gastar en una clave que
+ * de todas formas va a fallar.
  */
 export async function verifyKey(apiKey: string): Promise<ElevenLabsVerifyResult> {
   const [user, voices, models] = await Promise.all([
@@ -75,40 +84,30 @@ export async function verifyKey(apiKey: string): Promise<ElevenLabsVerifyResult>
     text_to_speech: false,
   };
 
-  let textToSpeech: PermissionResult | null = null;
-  if (user.ok && voices.ok && models.ok) {
-    // Reutiliza el body ya obtenido por checkPermission("/voices") arriba —
-    // antes se volvía a pedir /v1/voices con un `fetch` suelto (sin retry y
-    // sin necesidad: el permiso ya se había comprobado dos líneas antes).
-    const firstVoiceId = (voices.body as { voices?: Array<{ voice_id?: string }> } | null)
-      ?.voices?.[0]?.voice_id;
+  if (voices.rateLimited) return { status: "active", amber: "rate_limited", scopes };
+  if (!voices.ok) return { status: "invalid", missingPermission: "voices_read", scopes };
 
-    if (firstVoiceId) {
-      textToSpeech = await checkPermission(apiKey, `/text-to-speech/${firstVoiceId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: "Hola", model_id: "eleven_flash_v2_5" }),
-      });
-      scopes.text_to_speech = textToSpeech.ok;
-    }
+  // Reutiliza el body ya obtenido por checkPermission("/voices") arriba —
+  // antes se volvía a pedir /v1/voices con un `fetch` suelto (sin retry y
+  // sin necesidad: el permiso ya se había comprobado dos líneas antes).
+  const firstVoiceId = (voices.body as { voices?: Array<{ voice_id?: string }> } | null)?.voices?.[0]?.voice_id;
+
+  let textToSpeech: PermissionResult | null = null;
+  if (firstVoiceId) {
+    textToSpeech = await checkPermission(apiKey, `/text-to-speech/${firstVoiceId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: "Hola", model_id: "eleven_flash_v2_5" }),
+    });
+    scopes.text_to_speech = textToSpeech.ok;
   }
 
-  const anyRateLimited =
-    user.rateLimited || voices.rateLimited || models.rateLimited || textToSpeech?.rateLimited;
-  if (anyRateLimited) {
+  if (user.rateLimited || models.rateLimited || textToSpeech?.rateLimited) {
     return { status: "active", amber: "rate_limited", scopes };
   }
 
-  const checks: Array<{ permission: ElevenLabsPermission; result: PermissionResult }> = [
-    { permission: "user_read", result: user },
-    { permission: "voices_read", result: voices },
-    { permission: "models_read", result: models },
-    ...(textToSpeech ? [{ permission: "text_to_speech" as const, result: textToSpeech }] : []),
-  ];
-
-  const missing = checks.find(({ result }) => !result.ok);
-  if (missing) {
-    return { status: "invalid", missingPermission: missing.permission, scopes };
+  if (textToSpeech && !textToSpeech.ok) {
+    return { status: "invalid", missingPermission: "text_to_speech", scopes };
   }
 
   if (!textToSpeech) {
