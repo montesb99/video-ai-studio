@@ -248,8 +248,23 @@ export function IntegrationCard({
           </p>
           <Input
             id={`key-${provider}`}
-            type="password"
+            // type="text", no "password": los navegadores IGNORAN
+            // autoComplete="off" en campos type="password" (decisión
+            // deliberada de Chrome desde ~2014) y pueden reemplazar en
+            // silencio lo que el usuario pega con una contraseña guardada
+            // vieja — pasó en producción, la clave pegada nunca era la que
+            // terminaba guardada. Un campo de una sola pegada (no un login
+            // persistente) no necesita el enmascarado de "password", y
+            // type="text" sí respeta autoComplete/los atributos anti-
+            // gestor-de-contraseñas de abajo.
+            type="text"
             autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck={false}
+            data-1p-ignore="true"
+            data-lpignore="true"
+            data-bwignore="true"
             placeholder={t("dialog.placeholder")}
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
