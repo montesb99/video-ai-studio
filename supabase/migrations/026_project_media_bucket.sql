@@ -36,7 +36,12 @@ values (
 )
 on conflict (id) do nothing;
 
-alter table storage.objects enable row level security;
+-- Sin `alter table storage.objects enable row level security` acá: esa
+-- tabla ya viene con RLS activado por defecto en todo proyecto Supabase, y
+-- el rol con el que corre el SQL Editor no es dueño de esa tabla (la
+-- administra un rol interno de Supabase) — intentar reactivarlo falla con
+-- `42501: must be owner of table objects`. Las policies de abajo alcanzan
+-- solas.
 
 -- El primer segmento de la ruta es el workspace_id. Se compara como TEXT
 -- contra current_workspaces() (013_functions.sql, security definer, no se
