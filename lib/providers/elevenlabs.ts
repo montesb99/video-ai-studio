@@ -253,6 +253,11 @@ export async function synthesizeWithTimestamps(
   );
 
   if (!response.ok) {
+    // Diagnóstico temporal: nunca loguea apiKey/texto del usuario, solo el
+    // status y el cuerpo de error que ya devuelve ElevenLabs (no es un
+    // secreto, es la respuesta pública de su propia API).
+    const errorBody = await response.text().catch(() => "");
+    console.error(`ElevenLabs synthesizeWithTimestamps falló: status=${response.status} body=${errorBody}`);
     if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
     if (response.status === 402) return { ok: false, reason: "no_credits" };
     if (response.status === 429) return { ok: false, reason: "rate_limited" };
