@@ -332,7 +332,78 @@
     }
   },
   "voice": {
-    "title": "Guion confirmado",
-    "body": "Retuvimos los créditos de este video. La generación de voz y avatar llega en el próximo sprint — por ahora, tu guion queda guardado acá."
+    "title": "Elige la voz",
+    "subtitle": "Sintetiza el audio de tu guion con la voz que elijas, escúchalo y apruébalo.",
+    "missingScript": "Confirma el guion antes de generar la voz.",
+    "voiceLabel": "Voz",
+    "noVoices": "No tienes voces conectadas todavía. Conéctate en Integraciones.",
+    "cloned": "Voz clonada",
+    "preview": "Escuchar muestra",
+    "presetLabel": "Estilo de narración",
+    "presets": {
+      "natural": "Natural",
+      "energico": "Enérgico",
+      "narracion": "Narración",
+      "advancedToggle": "Modo avanzado",
+      "fields": {
+        "stability": "Estabilidad",
+        "similarity_boost": "Fidelidad a la voz",
+        "style": "Estilo",
+        "speed": "Velocidad"
+      }
+    },
+    "generating": "Generando...",
+    "generateButton": "Generar voz",
+    "missingVoice": "Elige una voz antes de generar.",
+    "generateErrors": {
+      "missing_script": "Confirma el guion antes de generar la voz.",
+      "missing_voice": "Elige una voz antes de generar.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "not_configured": "Conecta tu clave de ElevenLabs en Integraciones.",
+      "generation_failed": "No pudimos generar la voz. Inténtalo de nuevo.",
+      "already_generating": "Ya se está generando la voz de este proyecto. Espera un momento."
+    },
+    "playerLabel": "Audio generado",
+    "approveButton": "Aprobar y continuar",
+    "approving": "Guardando...",
+    "approveErrors": {
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "incomplete": "Todavía falta generar el audio de alguna parte del guion.",
+      "save_failed": "No pudimos guardar la aprobación. Inténtalo de nuevo."
+    }
+  },
+  "avatar": {
+    "title": "Elige el avatar",
+    "subtitle": "Elige quién va a hablar tu guion y genera el video.",
+    "missingVoiceApproval": "Aprueba la voz en el paso anterior antes de generar el avatar.",
+    "avatarLabel": "Avatar",
+    "noAvatars": "No tienes avatares conectados todavía. Conéctate en Integraciones.",
+    "lookLabel": "Apariencia",
+    "lookOption": "Apariencia {n}",
+    "loadingLooks": "Cargando apariencias...",
+    "noLooks": "Este avatar no tiene ninguna apariencia compatible con Avatar III.",
+    "starting": "Iniciando...",
+    "generateButton": "Generar avatar",
+    "generateErrors": {
+      "missing_audio": "Todavía no hay un audio aprobado para este proyecto.",
+      "look_not_supported": "Esa apariencia no es compatible con Avatar III. Elige otra.",
+      "no_workspace": "No encontramos tu workspace. Vuelve a iniciar sesión.",
+      "not_configured": "Conecta tu clave de HeyGen en Integraciones.",
+      "generation_failed": "No pudimos iniciar la generación. Inténtalo de nuevo.",
+      "already_generating": "Ya se está generando el avatar de este proyecto. Espera un momento.",
+      "not_found": "No encontramos ese intento de generación.",
+      "missing_asset": "El video se generó pero no pudimos guardarlo. Inténtalo de nuevo.",
+      "unknown": "Ocurrió un error inesperado.",
+      "render_failed": "HeyGen no pudo generar el video. Inténtalo de nuevo.",
+      "download_failed": "No pudimos descargar el video generado. Inténtalo de nuevo.",
+      "upload_failed": "No pudimos guardar el video generado. Inténtalo de nuevo.",
+      "asset_insert_failed": "El video se generó pero no pudimos registrarlo. Inténtalo de nuevo.",
+      "superseded_by_new_selection": "Cambiaste de apariencia o de voz antes de que terminara el intento anterior."
+    },
+    "previousRenderFailed": "El último intento falló: {reason}",
+    "rendering": "Generando el video de tu avatar...",
+    "renderingElapsed": "{time} transcurridos",
+    "renderingEta": "Puede tardar unos minutos — no cierres esta pestaña.",
+    "resultNote": "El resto del video (montaje, subtítulos, música) llega en un próximo sprint — por ahora, este es el avatar hablando tu guion."
   }
 }

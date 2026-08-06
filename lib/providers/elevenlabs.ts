@@ -148,3 +148,126 @@ export async function listVoices(apiKey: string): Promise<ElevenLabsVoice[]> {
     previewUrl: (voice.preview_url as string) ?? null,
   }));
 }
+
+// --- Síntesis con tiempos por palabra (paso 4) ------------------------------
+//
+// docs/03-INTEGRATIONS.md §1 "El detalle que sostiene todo": el endpoint
+// `with-timestamps` es la única llamada del pipeline que produce audio Y
+// alineación en una sola petición. Contrato verificado en la Fase 0 de este
+// sprint (no reverificar):
+//   - `output_format` va en la QUERY STRING, nunca en el body — si se pone en
+//     el body la API lo ignora en silencio y devuelve mp3 por defecto.
+//   - `pcm_24000` en vez de `pcm_44100`: este último exige plan Pro+ y la
+//     clave es BYOK de tier desconocido. pcm_24000 no tiene restricción de
+//     tier y alcanza para voz hablada (no música).
+//   - Se usa `alignment` (no `normalized_alignment`) para los tiempos reales.
+
+export type WordCue = { w: string; t0: number; t1: number };
+
+export type VoiceSettingsInput = {
+  stability: number;
+  similarity_boost: number;
+  style: number;
+  speed: number;
+};
+
+export type TtsResult = {
+  pcm: Buffer; // PCM crudo 16-bit signed LE, mono, 24000 Hz
+  sampleRate: 24000;
+  words: WordCue[];
+  durationSeconds: number;
+};
+
+export type TtsFailureReason = "invalid_key" | "no_credits" | "rate_limited" | "provider_error";
+
+type ElevenLabsTtsAlignment = {
+  characters: string[];
+  character_start_times_seconds: number[];
+  character_end_times_seconds: number[];
+};
+
+type ElevenLabsTtsResponseBody = {
+  audio_base64: string;
+  alignment: ElevenLabsTtsAlignment;
+  normalized_alignment?: ElevenLabsTtsAlignment;
+};
+
+/**
+ * Deriva las palabras de la alineación por carácter: acumula caracteres hasta
+ * encontrar un espacio (el separador de palabra), usando el `t0` del primer
+ * carácter y el `t1` del último. Los espacios no son parte de ninguna
+ * palabra — la puntuación pegada a una palabra (comas, puntos) sí lo es.
+ */
+function deriveWordCues(alignment: ElevenLabsTtsAlignment): WordCue[] {
+  const { characters, character_start_times_seconds: starts, character_end_times_seconds: ends } =
+    alignment;
+  const words: WordCue[] = [];
+  let current: { chars: string[]; t0: number } | null = null;
+
+  for (let i = 0; i < characters.length; i++) {
+    const char = characters[i];
+    if (char === " ") {
+      if (current) {
+        words.push({ w: current.chars.join(""), t0: current.t0, t1: ends[i - 1] });
+        current = null;
+      }
+      continue;
+    }
+    if (!current) {
+      current = { chars: [char], t0: starts[i] };
+    } else {
+      current.chars.push(char);
+    }
+  }
+  if (current) {
+    words.push({ w: current.chars.join(""), t0: current.t0, t1: ends[characters.length - 1] });
+  }
+
+  return words;
+}
+
+export async function synthesizeWithTimestamps(
+  apiKey: string,
+  voiceId: string,
+  text: string,
+  settings: VoiceSettingsInput,
+): Promise<{ ok: true; data: TtsResult } | { ok: false; reason: TtsFailureReason }> {
+  const response = await fetchWithRetry(
+    `${BASE_URL}/text-to-speech/${voiceId}/with-timestamps?output_format=pcm_24000`,
+    {
+      method: "POST",
+      headers: { "xi-api-key": apiKey, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text,
+        model_id: "eleven_multilingual_v2",
+        voice_settings: {
+          stability: settings.stability,
+          similarity_boost: settings.similarity_boost,
+          style: settings.style,
+          speed: settings.speed,
+          use_speaker_boost: true,
+        },
+      }),
+    },
+    { maxAttempts: 2 },
+  );
+
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
+    if (response.status === 402) return { ok: false, reason: "no_credits" };
+    if (response.status === 429) return { ok: false, reason: "rate_limited" };
+    return { ok: false, reason: "provider_error" };
+  }
+
+  const body = (await response.json()) as ElevenLabsTtsResponseBody;
+  const pcm = Buffer.from(body.audio_base64, "base64");
+  const sampleRate = 24000 as const;
+  const words = deriveWordCues(body.alignment);
+  // Duración a partir del PCM real (16-bit = 2 bytes/muestra), no de la
+  // alineación: es correcta aunque `alignment` venga vacío (texto sin
+  // caracteres alineables) y refleja el silencio final que a veces añade el
+  // proveedor después del último carácter.
+  const durationSeconds = pcm.length / 2 / sampleRate;
+
+  return { ok: true, data: { pcm, sampleRate, words, durationSeconds } };
+}

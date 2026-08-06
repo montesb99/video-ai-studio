@@ -127,3 +127,185 @@ export async function provisionVoiceProvider(
   // asume que no existe y el Modo B siempre requiere el paso manual.
   return { linked: false, method: "manual" };
 }
+
+// --- Subir el audio (paso 6) -------------------------------------------------
+//
+// docs/03-INTEGRATIONS.md líneas 208-223, `POST /v3/assets` — ✅ verificado
+// contra la API real en el Spike 0. `multipart/form-data` con un campo
+// `file`, máx. 32 MB, acepta `mp3`/`wav`. No se fija `Content-Type` a mano:
+// `fetch` con un `FormData` pone el boundary correcto solo — fijarlo rompe el
+// parseo del lado del servidor.
+
+export type HeygenAssetFailureReason = "invalid_key" | "no_credits" | "in_progress" | "provider_error";
+
+export async function uploadAsset(
+  apiKey: string,
+  file: Buffer,
+  mimeType: "audio/wav" | "audio/mpeg",
+  idempotencyKey: string,
+): Promise<{ ok: true; assetId: string; url: string } | { ok: false; reason: HeygenAssetFailureReason }> {
+  const formData = new FormData();
+  // `new Uint8Array(file)` copia a un ArrayBuffer "normal": el `Buffer` de
+  // Node tipa su `.buffer` como `ArrayBufferLike` (incluye SharedArrayBuffer),
+  // que `BlobPart` no acepta directamente.
+  formData.append("file", new Blob([new Uint8Array(file)], { type: mimeType }));
+
+  const response = await fetchWithRetry(
+    `${BASE_URL}/v3/assets`,
+    {
+      method: "POST",
+      headers: { "X-Api-Key": apiKey, "Idempotency-Key": idempotencyKey },
+      body: formData,
+    },
+    { maxAttempts: 2 },
+  );
+
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
+    if (response.status === 402) return { ok: false, reason: "no_credits" };
+    // 409: petición idéntica en curso (idempotencia) — regla dura del
+    // proyecto, nunca se reintenta, se espera a la que ya está en vuelo.
+    if (response.status === 409) return { ok: false, reason: "in_progress" };
+    return { ok: false, reason: "provider_error" };
+  }
+
+  const body = await response.json();
+  return { ok: true, assetId: body?.data?.asset_id as string, url: body?.data?.url as string };
+}
+
+// --- Crear el render del avatar (paso 6) -------------------------------------
+//
+// docs/03-INTEGRATIONS.md líneas 225-257, `POST /v3/videos` — ✅ verificado
+// contra la documentación oficial y la API real (jul 2026), endpoint `v3` (no
+// `v2`). Este sprint solo usa el Modo A (audio externo vía `audio_url`): sin
+// `callback_url`/`callback_id` porque el estado se consulta por polling con
+// `getVideoStatus`, no por webhook, todavía.
+
+export async function createVideo(
+  apiKey: string,
+  input: { lookId: string; audioUrl: string; title: string; idempotencyKey: string },
+): Promise<{ ok: true; videoId: string } | { ok: false; reason: HeygenAssetFailureReason }> {
+  const response = await fetchWithRetry(
+    `${BASE_URL}/v3/videos`,
+    {
+      method: "POST",
+      headers: {
+        "X-Api-Key": apiKey,
+        "Idempotency-Key": input.idempotencyKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: "avatar",
+        avatar_id: input.lookId,
+        audio_url: input.audioUrl,
+        engine: { type: AVATAR_MODEL },
+        resolution: "1080p",
+        aspect_ratio: "9:16",
+        output_format: "webm",
+        title: input.title,
+      }),
+    },
+    { maxAttempts: 2 },
+  );
+
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
+    if (response.status === 402) return { ok: false, reason: "no_credits" };
+    if (response.status === 409) return { ok: false, reason: "in_progress" };
+    return { ok: false, reason: "provider_error" };
+  }
+
+  const body = await response.json();
+  return { ok: true, videoId: body?.data?.video_id as string };
+}
+
+// --- Looks de un avatar (paso 6) --------------------------------------------
+//
+// Endpoint verificado contra developers.heygen.com en la Fase 0 de este
+// sprint: `GET /v3/avatars/looks?group_id=` — distinto de
+// `GET /v3/avatars/looks/{look_id}` (docs/03-INTEGRATIONS.md línea 264, que
+// valida UN look puntual). Este lista todos los looks del grupo y cada uno ya
+// trae `supported_api_engines`, así que no hace falta una llamada extra por
+// look para saber si soporta `avatar_iii`. Respuesta: `{ data: [...],
+// has_more, next_token }` — el array va directo en `data`, no en
+// `data.looks`.
+
+export type AvatarLook = {
+  lookId: string; // el campo `id` de la respuesta — es el `avatar_id` de POST /v3/videos
+  name: string | null;
+  thumbUrl: string | null;
+  supportsAvatarIII: boolean; // derivado de supported_api_engines.includes("avatar_iii")
+};
+
+type HeygenLookApiShape = {
+  id: string;
+  name?: string | null;
+  preview_image_url?: string | null;
+  supported_api_engines?: string[];
+};
+
+export async function listLooks(apiKey: string, avatarProviderId: string): Promise<AvatarLook[]> {
+  const response = await fetchWithRetry(
+    `${BASE_URL}/v3/avatars/looks?group_id=${encodeURIComponent(avatarProviderId)}`,
+    { headers: { "X-Api-Key": apiKey } },
+    { maxAttempts: 2 },
+  );
+  if (!response.ok) {
+    throw new Error(`HeyGen listLooks falló con status ${response.status}`);
+  }
+  const body = await response.json();
+  const looks = (body?.data ?? []) as HeygenLookApiShape[];
+
+  return looks.map((look) => ({
+    lookId: look.id,
+    name: look.name ?? null,
+    thumbUrl: look.preview_image_url ?? null,
+    supportsAvatarIII: (look.supported_api_engines ?? []).includes(AVATAR_MODEL),
+  }));
+}
+
+// --- Estado de un video (paso 6, polling) -----------------------------------
+//
+// Endpoint verificado en la Fase 0: `GET /v3/videos/{video_id}`. Estados
+// documentados por HeyGen: pending/processing/completed/failed — pero
+// `POST /v3/videos` devuelve `status: "waiting"` al crear, que no está en esa
+// lista. No se valida contra un enum cerrado: cualquier valor que no sea
+// `completed` ni `failed` se trata como "todavía en proceso", así "waiting"
+// (y cualquier estado nuevo que HeyGen agregue) no rompe el polling.
+
+export type VideoRenderStatus =
+  | { status: "in_progress" }
+  | { status: "completed"; videoUrl: string }
+  | { status: "failed"; errorCode: string | null; errorMessage: string | null };
+
+export async function getVideoStatus(apiKey: string, videoId: string): Promise<VideoRenderStatus> {
+  const response = await fetchWithRetry(
+    `${BASE_URL}/v3/videos/${encodeURIComponent(videoId)}`,
+    { headers: { "X-Api-Key": apiKey } },
+    { maxAttempts: 2 },
+  );
+  if (!response.ok) {
+    throw new Error(`HeyGen getVideoStatus falló con status ${response.status}`);
+  }
+  const body = await response.json();
+  const data = body?.data ?? {};
+  const status = data.status as string | undefined;
+
+  if (status === "completed") {
+    return { status: "completed", videoUrl: data.video_url as string };
+  }
+  if (status === "failed") {
+    return {
+      status: "failed",
+      errorCode: (data.failure_code as string) ?? null,
+      errorMessage: (data.failure_message as string) ?? null,
+    };
+  }
+  // Cualquier otro valor ("waiting", "pending", "processing", o uno nuevo que
+  // HeyGen agregue sin avisar) se trata como en curso, a propósito — ver nota
+  // arriba. No es un throw: un estado desconocido no debe tumbar el polling.
+  if (status !== "pending" && status !== "processing") {
+    console.warn(`HeyGen getVideoStatus: status desconocido "${status}", se trata como en_progreso.`);
+  }
+  return { status: "in_progress" };
+}

@@ -2,9 +2,11 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 // docs/04-UX-FLOWS.md/docs/05-DESIGN-TOKENS.md §8: el stepper de 6 pasos se
-// muestra siempre, aunque 5-6 (avatar/marca, escenas) todavía no tengan
-// pantalla — sin ruta, se ven pero no son clicables.
-const STEP_ROUTES: Array<string | null> = ["idea", "propuestas", "guion", "voz", null, null];
+// muestra siempre, aunque el paso 6 (escenas) todavía no tenga pantalla —
+// sin ruta, se ve pero no es clicable. El paso 5 ("Avatar y marca", Sprint 4)
+// hoy solo cubre avatar — Brand Kit sigue viviendo en su propia sección de
+// navegación, fuera del wizard.
+const STEP_ROUTES: Array<string | null> = ["idea", "propuestas", "guion", "voz", "avatar", null];
 
 const STATUS_TO_STEP: Record<string, number> = {
   draft: 1,
@@ -12,12 +14,12 @@ const STATUS_TO_STEP: Record<string, number> = {
   ideating: 2,
   scripting: 3,
   voicing: 4,
-  styling: 4,
-  visualizing: 4,
-  avatar: 4,
-  composing: 4,
-  ready: 4,
-  failed: 4,
+  styling: 5,
+  visualizing: 5,
+  avatar: 5,
+  composing: 5,
+  ready: 5,
+  failed: 5,
 };
 
 /** El paso resaltado sale de projects.status (fuente de verdad en BD), no de la URL — docs/04-UX-FLOWS.md §3. */

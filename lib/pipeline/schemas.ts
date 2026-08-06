@@ -4,7 +4,15 @@ import { z } from "zod";
 // nunca un string plano. Esta es la defensa de esquema contra el bug real
 // del Spike 0 (el avatar leía en voz alta etiquetas y citas de fuente).
 export const blockSchema = z.object({
-  spoken: z.string().min(1),
+  // .trim() antes de .min(1): un `spoken` de puro espacio/tab pasaba
+  // min(1) sin problema (la longitud del string sin recortar sí era >=1),
+  // y ElevenLabs no tiene forma de sintetizar "nada" — generate-voice.ts
+  // saltaba esa escena en silencio, dejándola sin audio_asset_id para
+  // siempre y bloqueando approve_voice sin ningún mensaje al usuario
+  // (bug real, Sprint 4). Acá se corta en el momento de generar el guion,
+  // con contexto para que el LLM reintente, en vez de descubrirse recién
+  // al sintetizar la voz.
+  spoken: z.string().trim().min(1),
   onScreen: z.record(z.string(), z.unknown()),
 });
 export type Block = z.infer<typeof blockSchema>;
