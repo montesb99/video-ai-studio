@@ -2,7 +2,21 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { createClient } from "@/lib/supabase/server";
 import { resolveByokKey } from "@/lib/pipeline/byok";
-import { listLooks, uploadAsset, createVideo, getVideoStatus } from "@/lib/providers/heygen";
+import { listLooks, uploadAsset, createVideo, getVideoStatus, type HeygenAssetFailureReason } from "@/lib/providers/heygen";
+
+// uploadAsset/createVideo devuelven HeygenAssetFailureReason
+// ("invalid_key"|"no_credits"|"in_progress"|"provider_error"), un tipo
+// distinto de RenderFailureCode (el que sí tiene traducción en
+// avatar.generateErrors). Guardar el reason crudo en render_jobs.error_code
+// sin mapear fue un bug real en producción: un "provider_error" quedaba
+// grabado tal cual, y cuando el usuario volvía a la pantalla, la UI mostraba
+// literalmente "avatar.generateErrors.provider_error" en vez de un mensaje
+// en español, porque esa clave nunca existió en las traducciones.
+function toRenderFailureCode(reason: HeygenAssetFailureReason): RenderFailureCode {
+  if (reason === "invalid_key") return "not_configured";
+  if (reason === "no_credits") return "no_credits";
+  return "render_failed"; // "in_progress" y "provider_error" caen acá — mensaje genérico, ya traducido
+}
 
 export type GenerateAvatarOutcome =
   | { ok: true; renderJobId: string }
@@ -188,7 +202,11 @@ async function runGenerateAvatarStartClaimed(
   if (!uploadResult.ok) {
     await supabase
       .from("render_jobs")
-      .update({ status: "failed", error_code: uploadResult.reason, finished_at: new Date().toISOString() })
+      .update({
+        status: "failed",
+        error_code: toRenderFailureCode(uploadResult.reason),
+        finished_at: new Date().toISOString(),
+      })
       .eq("id", renderJobId);
     return { ok: false, reason: uploadResult.reason === "invalid_key" ? "not_configured" : "generation_failed" };
   }
@@ -202,7 +220,11 @@ async function runGenerateAvatarStartClaimed(
   if (!videoResult.ok) {
     await supabase
       .from("render_jobs")
-      .update({ status: "failed", error_code: videoResult.reason, finished_at: new Date().toISOString() })
+      .update({
+        status: "failed",
+        error_code: toRenderFailureCode(videoResult.reason),
+        finished_at: new Date().toISOString(),
+      })
       .eq("id", renderJobId);
     return { ok: false, reason: videoResult.reason === "invalid_key" ? "not_configured" : "generation_failed" };
   }
@@ -240,7 +262,8 @@ export type RenderFailureCode =
   | "upload_failed"
   | "asset_insert_failed"
   | "superseded_by_new_selection"
-  | "no_workspace";
+  | "no_workspace"
+  | "no_credits";
 
 export type RenderStatusOutcome =
   | { status: "processing" }

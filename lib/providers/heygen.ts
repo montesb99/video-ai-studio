@@ -168,6 +168,11 @@ export async function uploadAsset(
   );
 
   if (!response.ok) {
+    // Diagnóstico temporal, mismo criterio que synthesizeWithTimestamps en
+    // elevenlabs.ts: nunca loguea la apiKey, solo el status y el cuerpo de
+    // error que ya devuelve HeyGen (respuesta pública de su propia API).
+    const errorBody = await response.text().catch(() => "");
+    console.error(`HeyGen uploadAsset falló: status=${response.status} body=${errorBody}`);
     if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
     if (response.status === 402) return { ok: false, reason: "no_credits" };
     // 409: petición idéntica en curso (idempotencia) — regla dura del
@@ -216,6 +221,8 @@ export async function createVideo(
   );
 
   if (!response.ok) {
+    const errorBody = await response.text().catch(() => "");
+    console.error(`HeyGen createVideo falló: status=${response.status} body=${errorBody}`);
     if (response.status === 401 || response.status === 403) return { ok: false, reason: "invalid_key" };
     if (response.status === 402) return { ok: false, reason: "no_credits" };
     if (response.status === 409) return { ok: false, reason: "in_progress" };

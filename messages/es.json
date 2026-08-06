@@ -398,7 +398,8 @@
       "download_failed": "No pudimos descargar el video generado. Inténtalo de nuevo.",
       "upload_failed": "No pudimos guardar el video generado. Inténtalo de nuevo.",
       "asset_insert_failed": "El video se generó pero no pudimos registrarlo. Inténtalo de nuevo.",
-      "superseded_by_new_selection": "Cambiaste de apariencia o de voz antes de que terminara el intento anterior."
+      "superseded_by_new_selection": "Cambiaste de apariencia o de voz antes de que terminara el intento anterior.",
+      "no_credits": "No te alcanzan los créditos de HeyGen para generar este video."
     },
     "previousRenderFailed": "El último intento falló: {reason}",
     "rendering": "Generando el video de tu avatar...",
