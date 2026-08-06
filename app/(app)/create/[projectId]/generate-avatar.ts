@@ -323,11 +323,13 @@ export async function checkAvatarRenderStatus(
   const videoRes = await fetch(render.videoUrl);
   if (!videoRes.ok) return { status: "failed", code: "download_failed" };
   const videoBuffer = Buffer.from(await videoRes.arrayBuffer());
-  const storagePath = `${workspaceId}/${projectId}/avatar/${renderJobId}.webm`;
+  // .mp4/video/mp4 — createVideo ya no pide output_format:"webm" (ver
+  // heygen.ts#createVideo), así que lo que llega acá es siempre mp4.
+  const storagePath = `${workspaceId}/${projectId}/avatar/${renderJobId}.mp4`;
 
   const { error: uploadError } = await supabase.storage
     .from("project-media")
-    .upload(storagePath, videoBuffer, { contentType: "video/webm", upsert: true });
+    .upload(storagePath, videoBuffer, { contentType: "video/mp4", upsert: true });
   if (uploadError) return { status: "failed", code: "upload_failed" };
 
   const { data: asset, error: assetError } = await supabase
@@ -338,7 +340,7 @@ export async function checkAvatarRenderStatus(
       kind: "avatar_video",
       source: "generated",
       storage_path: storagePath,
-      mime: "video/webm",
+      mime: "video/mp4",
       bytes: videoBuffer.byteLength,
       gen_model: "avatar_iii",
     })

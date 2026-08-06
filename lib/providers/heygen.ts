@@ -192,6 +192,14 @@ export async function uploadAsset(
 // `v2`). Este sprint solo usa el Modo A (audio externo vía `audio_url`): sin
 // `callback_url`/`callback_id` porque el estado se consulta por polling con
 // `getVideoStatus`, no por webhook, todavía.
+//
+// output_format: "mp4", no "webm" — encontrado en producción: "webm" pide
+// fondo transparente (alpha), y HeyGen lo rechaza (400 invalid_parameter,
+// "must be trained with matting enabled") si el avatar no se entrenó con esa
+// opción — no es el caso por defecto para avatares ya creados. "mp4" no
+// exige matting: devuelve el fondo tal como quedó grabado en el avatar. El
+// fondo transparente (para superponer sobre motion graphics) queda para
+// cuando exista el sprint de composición — no se usa en ningún lado todavía.
 
 export async function createVideo(
   apiKey: string,
@@ -213,7 +221,7 @@ export async function createVideo(
         engine: { type: AVATAR_MODEL },
         resolution: "1080p",
         aspect_ratio: "9:16",
-        output_format: "webm",
+        output_format: "mp4",
         title: input.title,
       }),
     },
